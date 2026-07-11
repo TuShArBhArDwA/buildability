@@ -1,0 +1,25 @@
+{
+  "id": 14,
+  "name": "Front",
+  "one_liner": "Front is a customer communication/shared-inbox helpdesk platform with a comprehensive REST Core API for managing conversations, contacts, messages, tags, and more.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Front is a paid SaaS with a free trial; no free API-only dev tier. API tokens are self-serve and generated instantly from Settings > Developers > API Tokens, but you must be a workspace admin to create/manage them. OAuth is required for public/partner integrations. No human approval needed to obtain credentials within your own instance.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Front Core API is a REST backend giving comprehensive control over all Front entities (Conversations, Messages, Comments, Contacts, Contact Groups, Tags, Inboxes, Channels, Teammates, Drafts, Events, Attachments, Analytics, etc.), easily 100+ operations. Bearer token auth in Authorization header. Overall plus per-endpoint burst rate limits apply.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Front ships an official MCP server (open beta) at mcp.frontapp.com/mcp — a single OAuth-authenticated endpoint where agents act as a specific Front user with that user's permissions. Documented at dev.frontapp.com/docs/mcp-server. Community/third-party MCP servers (e.g. zqushair/Frontapp-MCP, Pipedream, Zapier) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant — public REST API with self-serve credentials. Minor gates: must be an admin to mint API tokens, and Front itself requires a paid plan/trial (no free-forever tier).",
+  "evidence": [
+    {"claim": "Front Core API uses Bearer tokens and supports OAuth 2.0 (authorization code grant) as well as API tokens for authentication.", "url": "https://dev.frontapp.com/docs/authentication"},
+    {"claim": "API tokens are created in Settings > Developers > API Tokens; you must be an admin to create or manage API tokens.", "url": "https://dev.frontapp.com/docs/create-and-revoke-api-tokens"},
+    {"claim": "Front's Core API is a REST backend giving comprehensive control over all entities from Contacts to Comments, with overall and burst rate limits.", "url": "https://dev.frontapp.com/reference/introduction"},
+    {"claim": "Front offers an official MCP server (open beta) at mcp.frontapp.com/mcp using a single OAuth-authenticated endpoint scoped to a Front user's permissions.", "url": "https://dev.frontapp.com/docs/mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact minimum paid plan tier required for API access is not stated in dev docs; whether any endpoints are gated behind higher (Scale/Premier) plans is unconfirmed."
+}

@@ -1,0 +1,24 @@
+{
+  "id": 17,
+  "name": "Plain",
+  "one_liner": "Plain is a customer support/helpdesk platform (email, Slack, live chat) built API-first with a GraphQL API for managing threads, customers, and tenants.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Plain is a paid SaaS (Foundation $35/seat/mo, Horizon $299/mo, Frontier custom). All plans include a 7-day free trial with no credit card required. API keys are created instantly in-app via Settings -> Machine Users -> Add API Key with fine-grained permissions; no human approval needed. Credentials are available during the trial, so API access requires an account/trial rather than a permanently free tier.",
+  "api_styles": ["GraphQL"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Single GraphQL endpoint (https://core-api.uk.plain.com/graphql/v1) with Bearer token auth. Covers threads, customers, tenants, labels, notes, attachments, customer cards, and help center. The official MCP server exposes ~30 tools as a subset. Queries and mutations span roughly 20-100 operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Plain ships an official vendor MCP server at https://mcp.plain.com/mcp (announced 2026), documented at help.plain.com/article/mcp-server. ~30 tools across threads, customers, tenants, help center articles, and workspace data, with both read and write capabilities. Uses OAuth 2.0 with PKCE, inheriting the connected user's permissions.",
+  "buildability": "YELLOW",
+  "main_blocker": "API access requires a Plain account; there is no permanently free tier, only a 7-day free trial (no credit card) after which a paid plan is needed to keep using the API.",
+  "evidence": [
+    {"claim": "Plain uses machine-user API keys with Bearer token auth against a GraphQL endpoint (core-api.uk.plain.com/graphql/v1).", "url": "https://www.plain.com/docs/graphql/authentication"},
+    {"claim": "All Plain plans include a free 7-day trial with no credit card required; paid plans start at $35/seat/month.", "url": "https://www.plain.com/pricing"},
+    {"claim": "Plain ships an official MCP server at mcp.plain.com/mcp with ~30 read/write tools, using OAuth 2.0 with PKCE.", "url": "https://help.plain.com/article/mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total count of GraphQL queries/mutations not enumerated (could be BROAD rather than MODERATE). Whether webhooks are configurable via API vs only UI was not directly confirmed, though Plain documents webhooks."
+}

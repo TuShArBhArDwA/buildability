@@ -1,0 +1,25 @@
+{
+  "id": 38,
+  "name": "Pinterest",
+  "one_liner": "Pinterest's v5 REST API lets apps manage organic content (pins, boards, catalogs), run and analyze ads, and pull analytics on behalf of authenticated Pinterest users.",
+  "auth_methods": ["OAuth2", "Client credentials"],
+  "primary_auth": "OAuth2",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "Registering an app at the developer portal instantly yields App ID/secret and working credentials, but new apps start in 'trial mode' limited to the app owner's own account. To act on behalf of other users (the typical integration case) you must submit the app for review and be granted Standard Access; reviews can be rejected if the demo doesn't show a full OAuth flow. No payment is required for API access itself. Free-tier/trial for own account only.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "v5 REST API spans pins, boards, board sections, search, catalogs, ad accounts, campaigns, ad groups, ads, audiences, conversion tracking, plus analytics/reporting at pin/ad/adgroup/campaign/account levels and user account endpoints — well over 100 operations. OpenAPI description published (github.com/pinterest/api-description).",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Pinterest shipped an official (read-only) MCP server for its ad platform in June 2026, giving agents read access to campaign performance, analytics, keyword insights and Taste Graph signals (mutations still route through a human). Multiple community/third-party MCP servers also exist (Zapier, CData, Pipedream, terryso/mcp-pinterest).",
+  "buildability": "YELLOW",
+  "main_blocker": "Multi-user / production API use requires Pinterest app review and Standard Access approval; trial-mode credentials only work against the app owner's own account.",
+  "evidence": [
+    {"claim": "OAuth 2.0 with App ID/Client Secret, redirect URI, scopes; authorization code, client credentials, and refresh token grant types; read/write scopes for ads, billing, boards, catalogs, pins, user accounts.", "url": "https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/"},
+    {"claim": "New apps start in trial mode limited to the app owner's account and must be submitted for review to publish on behalf of other users (Standard Access).", "url": "https://community.pinterest.biz/t/updated-oauth-demo-submitted-awaiting-review-status/47071"},
+    {"claim": "v5 API covers content, ad management, and analytics with endpoints like /search/pins, /boards, /ad_accounts/{id}/ads/analytics, /pins/analytics.", "url": "https://developers.pinterest.com/docs/api/v5/ads-analytics/"},
+    {"claim": "Pinterest launched an official read-only MCP server for its ad platform in June 2026.", "url": "https://www.digitalapplied.com/blog/advertising-mcp-servers-pinterest-microsoft-2026-guide"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether Pinterest offers first-party webhooks (none documented in v5 core API; some conversion/catalog notification mechanisms may exist). Exact scope of the official ad-platform MCP (ads-only, read-only) vs organic content coverage."
+}

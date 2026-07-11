@@ -1,0 +1,37 @@
+{
+  "id": 33,
+  "name": "LinkedIn Ads",
+  "one_liner": "LinkedIn's Marketing/Advertising API lets partners programmatically create and manage ad accounts, campaigns, creatives, targeting, and pull performance analytics from LinkedIn Campaign Manager.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2 (3-legged member auth for most Advertising API calls; 2-legged/client-credentials for some application-auth endpoints)",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "Anyone can create an app in the LinkedIn Developer Portal and self-serve Open Permissions (Sign in with LinkedIn, Share on LinkedIn). However, Advertising API permissions require explicit approval: you must add the Advertising API product to your app and be approved as a LinkedIn Marketing Partner. Audiences permissions require further application after becoming an approved partner. No open sandbox grants working Ads credentials without this review.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Versioned REST API (mandatory monthly Linkedin-Version header, e.g. 202601; new versions monthly, supported 1yr min). Covers full Campaign Manager surface: ad accounts, campaign groups, campaigns, creatives, many ad formats (document ads, video, etc.), targeting/audiences, ad analytics/reporting, Conversions API, and Lead Sync. Well over 100 operations across the Marketing platform.",
+  "webhooks": false,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor (LinkedIn/Microsoft) MCP server found. Only community/third-party servers exist (e.g. danielpopamd/linkedin-ads-mcp, radiateb2b/mcp-linkedin-ads, CData, Zapier MCP, Two Minute Reports).",
+  "buildability": "YELLOW",
+  "main_blocker": "Advertising API access is gated behind LinkedIn Marketing Partner approval; a plain developer app cannot call the Ads API without going through the partner/product approval process.",
+  "evidence": [
+    {
+      "claim": "Marketing integrations using Advertising API permissions must be approved; apply via the Developer Portal by adding the Advertising API product, and Audiences permissions require further application after becoming an approved partner.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access"
+    },
+    {
+      "claim": "LinkedIn API uses OAuth 2.0 with 3-legged (member) and 2-legged (application) authorization flows for authentication.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authentication"
+    },
+    {
+      "claim": "The versioned Marketing REST API requires a Linkedin-Version header (e.g. 202601), publishes new versions monthly, and each version is supported at least one year.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/versioning?view=li-lms-2026-05"
+    },
+    {
+      "claim": "The Advertising API exposes full Campaign Manager functionality: ad accounts, campaign groups, campaigns, creatives, ad types, and analytics.",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview?view=li-lms-2026-06"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether LinkedIn offers any webhook/push mechanism relevant to ads (Lead Sync has notification patterns) was not fully confirmed; marked false conservatively. Exact partner approval timeline/criteria not verified in depth."
+}

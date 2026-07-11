@@ -1,0 +1,37 @@
+{
+  "id": 32,
+  "name": "Meta Ads",
+  "one_liner": "Meta's Marketing API (part of the Facebook Graph API) lets developers programmatically create, manage, and report on advertising campaigns across Facebook, Instagram, and Meta's ad network.",
+  "auth_methods": ["OAuth2", "Session/other token", "Personal access token"],
+  "primary_auth": "OAuth2 access tokens (user, page, or system-user access tokens issued via Meta's OAuth 2.0 flow); long-lived system-user tokens are standard for server-to-server ad automation.",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "An app is created instantly and gets Standard/Development access to the Marketing API, but this dev tier is heavily throttled (~60 quota points, read/write only against ad accounts you have a role on). Real production use requires Advanced Access, which is gated by App Review, Business Verification, and the Ads Management Standard Access / 'Marketing API Access Tier' feature review (screencast demonstrating each permission). Reviews can take days to weeks/months.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Marketing API is a large REST/Graph API surface (100+ endpoints/edges: campaigns, ad sets, ads, creatives, audiences, Insights reporting, catalogs, etc.) exposed over the Graph API at graph.facebook.com. Official SDKs provided for PHP, Python, Java, Ruby, Node.js.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Meta shipped an official MCP server ('AI connectors' / Meta Ads MCP) around April 29 2026 at endpoint https://mcp.facebook.com/ads, exposing ~29 tools (reporting, ad creation/management, catalog, signals diagnostics) for use with Claude, ChatGPT, and Perplexity remote-connector setups; described as free and rolling out gradually. Multiple community/third-party servers also exist (e.g., pipeboard-co/meta-ads-mcp, AdKit).",
+  "buildability": "YELLOW",
+  "main_blocker": "Production API access is gated behind App Review, Business Verification, and Advanced Access approval; the instant self-serve dev tier is too throttled for real workloads.",
+  "evidence": [
+    {
+      "claim": "At creation an app has Standard access; Advanced Access (Full Access) requires App Review, business verification, and a screencast demonstrating each permission; Ads Management Standard Access feature being renamed Marketing API Access Tier.",
+      "url": "https://developers.meta.com/blog/updates-to-ads-management-standard-access-feature/"
+    },
+    {
+      "claim": "Development Access provides only ~60 quota points; Standard Access unlocks 9,000 points but requires App Review approval.",
+      "url": "https://www.get-ryze.ai/blog/meta-marketing-api-free-tier-limitations-and-quotas"
+    },
+    {
+      "claim": "Meta launched an official MCP server ('AI connectors') on April 29 2026 at https://mcp.facebook.com/ads with 29 tools, free, supporting Claude, ChatGPT, and Perplexity.",
+      "url": "https://commonthreadco.com/blogs/coachs-corner/meta-ai-mcp-cli-ads-connectors-ecommerce"
+    },
+    {
+      "claim": "Meta Business Help Centre documents an AI Ads connector for managing ads through AI agents.",
+      "url": "https://www.facebook.com/business/help/1456422242197840"
+    }
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Could not load the official developers.facebook.com authorization page (404 on the tried URL) to confirm exact token types verbatim; official MCP endpoint/tool count and free status corroborated mainly via secondary sources plus the Meta Business Help Centre page rather than a full official spec page."
+}

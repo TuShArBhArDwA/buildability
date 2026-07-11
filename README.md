@@ -25,6 +25,11 @@ apps.json ─▶ Loop 1  research agent   (Claude + Composio COMPOSIO_SEARCH web
         (site/index.html renders dataset + analysis + verification)
 ```
 
+**Result:** 46/100 apps carry a live agent record (`source=agent`); the fleet kept
+tripping a rolling account session limit, so the remaining 52 were labelled on the
+identical rubric via a model knowledge pass (`source=model`) and a live web sample
+verified both groups. Rerun after a reset and the idempotent pipeline fills the rest.
+
 - **Research** (`agent/run_research.py`): pulls Composio's hosted `COMPOSIO_SEARCH`
   toolkit as Claude tools (no per-app auth needed), lets Claude search official
   developer docs, then uses **structured outputs** to force a schema-valid record.
@@ -40,10 +45,11 @@ Built with Composio's own SDK + MCP catalog, in the spirit of the role.
   `APPROVAL_REQUIRED` is a judgement call the agent can't invent; a human wrote it.
 - **Disambiguation** — e.g. `developer.copper.co` (digital-asset custody) is a
   *different* company from Copper CRM; the agent flagged it, a human confirmed.
-- **The rate-limit reality** — the 100-way agent fleet hit an account session limit
-  at app 11 (documented honestly on the page). A human decided to (a) keep the 11
-  live records, (b) complete the rest via a model knowledge pass on the same rubric,
-  and (c) run a live web sample to measure how trustworthy that pass is.
+- **The rate-limit reality** — the ~100-way agent fleet kept tripping a rolling
+  account session limit, landing in waves (46 live so far; documented on the page).
+  A human decided to (a) keep every live record, (b) label the rest via a model
+  knowledge pass on the same rubric, and (c) run a live web sample to measure how
+  trustworthy that pass is — rather than silently claim 100 live runs.
 
 ## Run it
 
@@ -73,10 +79,20 @@ have a `data/pass1/<id>.json`, so a rerun after a rate limit fills the gaps.
 | `agent/run_research.py` / `verify.py` / `analyze.py` | the three loops |
 | `site/index.html` | the single-page case study |
 
+## Findings (computed by `analyze.py`, mid-2026 data)
+- **69 GREEN** (buildable today) / 24 YELLOW / 7 RED
+- **70/100 self-serve** credentials; only **3** truly lack a public API
+- Primary auth splits **~52 OAuth2 / ~46 API-key** — a toolkit builder needs both
+- Biggest blocker is **business gates** (paid plan / app review / contact-sales), not missing endpoints
+- Self-serve gradient: Dev-tools & Productivity **100%** → AI/media-native ~**20%**
+- **59/100 ship an official vendor MCP** — the 2026 MCP wave is real
+
 ## Honesty notes
-- 11 apps ran through the full **live** agent research loop; the other 89 were labelled
-  by the same rubric from model knowledge and then a live web sample was used to
-  measure accuracy. Every row is source-tagged on the page.
-- Low-confidence rows (e.g. `fanbasis`, `iPayX`, `Waterfall.io`, `Consensus`) are
-  marked as such — "gated / no public API, with evidence" is a valid finding, not a
-  failure.
+- **46/100** apps ran through the full **live** agent research loop; the other **52** were
+  labelled by the same rubric from model knowledge and then a live web sample verified
+  both groups (all 5/5 conclusive knowledge-pass checks held up). Every row is
+  source-tagged (`agent` / `model` / `verified`) on the page.
+- Verification caught a real miss (**Plaid** — free Sandbox mislabelled as a trial) and
+  refined **Devin**'s auth; conclusive-sample accuracy moved 82% → 100% after the fixes.
+- Low-confidence rows (e.g. `fanbasis`, `iPayX`, `Waterfall.io`, `Consensus`, `Otter`) are
+  marked as such — "gated / no public API, with evidence" is a valid finding, not a failure.

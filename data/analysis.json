@@ -1,51 +1,54 @@
 {
   "total": 100,
   "auth_methods": {
-    "API key": 67,
-    "OAuth2": 65,
-    "Basic": 13,
-    "Personal access token": 9,
-    "Session/other token": 7,
-    "JWT": 4,
+    "OAuth2": 67,
+    "API key": 66,
+    "Basic": 17,
+    "Personal access token": 16,
+    "Session/other token": 9,
+    "JWT": 6,
+    "Other": 2,
     "None/local": 2,
+    "System/other token": 1,
+    "Client credentials": 1,
     "AWS SigV4": 1
   },
   "primary_auth_family": {
-    "OAuth2": 52,
-    "API key": 46,
+    "API key": 51,
+    "OAuth2": 47,
     "None/local": 2
   },
   "access_model": {
-    "SELF_SERVE_FREE": 52,
+    "SELF_SERVE_FREE": 54,
     "SELF_SERVE_TRIAL": 16,
     "PAID_PLAN_REQUIRED": 13,
-    "PARTNER_GATED": 9,
-    "APPROVAL_REQUIRED": 7,
+    "PARTNER_GATED": 8,
+    "APPROVAL_REQUIRED": 6,
     "NO_PUBLIC_API": 3
   },
   "buildability": {
     "GREEN": 69,
-    "YELLOW": 22,
-    "RED": 9
+    "YELLOW": 24,
+    "RED": 7
   },
   "api_breadth": {
-    "BROAD": 52,
-    "MODERATE": 32,
-    "NARROW": 13,
+    "BROAD": 56,
+    "MODERATE": 29,
+    "NARROW": 12,
     "NONE": 3
   },
   "official_mcp": {
-    "YES_OFFICIAL": 42,
-    "COMMUNITY_ONLY": 30,
-    "NONE_FOUND": 28
+    "YES_OFFICIAL": 59,
+    "NONE_FOUND": 23,
+    "COMMUNITY_ONLY": 18
   },
-  "webhooks_yes": 78,
-  "self_serve": 68,
-  "gated": 32,
+  "webhooks_yes": 77,
+  "self_serve": 70,
+  "gated": 30,
   "green": 69,
-  "yellow": 22,
-  "red": 9,
-  "official_mcp_yes": 42,
+  "yellow": 24,
+  "red": 7,
+  "official_mcp_yes": 59,
   "access_by_category": {
     "CRM and Sales": {
       "SELF_SERVE_FREE": 7,
@@ -55,23 +58,20 @@
     "Support and Helpdesk": {
       "SELF_SERVE_TRIAL": 5,
       "SELF_SERVE_FREE": 3,
-      "PAID_PLAN_REQUIRED": 1,
-      "PARTNER_GATED": 1
+      "PAID_PLAN_REQUIRED": 2
     },
     "Communications and Messaging": {
-      "SELF_SERVE_FREE": 7,
-      "PAID_PLAN_REQUIRED": 1,
+      "SELF_SERVE_FREE": 8,
       "APPROVAL_REQUIRED": 1,
       "SELF_SERVE_TRIAL": 1
     },
     "Marketing, Ads, Email and Social": {
-      "APPROVAL_REQUIRED": 5,
-      "SELF_SERVE_TRIAL": 1,
+      "APPROVAL_REQUIRED": 4,
+      "SELF_SERVE_TRIAL": 2,
       "SELF_SERVE_FREE": 4
     },
     "Ecommerce": {
-      "SELF_SERVE_FREE": 5,
-      "SELF_SERVE_TRIAL": 1,
+      "SELF_SERVE_FREE": 6,
       "PARTNER_GATED": 1,
       "PAID_PLAN_REQUIRED": 1,
       "APPROVAL_REQUIRED": 1,
@@ -111,22 +111,21 @@
       "RED": 1
     },
     "Support and Helpdesk": {
-      "GREEN": 8,
-      "YELLOW": 1,
-      "RED": 1
+      "GREEN": 7,
+      "YELLOW": 3
     },
     "Communications and Messaging": {
       "GREEN": 8,
       "YELLOW": 2
     },
     "Marketing, Ads, Email and Social": {
-      "YELLOW": 5,
-      "GREEN": 5
+      "YELLOW": 4,
+      "GREEN": 6
     },
     "Ecommerce": {
       "GREEN": 6,
-      "RED": 2,
-      "YELLOW": 2
+      "YELLOW": 3,
+      "RED": 1
     },
     "Data, SEO and Scraping": {
       "GREEN": 5,
@@ -150,6 +149,11 @@
       "GREEN": 3
     }
   },
+  "by_source": {
+    "model": 52,
+    "agent": 46,
+    "verified": 2
+  },
   "self_serve_rate_by_category": {
     "Developer, Infra and Data platforms": {
       "self_serve": 10,
@@ -166,25 +170,25 @@
       "total": 10,
       "pct": 90
     },
+    "Communications and Messaging": {
+      "self_serve": 9,
+      "total": 10,
+      "pct": 90
+    },
     "Support and Helpdesk": {
       "self_serve": 8,
       "total": 10,
       "pct": 80
     },
-    "Communications and Messaging": {
-      "self_serve": 8,
+    "Marketing, Ads, Email and Social": {
+      "self_serve": 6,
       "total": 10,
-      "pct": 80
+      "pct": 60
     },
     "Ecommerce": {
       "self_serve": 6,
       "total": 10,
       "pct": 60
-    },
-    "Marketing, Ads, Email and Social": {
-      "self_serve": 5,
-      "total": 10,
-      "pct": 50
     },
     "Data, SEO and Scraping": {
       "self_serve": 5,
@@ -204,8 +208,9 @@
   },
   "blockers": {
     "Paid plan required for API": 12,
-    "Contact-sales / partnership gate": 9,
-    "App review / approval gate": 7,
-    "No public/hosted API": 3
+    "Contact-sales / partnership gate": 8,
+    "App review / approval gate": 6,
+    "No public/hosted API": 3,
+    "SELF_SERVE_TRIAL": 2
   }
 }

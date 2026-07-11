@@ -1,0 +1,24 @@
+{
+  "id": 21,
+  "name": "Slack",
+  "one_liner": "Team messaging and collaboration platform with an extensive HTTP API for building bots, apps, and agent integrations across channels and workspaces.",
+  "auth_methods": ["OAuth2", "Session/other token"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a Slack app for free at api.slack.com/apps, install it into a (free-tier) workspace via OAuth 2.0 v2, and obtain working bot/user tokens with no payment or human approval. Some admin/enterprise methods require paid/Enterprise Grid plans, but standard messaging APIs work on free workspaces.",
+  "api_styles": ["REST", "Websocket/RTM", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Web API is HTTP JSON RPC-style with 200+ methods across families (chat, conversations, users, files, views, admin, etc.). Also Events API (HTTP subscriptions), Socket Mode / RTM (WebSocket), incoming/outgoing webhooks, and official SDKs (Bolt) for JS/Python/Java.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Slack (Salesforce) ships an official hosted MCP server at mcp.slack.com, documented at docs.slack.dev/ai/slack-mcp-server, letting MCP clients like Claude search channels, send messages, and take Slack actions.",
+  "buildability": "GREEN",
+  "main_blocker": "None for core messaging; a few admin/Enterprise Grid endpoints require paid enterprise plans, and OAuth app setup plus scopes/workspace install is a modest onboarding step.",
+  "evidence": [
+    {"claim": "Slack uses OAuth 2.0 v2 issuing bot and user tokens; no API key auth documented.", "url": "https://docs.slack.dev/authentication/installing-with-oauth"},
+    {"claim": "Slack Web API exposes a large set of methods across many families (chat, conversations, users, admin, files, etc.).", "url": "https://docs.slack.dev/reference/methods"},
+    {"claim": "Slack ships an official MCP server for AI clients to search and act in Slack.", "url": "https://docs.slack.dev/ai/slack-mcp-server/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact split of which methods require paid Enterprise Grid vs free workspaces; whether the official MCP server needs a paid Slack plan for full functionality."
+}

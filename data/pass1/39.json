@@ -1,0 +1,24 @@
+{
+  "id": 39,
+  "name": "Threads (Meta)",
+  "one_liner": "Meta's Threads API lets apps publish posts, manage replies/mentions, read insights, and search on the Threads social network on behalf of Threads users.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2 (Threads app-scoped user access tokens; short-lived 1h exchangeable for long-lived 60-day tokens)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A developer can create a Meta app with the Threads use case for free and immediately obtain working OAuth credentials for themselves and added testers (testers can grant threads_basic, threads_content_publish, threads_manage_replies, threads_read_replies immediately). However, to let arbitrary end users (without a role on the app) grant permissions, each permission must pass Meta App Review and the app must be published. So building/testing is self-serve and free, but broad production use is gated by app review.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "HTTP/Graph-style REST endpoints (graph.threads.net) covering post creation (single + carousel), media retrieval/discovery, profile management, reply moderation, mention handling, insights/analytics, keyword search, and embedding. Roughly a few dozen operations across these areas (MODERATE).",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor (Meta) MCP server found. Multiple community MCP servers exist (e.g. quinnjr/threads-mcp, tttn13/threads-mcp, mikusnuz/meta-mcp, oliverames/meta-mcp-server) wrapping the official Threads/Graph API.",
+  "buildability": "GREEN",
+  "main_blocker": "Self-serve free credentials for own account/testers; the real gate is Meta App Review + app publishing required before non-tester end users can authorize the app for production use.",
+  "evidence": [
+    {"claim": "Threads API supports post creation (single and carousel), media retrieval/discovery, profile management, reply moderation, mention handling, analytics, keyword search, and embedding.", "url": "https://developers.facebook.com/docs/threads"},
+    {"claim": "Threads API uses OAuth 2.0 with app-scoped user access tokens; short-lived tokens valid 1h are exchanged for long-lived 60-day tokens refreshable via GET /refresh_access_token.", "url": "https://developers.facebook.com/docs/threads/get-started"},
+    {"claim": "Permissions (threads_basic, threads_content_publish, threads_manage_replies, threads_read_replies) must be approved via App Review and the app published for users without a role; testers can grant permissions immediately.", "url": "https://developers.facebook.com/docs/threads/get-started"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total count of endpoints/operations not enumerated here; whether webhook fields are broadly available or gated. Whether Composio's multi-user model would require full App Review approval (likely yes for production)."
+}

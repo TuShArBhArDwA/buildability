@@ -1,0 +1,25 @@
+{
+  "id": 16,
+  "name": "LiveAgent",
+  "one_liner": "Help desk and live chat support software with a REST API and a vendor-built MCP server for ticket, contact, and agent automation.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "LiveAgent offers a free plan (no credit card) and a 30-day free trial (no credit card). Admins generate API keys under Configuration > System > API for either API v1 or v3, giving working credentials without payment or human approval. Free plan hides historical data after 7 days, but API access itself is self-serve.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Two versions: API v1 (~40 operations across Conversations/tickets, Customers, Companies, Customer Groups, Knowledgebase, Files, Reports, Agents, Online Status) and a newer API v3 with filtering and a Swagger descriptor. v3 authenticates via an 'apikey' header; v1 accepts apikey as a query parameter. JSON default, with XML/YAML options. Rate limit 180 req/min per key. Per-key permissions configurable in v3.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "LiveAgent shipped a built-in (vendor) MCP server as part of its May 2026 product update, exposing its API to external AI tools (Claude Desktop, Cursor, claude.ai, FlowHunt) for ticket management, agent/contact operations, and department routing, respecting agent identity and permissions.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; standard REST API with API-key auth and self-serve credentials. Webhook/event support is not documented, so real-time triggers would rely on polling.",
+  "evidence": [
+    {"claim": "REST API with API v1 and v3, API keys generated under Configuration > System > API; v3 uses 'apikey' header; rate limit 180 req/min per key.", "url": "https://support.liveagent.com/802463-REST-API"},
+    {"claim": "Complete API reference lists resource categories: Conversations, Customers, Companies, Customer Groups, Knowledgebase, Files, Reports, Agents, Online Status.", "url": "https://support.liveagent.com/840770-Complete-API-reference"},
+    {"claim": "LiveAgent's built-in MCP server connects external AI tools (Claude Desktop, Cursor, claude.ai, FlowHunt) to ticket data and actions.", "url": "https://www.liveagent.com/blog/liveagent-may-2026-product-update/"},
+    {"claim": "LiveAgent offers a free plan (no credit card) and a 30-day free trial with no credit card required.", "url": "https://www.liveagent.com/pricing/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the free plan permits API key generation with the same breadth as paid plans; exact operation count and CRUD coverage of API v3 vs v1; whether any webhook/callback mechanism exists beyond polling."
+}

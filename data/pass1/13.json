@@ -1,0 +1,26 @@
+{
+  "id": 13,
+  "name": "Freshdesk",
+  "one_liner": "Cloud helpdesk/customer-support ticketing platform with a full-featured v2 REST API for tickets, contacts, agents, companies, and knowledge base.",
+  "auth_methods": ["API key", "Basic"],
+  "primary_auth": "API key (used as username in HTTP Basic Auth, with any non-empty string such as 'X' as the password)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Freshdesk account (including the free plan and the self-serve 14-day trial) exposes a per-agent API key in Profile Settings that immediately works against https://<domain>.freshdesk.com/api/v2. No human approval or payment required to obtain working credentials.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "v2 REST API covers Tickets, Conversations, Contacts, Agents, Companies, Groups, Skills, Time Entries, Products, Email Mailboxes, Custom Objects, Solutions (KB articles/categories/folders), Automations, and Scenario Automations. Full CRUD across many resources puts it around 100+ operations. Rate limits vary by plan (~3,000-5,000 calls/hour).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Freshworks ships an official MCP server for Freshdesk, but it is currently in Beta via an Early Access Program limited to Enterprise-plan customers (request access through a technical account manager or support@freshdesk.com). A popular community MCP server also exists (effytech/freshdesk_mcp, MIT, published on PyPI as freshdesk-mcp).",
+  "buildability": "GREEN",
+  "main_blocker": "None for core build: public REST API with self-serve API keys on free/trial accounts. Only caveat is the awkward Basic-auth convention (API key as username) and per-plan rate limits.",
+  "evidence": [
+    {"claim": "v2 REST API uses the personal API key as the Basic Auth username with 'X' as password; endpoint is https://<domain>.freshdesk.com/api/v2", "url": "https://developer.freshdesk.com/api/v1/"},
+    {"claim": "API key is found in Profile Settings via the 'View API key' option for each agent", "url": "https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key"},
+    {"claim": "API covers tickets, contacts, agents, companies, conversations, solutions/KB, automations; rate limits 3,000-5,000 calls/hour by plan", "url": "https://developers.freshdesk.com/api/"},
+    {"claim": "Freshworks MCP integration is in Beta via Early Access Program for selected Enterprise-plan customers; request access via TAM or support", "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-"},
+    {"claim": "Community MCP server effytech/freshdesk_mcp exposes Freshdesk ticket/agent/contact/company operations (MIT licensed)", "url": "https://github.com/effytech/freshdesk_mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact operation count is estimated. The official Freshworks MCP is EAP/Enterprise-gated, so its general availability terms are not yet public."
+}

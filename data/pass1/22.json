@@ -1,0 +1,24 @@
+{
+  "id": 22,
+  "name": "Twilio",
+  "one_liner": "Cloud communications platform providing programmable SMS, voice, WhatsApp, email, and verification APIs.",
+  "auth_methods": ["Basic", "API key"],
+  "primary_auth": "HTTP Basic auth using Account SID + Auth Token (or API Key SID/Secret) over HTTPS.",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free trial account (phone-verified, no payment required) instantly provides a working Account SID and Auth Token plus trial credit. Trial has restrictions (verified numbers only, messaging watermark) but credentials work immediately against the live REST API.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "APIs organized around REST over HTTPS; official SDKs (Node, Python, etc.). Over 1,800 endpoints across 30+ products (Messaging, Voice, Verify, Lookup, WhatsApp, SendGrid email, etc.).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Twilio ships an official hosted docs MCP server at mcp.twilio.com/docs (search/retrieve API specs, read-only, no auth) and twilio-labs/mcp on GitHub exposing all Twilio APIs as MCP tools. In public beta; available as a Claude connector.",
+  "buildability": "GREEN",
+  "main_blocker": "None for building; trial accounts have sending restrictions (verified recipients only) until upgraded to a paid account.",
+  "evidence": [
+    {"claim": "Twilio APIs are organized around REST, usable over HTTPS or via SDKs; auth via Account SID, Auth Token, API keys.", "url": "https://www.twilio.com/docs/usage/api"},
+    {"claim": "Twilio ships an official hosted MCP server (mcp.twilio.com/docs) indexing 1,800+ endpoints across 30+ products, no auth required.", "url": "https://www.twilio.com/docs/ai/mcp"},
+    {"claim": "twilio-labs/mcp monorepo exposes all of Twilio's API as MCP tools.", "url": "https://github.com/twilio-labs/mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": ""
+}

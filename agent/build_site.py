@@ -256,10 +256,11 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
           the agent can't invent — a human wrote and tuned it, and every agent shares it.</li>
         <li><b>Disambiguation.</b> The agent flagged that <span class="mono">developer.copper.co</span> (crypto custody)
           is a different company from Copper CRM; a human confirmed and steered it to the right domain.</li>
-        <li><b>The rate-limit call.</b> The 100-way agent fleet hit an account session limit at app&nbsp;11.
-          A human decided to keep the 11 live records, complete the rest on the same rubric via a model
-          knowledge pass, then run a live web sample to <em>measure</em> how much to trust it — rather than
-          silently claim 100 live runs.</li>
+        <li><b>The rate-limit call.</b> The ~100-way agent fleet kept tripping a rolling account
+          session limit, so it landed in waves. A human decided to keep every live agent record,
+          label the remainder on the same rubric via a model knowledge pass, then run a live web
+          sample to <em>measure</em> how much to trust it — rather than silently claim 100 live runs.
+          The split is shown honestly on every row.</li>
       </ul>
     </div>
   </section>
@@ -272,17 +273,10 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
       <th>App</th><th>Field checked</th><th>First-pass value</th><th>Verdict</th><th>What the docs said</th>
     </tr></thead><tbody id="vbody"></tbody></table></div>
     <div class="move">
-      <span class="from">83%</span><span class="arrow">→</span><span class="to">100%</span>
-      <span class="txt"><b>Accuracy moved up because of the loop.</b> On the 6 conclusive live checks, the
-        first pass was right on 5/6 (83%). The sample caught <b>Plaid</b> (mislabelled a free Sandbox as a trial)
-        and refined <b>Devin</b>'s auth; applying both fixes takes the conclusive sample to 6/6. Two docs
-        (Pinterest, Squarespace) returned 404/redirect and are marked <span class="mono">UNVERIFIABLE</span>, not counted as hits.</span>
+      <span class="from" id="accFrom"></span><span class="arrow">→</span><span class="to" id="accTo"></span>
+      <span class="txt" id="accTxt"></span>
     </div>
-    <div class="note"><b>Honesty.</b> 11 apps ran the full <em>live</em> agent loop; 89 were labelled from model
-      knowledge on the same rubric and sampled for accuracy. Low-confidence rows
-      (<span class="mono">fanbasis, iPayX, Waterfall.io, Consensus, Otter</span>) are marked as such — and
-      "gated / no public API, with evidence" is a correct finding, not a failure. The full pipeline is
-      idempotent: rerun after the limit resets and it fills the remaining 89 live.</div>
+    <div class="note" id="honesty"></div>
   </section>
 
   <footer class="wrap">
@@ -379,10 +373,11 @@ $$("#tbl th").forEach(th=>th.onclick=()=>{const k=th.dataset.s;
 render();
 
 /* loops */
+const nAgent=A.by_source.agent||0,nModel=A.by_source.model||0,nVer=(A.by_source.verified||0);
 $("#loops").innerHTML=[
-  ["Loop 1 · research","Live agent","Claude drives Composio's hosted <code>COMPOSIO_SEARCH</code> tools over official docs, then <b>structured outputs</b> force one schema-valid record. <b>11/100</b> completed live before the fleet hit an account rate limit."],
-  ["Loop 2 · verify","Adversarial","A second Claude pass is told to <b>refute</b> pass 1 — re-search docs, mark each field CONFIRMED/WRONG, emit a corrected record. This is the loop that moves accuracy up."],
-  ["Loop 3 · check","Human + web","A stratified live <code>WebFetch</code> sample against official docs, with a human reading the docs. Hits and misses recorded below — nothing hidden."],
+  ["Loop 1 · research","Live agent",`Claude drives Composio's hosted <code>COMPOSIO_SEARCH</code> tools over official docs, then <b>structured outputs</b> force one schema-valid record. <b>${nAgent}/100</b> apps carry a live agent record; a rolling account session limit capped the fleet, and the pipeline is idempotent — rerun fills the rest.`],
+  ["Loop 2 · knowledge pass","Same rubric",`The remaining <b>${nModel}</b> apps were labelled by the identical schema + rubric from model knowledge, so every row is comparable. These are the rows most at risk — so Loop 3 targets them.`],
+  ["Loop 3 · verify","Human + web",`A stratified live <code>WebFetch</code> sample against official docs, human-read. All ${VERIF.summary.model_pass_confirmed}/${VERIF.summary.model_pass_conclusive} conclusive checks on the knowledge-pass group held up. Hits and misses below — nothing hidden.`],
 ].map(([s,tag,p])=>`<div class="loop"><div class="step">${s}</div><h3>${tag}</h3><p>${p}</p></div>`).join("");
 
 /* verification */
@@ -393,14 +388,37 @@ $("#vsum").innerHTML=[
 ].map(([n,k,c])=>`<div class="c"><div class="n ${c||''}">${n}</div><div class="k">${k}</div></div>`).join("");
 const vdcls={CONFIRMED:"vd-ok",WRONG:"vd-wrong",PARTIALLY_WRONG:"vd-part",UNVERIFIABLE:"vd-unv"};
 $("#vbody").innerHTML=VERIF.sample.map(s=>`<tr>
-  <td class="app">${s.name}</td><td class="am">${s.field}</td>
+  <td class="app">${s.name} <span class="src src-${s.group}">${s.group}</span></td><td class="am">${s.field}</td>
   <td class="am" style="color:var(--muted)">${s.pass1}</td>
   <td><span class="vd ${vdcls[s.verdict]}">${s.verdict}</span></td>
   <td class="am" style="white-space:normal;max-width:340px;color:var(--muted)">${s.note} <a href="${s.evidence}" target="_blank" rel="noopener">↗</a></td>
 </tr>`).join("");
+const S=VERIF.summary;
+$("#accFrom").textContent=S.first_pass_pct+"%";
+$("#accTo").textContent=S.post_correction_pct+"%";
+$("#accTxt").innerHTML=`<b>Accuracy moved up because of the loop.</b> On the ${S.conclusive} conclusive live checks, `
+  +`the first pass was right on ${S.confirmed} and refined ${S.partially_wrong} (Devin's auth); the loop caught `
+  +`<b>${S.wrong}</b> clear miss (<b>Plaid</b> — a free Sandbox mislabelled as a trial). Applying the fixes takes the `
+  +`conclusive sample to ${S.post_correction_pct}%. All <b>${S.model_pass_confirmed}/${S.model_pass_conclusive}</b> conclusive checks on the `
+  +`knowledge-pass group held up. ${S.unverifiable} docs were unreachable (404/redirect/DNS) and are marked `
+  +`<span class="mono">UNVERIFIABLE</span>, never counted as hits.`;
+$("#honesty").innerHTML=`<b>Honesty.</b> <b>${nAgent}/100</b> apps ran the full <em>live</em> agent loop; <b>${nModel}</b> were `
+  +`labelled from model knowledge on the same rubric and spot-checked against live docs. Low-confidence rows `
+  +`(<span class="mono">fanbasis, iPayX, Waterfall.io, Consensus, Otter</span>) are marked as such — and `
+  +`"gated / no public API, with evidence" is a correct finding, not a failure. The pipeline is idempotent: `
+  +`rerun after the limit resets and it fills the rest live.`;
 </script>
 """
 
 out = HTML.replace("__DATA__", DATA_JS)
+# Replace non-ASCII glyphs with HTML entities so the page is charset-proof.
+# (Every glyph below lives in HTML or innerHTML context, where entities decode.)
+GLYPHS = {"·": "&middot;", "—": "&mdash;", "→": "&rarr;",
+          "↗": "&#8599;", "◐": "&#9680;", "–": "&ndash;",
+          "’": "&rsquo;", "‘": "&lsquo;", "“": "&ldquo;",
+          "”": "&rdquo;", "…": "&hellip;", "≥": "&ge;", " ": "&nbsp;"}
+for g, e in GLYPHS.items():
+    out = out.replace(g, e)
+assert out.isascii(), "non-ASCII glyph left unmapped: " + repr([c for c in set(out) if ord(c) > 127][:8])
 (SITE / "index.html").write_text(out, encoding="utf-8")
-print(f"wrote site/index.html ({len(out)} bytes)")
+print(f"wrote site/index.html ({len(out)} bytes, ascii-safe)")

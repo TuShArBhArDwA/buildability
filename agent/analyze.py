@@ -53,6 +53,7 @@ analysis = {
     "official_mcp_yes": sum(1 for r in DATA if r["official_mcp"] == "YES_OFFICIAL"),
     "access_by_category": by_category("access_model"),
     "buildability_by_category": by_category("buildability"),
+    "by_source": counts("source"),
 }
 analysis["primary_auth_family"] = dict(analysis["primary_auth_family"].most_common())
 

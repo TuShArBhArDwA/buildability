@@ -1,0 +1,37 @@
+{
+  "id": 25,
+  "name": "Pumble",
+  "one_liner": "Pumble is a free team chat and collaboration app (Slack alternative) that exposes a REST API via an installable API-keys addon for sending messages, managing channels, and reactions.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "The API-keys addon is installable on all Pumble plans (including the free plan) by Owner/Admin/Member roles. After installing the addon, a user self-generates an API key instantly in-app (or via /api-keys generate) with no payment or human approval, then authorizes it in the Swagger docs.",
+  "api_styles": ["REST"],
+  "api_breadth": "NARROW",
+  "api_notes": "REST API documented via Swagger. Supported operations are a handful: send message, reply to message, delete message, add reaction, create channel, list channel messages (bot must be member for private channels), list channels/DMs, and list users. Rate limit up to 1000 requests/minute per user. A Node.js SDK (pumble-node-sdk / pumble-sdk) also exists for building Pumble apps.",
+  "webhooks": false,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found. Community/third-party MCP servers exist (e.g. shoutkol/pumble-mcp-server on GitHub/LobeHub) plus proxy MCP offerings from Zapier, Pipedream, and viaSocket that wrap the Pumble API.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant: public REST API with self-serve API keys on any plan. Main limitation is narrow API surface (small set of messaging operations) and no documented webhooks/event subscriptions for inbound triggers.",
+  "evidence": [
+    {
+      "claim": "API-keys addon available on all plans to Owner/Admin/Member; API key self-generated in-app; auth via API key; rate limit 1000 req/min per user; no webhooks mentioned.",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/"
+    },
+    {
+      "claim": "Official Pumble API addon docs (Swagger/Scalar) hosted at cake.com marketplace listing available API actions.",
+      "url": "https://pumble-api-keys.addons.marketplace.cake.com/api-docs/"
+    },
+    {
+      "claim": "Official Pumble Node.js SDK (pumble-node-sdk) published by CAKE-com for building Pumble apps.",
+      "url": "https://github.com/CAKE-com/pumble-node-sdk"
+    },
+    {
+      "claim": "Community Pumble MCP server (send messages, list channels/users, reactions) requiring PUMBLE_API_KEY, not vendor-shipped.",
+      "url": "https://lobehub.com/mcp/shoutkol-pumble-mcp-server"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total operation count is not confirmed (Swagger page did not render fully). Whether Pumble offers a separate incoming-webhooks integration distinct from the REST API is unverified; the API-keys docs mention no event/webhook subscriptions."
+}

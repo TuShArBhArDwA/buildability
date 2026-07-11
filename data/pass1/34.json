@@ -1,0 +1,25 @@
+{
+  "id": 34,
+  "name": "GoHighLevel",
+  "one_liner": "GoHighLevel (HighLevel) is an all-in-one CRM, marketing, and sales automation platform for agencies, exposing a REST API v2 covering contacts, conversations, calendars, opportunities, payments, and more.",
+  "auth_methods": ["OAuth2", "Personal access token"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "A free developer Marketplace account (marketplace.gohighlevel.com) lets you create an OAuth app and get client credentials with no human approval. However, making real API calls requires an active HighLevel account/sub-account (location) to authorize against; HighLevel is a paid SaaS offering a 14-day trial. Private Integration Tokens (PITs) are generated inside a GHL sub-account. No app-review gate for basic API use; app publishing is optional.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API v2 documented on the developer portal (highlevel.stoplight.io / marketplace.gohighlevel.com/docs). Covers ~40 domains and hundreds of operations: Contacts, Conversations, Calendars & Events, Opportunities, Payments, Products, Invoices, Social Planner, Blogs, Emails, Forms, Locations, Custom Fields, etc. Rate limit ~100 requests/10s burst per app per resource. OAuth supports Location (sub-account) and Agency (company) level access.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "HighLevel ships an official LeadConnector MCP server at https://services.leadconnectorhq.com/mcp/ (Anthropic endpoint https://services.leadconnectorhq.com/mcp/anthropic/v2). Auth via OAuth (one-click) or Private Integration Token in the Authorization header plus location ID. Provides a unified toolset (search, fetch, search_operations, describe_operation, execute_operation) reaching hundreds of operations across 40 domains. Community MCP servers (e.g. mastanley13/GoHighLevel-MCP) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None major: public REST API with self-serve OAuth app creation. Only friction is needing an active HighLevel account (paid SaaS, trial available) to authorize and obtain tokens.",
+  "evidence": [
+    {"claim": "OAuth 2.0 Authorization Code flow with Location (sub-account) and Agency (company) level access; free developer Marketplace account via My Apps > Create App", "url": "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0/"},
+    {"claim": "Official LeadConnector MCP server is live, auth via OAuth or Private Integration Token, endpoint services.leadconnectorhq.com/mcp/, hundreds of operations across 40 domains", "url": "https://marketplace.gohighlevel.com/docs/other/mcp/"},
+    {"claim": "REST API v2 with OAuth 2.0 or Private Integration Token auth and webhook support for 50+ events", "url": "https://marketplace.gohighlevel.com/docs/"},
+    {"claim": "HighLevel officially introduced the MCP Server for AI agents", "url": "https://www.gohighlevel.com/post/introducing-the-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact classification between SELF_SERVE_TRIAL vs SELF_SERVE_FREE depends on whether a fully free developer sandbox location grants working API credentials; API app creation is free but token authorization requires a live GHL account (trial available)."
+}

@@ -1,0 +1,25 @@
+{
+  "id": 43,
+  "name": "BigCommerce",
+  "one_liner": "SaaS ecommerce platform for building online stores, with a comprehensive REST/GraphQL Admin API for managing catalog, orders, customers, and storefront.",
+  "auth_methods": ["OAuth2", "Session/other token"],
+  "primary_auth": "OAuth2 access token passed via the X-Auth-Token header (store-level or app-level API accounts)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free developer sandbox stores are available via the BigCommerce Partner Portal (self-serve partner registration with a company email). Store owners create API accounts under Settings > API Accounts to instantly generate OAuth credentials (client id/secret + access token) with selected scopes. No payment or human approval needed for a working sandbox and credentials; sandboxes cannot process live transactions.",
+  "api_styles": ["REST", "GraphQL"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive Admin REST API (v2 and v3) covering catalog/products, orders, customers, carts, checkouts, pricing, promotions, shipping, payments, settings, etc., plus a GraphQL Admin API and a GraphQL Storefront API. Well over 100 operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "BigCommerce (the vendor) ships an official Storefront MCP server enabling AI agents to search catalog, manage carts, and generate checkout URLs; enabled by store owners via Settings > Early Access. Multiple community/third-party MCP servers (isaacgounton, Zapier, StackOne, CData, Pipedream) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant: public API with self-serve OAuth credentials from a free sandbox/store control panel. Partner registration is required to create a free sandbox but is self-serve.",
+  "evidence": [
+    {"claim": "Most REST and GraphQL Admin endpoints authenticate via the X-Auth-Token header using OAuth-based store/app/account-level API accounts.", "url": "https://developer.bigcommerce.com/docs/start/authentication"},
+    {"claim": "Store API accounts are created in the control panel (Settings > API Accounts) with configurable OAuth scopes.", "url": "https://developer.bigcommerce.com/docs/start/authentication/api-accounts"},
+    {"claim": "Free sandbox stores for development/testing are created through the Partner Portal after self-serve partner registration.", "url": "https://developer.bigcommerce.com/docs/start/about/sandboxes"},
+    {"claim": "BigCommerce ships an official Storefront MCP server for AI shopping agents, enabled via Settings > Early Access.", "url": "https://www.bigcommerce.com/blog/storefront-mcp/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether partner registration for a free sandbox ever requires manual review/approval in practice (docs describe it as self-serve); exact scope coverage of the official Storefront MCP vs. the full Admin API."
+}

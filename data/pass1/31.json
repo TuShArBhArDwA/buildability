@@ -1,0 +1,25 @@
+{
+  "id": 31,
+  "name": "Google Ads",
+  "one_liner": "Google's online advertising platform for search, display, video, and shopping ads, exposing a full-featured API to manage campaigns, budgets, bidding, and reporting programmatically.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "OAuth2 (user access/refresh tokens) plus a required developer token sent as a header",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "Sign-up grants Test Account Access automatically (self-serve, 15,000 ops/day, but only works against test accounts). To call the API on real/production accounts you must apply for Basic Access via the API Center, which is a human-reviewed application (~5 business days). Standard Access (unlimited ops) requires already holding Basic and ~10 business days review. Thus any production API use is gated by approval, though a working test sandbox is self-serve.",
+  "api_styles": ["gRPC", "REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Comprehensive API (currently v20) covering campaigns, ad groups, ads, keywords, budgets, bidding strategies, audiences, conversions, and reporting via GAQL (Google Ads Query Language). Available over gRPC (preferred) and REST/JSON. Google ships official client libraries for Java, Python, .NET, PHP, Ruby, and Perl. 100+ resources/services.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Google ships an official open-source Google Ads MCP server (github.com/googleads/google-ads-mcp), documented at developers.google.com. It is self-hosted (run locally over stdio or deploy to Cloud Run), strictly read-only, exposing three tools: list_accessible_customers, search (GAQL reporting), and get_resource_metadata. Write operations remain API-only. Community MCP servers (GoMarble, DigitalRocket, etc.) also exist.",
+  "buildability": "YELLOW",
+  "main_blocker": "Developer token Basic Access approval (~5 business days) is required before the API works against real advertiser accounts; only test accounts are self-serve. Auth also requires combining OAuth2 tokens with a developer token and login-customer-id headers.",
+  "evidence": [
+    {"claim": "Google Ads API uses OAuth 2.0 (scope https://www.googleapis.com/auth/adwords) plus a required 22-character developer token from the API Center.", "url": "https://developers.google.com/google-ads/api/docs/oauth/overview"},
+    {"claim": "Developer tokens have Test, Basic, and Standard access levels; Test is granted automatically at sign-up (test accounts only), while Basic/Standard require an application reviewed over ~5-10 business days.", "url": "https://developers.google.com/google-ads/api/docs/access-levels"},
+    {"claim": "Google maintains an official open-source, read-only Google Ads MCP server exposing list_accessible_customers, search, and get_resource_metadata.", "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"},
+    {"claim": "The developer token is required for all API calls and its access level controls daily call limits and test vs production environments.", "url": "https://developers.google.com/google-ads/api/docs/api-policy/developer-token"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether Basic Access approval is routinely granted to small/individual developers or effectively harder for agent-tool platforms. Exact ops/resource count for BROAD not enumerated but clearly well over 100."
+}

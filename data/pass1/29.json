@@ -1,0 +1,24 @@
+{
+  "id": 29,
+  "name": "Aircall",
+  "one_liner": "Cloud-based business phone and call-center platform with a REST API for calls, contacts, numbers, SMS, and conversation intelligence.",
+  "auth_methods": ["OAuth2", "Basic"],
+  "primary_auth": "Basic (api_id:api_token) for own-account use; OAuth2 for marketplace/partner apps",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "API credentials (api_id + api_token) are self-generated in the Aircall dashboard under Company Settings > API Keys. This requires an active Aircall account; Aircall is a paid SaaS with no permanent free tier, but offers a free trial that gives dashboard access to create working Basic Auth keys instantly (no human approval). OAuth client_id/secret for building marketplace apps requires filling in a partner form (approval-gated), but Basic Auth for your own account is instant.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API rooted at https://api.aircall.io/v1 (HTTPS only). Resources: Users (v1/v2), Teams, Calls, Contacts, Numbers, Tags, Webhooks, Messages (SMS/MMS, WhatsApp), Dialer Campaigns, Conversation Intelligence (transcriptions, sentiments, summaries, topics, action items), Company, Integration, Analytics. Roughly 90+ endpoints across CRUD and specialized actions. Rate limit 120 requests/min per company.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found. Community/third-party options exist: themobilefirstco/aircall-mcp-server (unofficial, ~73 tools, built by Allo, explicitly not endorsed by Aircall), plus Zapier, StackOne, Pipedream, viaSocket MCP wrappers.",
+  "buildability": "YELLOW",
+  "main_blocker": "API requires an active (paid or trial) Aircall account to generate credentials; no free-forever developer tier or open sandbox. OAuth partner flow is approval-gated, though own-account Basic Auth is self-serve.",
+  "evidence": [
+    {"claim": "Public API supports OAuth or Basic Auth; api_id as username and api_token as password, Base64-encoded; root endpoint https://api.aircall.io/v1; 120 req/min per company.", "url": "https://developer.aircall.io/api-references/"},
+    {"claim": "Basic Auth uses api_id and api_token generated in Company Settings > API Keys; OAuth for technology partners requires a form to obtain client_id/client_secret and is required for Marketplace listing.", "url": "https://developer.aircall.io/tutorials/basic-authentication/"},
+    {"claim": "Unofficial Aircall MCP server (73 tools) built by Allo, explicitly not built, maintained, or endorsed by Aircall.", "url": "https://github.com/themobilefirstco/aircall-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether a free trial reliably grants immediate API Keys access without sales contact (assumed self-serve); exact endpoint count is approximate."
+}

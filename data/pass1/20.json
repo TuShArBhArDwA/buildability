@@ -1,0 +1,24 @@
+{
+  "id": 20,
+  "name": "Gladly",
+  "one_liner": "Gladly is a customer service/helpdesk platform centered on people (customers) rather than tickets, with a REST API for customers, conversations, communications, tasks, and more.",
+  "auth_methods": ["Basic", "API key"],
+  "primary_auth": "Token-based HTTP Basic Authentication: agent email as username, API token as password, passed in the Authorization header over HTTPS.",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "API tokens are self-serve within the Gladly UI (Settings > App Developer Tools) but only for users granted the 'API User' role inside an existing Gladly instance. Gladly is an enterprise SaaS with no public free/dev signup or open sandbox, so obtaining working credentials requires being a paying Gladly customer. No human approval beyond internal role assignment.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Documented REST API at developer.gladly.com/rest covers Agents, Customers, Conversations, Communications (SMS/email), Tasks, Teams & Inboxes, Topics, Answers, Business Hours, Reports, Events, Webhooks, and Export. Roughly a few dozen operations across these resources.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor-shipped Gladly MCP server found. Searches surfaced only speculative articles and unrelated MCP servers (Glean, Gladia); no official or notable community Gladly MCP server located.",
+  "buildability": "YELLOW",
+  "main_blocker": "No public free/trial/sandbox path to credentials; you must be an existing paying Gladly customer with a user assigned the API User role to generate tokens.",
+  "evidence": [
+    {"claim": "Gladly REST API covers Customers, Conversations, Communications, Tasks, Webhooks, Export and more, using token-based Basic Authentication over HTTPS.", "url": "https://developer.gladly.com/rest/"},
+    {"claim": "API tokens are created self-serve in Settings > App Developer Tools by a user with the API User role.", "url": "https://help.gladly.com/implementation/docs/get-your-api-tokens"},
+    {"claim": "Gladly provides REST API setup/testing tutorials and Node.js examples for developers.", "url": "https://github.com/gladly/rest-api-examples"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether every Gladly subscription tier includes API access, and exact total operation count (breadth could reach the higher end of MODERATE). No confirmed pricing detail on API availability."
+}

@@ -1,0 +1,25 @@
+{
+  "id": 44,
+  "name": "Salesforce Commerce Cloud",
+  "one_liner": "Enterprise SaaS ecommerce platform (B2C/B2B Commerce) with REST APIs (SCAPI and legacy OCAPI) for shopper storefront and admin/catalog/order operations.",
+  "auth_methods": ["OAuth2", "JWT"],
+  "primary_auth": "OAuth2 (SCAPI): Shopper APIs via SLAS clients issuing JWTs; Admin APIs via Account Manager API clients using client_credentials grant; legacy OCAPI uses OAuth tokens per client ID / Business Manager user.",
+  "access_model": "PARTNER_GATED",
+  "access_notes": "APIs require a provisioned B2C Commerce instance/realm and Account Manager access, obtained only as an existing enterprise customer or via the Salesforce Partner program (partner sandboxes). No free public self-serve API credentials. The official B2C Commerce MCP Service is a pilot requiring you to 'Contact your Salesforce account executive.'",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "SCAPI (B2C Commerce API) is the current REST framework split into Shopper APIs (product search, cart, checkout, customer) and Admin APIs (catalog, orders, promotions, etc.); legacy OCAPI (Shop + Data APIs) is deprecated as of April 2026 and customers are directed to migrate to SCAPI. Both are well documented with 100+ operations across resources.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Salesforce ships an official fully-hosted B2C Commerce MCP Service (agentic shopper tools: product search, product details, cart, checkout) in pilot, requiring SLAS onboarding, the sfcc.shopper-mcpagent scope, and account-executive contact. Community MCP servers also exist (e.g. BrinsilElias/commercecloud-mcp-server over OCAPI, taurgis/sfcc-dev-mcp for dev docs).",
+  "buildability": "YELLOW",
+  "main_blocker": "No self-serve API credentials: you need a provisioned B2C Commerce instance and Account Manager/SLAS access available only to existing customers or Salesforce partners. Once instance credentials exist, the REST APIs are standard OAuth2/JWT and straightforward to integrate.",
+  "evidence": [
+    {"claim": "SCAPI uses OAuth 2 with JWT access tokens; Shopper APIs via SLAS clients and Admin APIs via Account Manager API clients (client_credentials grant).", "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization.html"},
+    {"claim": "OCAPI is deprecated as of April 2026 and customers should migrate to SCAPI; an OCAPI client can't be used with SCAPI and vice versa.", "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/references"},
+    {"claim": "Salesforce offers an official fully-hosted B2C Commerce MCP Service (agentic shopper tools) in pilot, requiring SLAS onboarding and contacting a Salesforce account executive.", "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html"},
+    {"claim": "Admin API authorization requires creating API clients in Account Manager and using the client_credentials grant to obtain a JWT.", "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact webhook/eventing surface (SCAPI supports webhooks and platform events, but scope not fully enumerated here); whether Salesforce Partner sandbox path counts as reasonably self-serve for a connector builder vs. strictly enterprise-customer gated."
+}

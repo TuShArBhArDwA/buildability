@@ -1,0 +1,24 @@
+{
+  "id": 23,
+  "name": "Zoho Cliq",
+  "one_liner": "Zoho Cliq is a team chat and collaboration app with a full REST API for messaging, channels, bots, and workflow automation.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Zoho Cliq offers a free plan, and OAuth 2.0 client credentials can be self-registered via the Zoho API Console (api-console.zoho.com) with a free Zoho account, giving working API access without payment or human approval.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "RESTful JSON API (v3 recommended, v2 also available) covering chats, messages, threads, scheduled messages, reminders, pin/star, chat folders, bots, slash commands, message actions, functions, datastores, extensions, and user preferences. Multiple data-center domains (.com/.eu/.in/.au etc.). Broad surface across communication and developer-platform resources.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Zoho ships an official MCP server for Cliq (zoho.com/cliq/help/platform/zoho-cliq-mcp.html) letting AI agents post messages, manage channels, set reminders, and manage threads; documented as compatible with Claude, Cursor, VS, Windsurf. Rolled out via early access with GA around end of 2025.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; standard OAuth 2.0 app registration in the Zoho API Console is required, which is self-serve and free.",
+  "evidence": [
+    {"claim": "Zoho Cliq REST API v3 is RESTful, uses OAuth 2.0, and covers chats, messages, bots, functions, datastores, and more.", "url": "https://www.zoho.com/cliq/help/restapi/v3/introduction/"},
+    {"claim": "Zoho Cliq API uses OAuth 2.0; access token passed as a request header.", "url": "https://www.zoho.com/cliq/help/restapi/v2/"},
+    {"claim": "Zoho ships an official MCP server for Cliq enabling AI agents to access Cliq data and automate tasks.", "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact OAuth scope names not enumerated here; whether all v3 endpoints are available on the free plan versus paid tiers not fully confirmed."
+}

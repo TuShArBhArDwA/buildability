@@ -1,0 +1,24 @@
+{
+  "id": 27,
+  "name": "Telegram",
+  "one_liner": "Cloud-based messaging platform offering a REST Bot API and the lower-level MTProto client API for building bots, userbots, and messaging integrations.",
+  "auth_methods": ["API key", "Other"],
+  "primary_auth": "Bot token (obtained from @BotFather) for the Bot API; api_id + api_hash plus user session auth for the MTProto client API.",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Bot tokens are issued instantly and free by messaging @BotFather in the app. MTProto api_id/api_hash are obtained free and self-serve at my.telegram.org (one per phone number). No payment or human approval required for either.",
+  "api_styles": ["REST", "Other"],
+  "api_breadth": "BROAD",
+  "api_notes": "Two APIs: the HTTP Bot API (100+ methods over HTTPS at api.telegram.org/bot<token>/METHOD, GET/POST) and the low-level MTProto client API (used via TDLib and libraries like Telethon/GramJS) which exposes the full user-account surface. Bot API covers messaging, media, inline queries, payments, games, and more.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server. Multiple community MCP servers exist (e.g. chigwell/telegram-mcp and sparfenyuk/mcp-telegram via Telethon/MTProto, chaindead/telegram-mcp) but none published by Telegram.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; credentials are free and self-serve. Note the Bot API and MTProto are distinct surfaces, and MTProto usage is monitored for spam/abuse.",
+  "evidence": [
+    {"claim": "Bot API uses a unique authentication token from BotFather, served over HTTPS at api.telegram.org/bot<token>/METHOD, supports GET/POST, and provides setWebhook for updates.", "url": "https://core.telegram.org/bots/api"},
+    {"claim": "api_id and api_hash for the MTProto API are obtained free and self-serve by logging into my.telegram.org and using API development tools.", "url": "https://core.telegram.org/api/obtaining_api_id"},
+    {"claim": "Telegram MCP servers are community-built (Telethon/MTProto based), with no official Telegram-published server.", "url": "https://github.com/chigwell/telegram-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "None material; both auth paths, free self-serve access, and API breadth are confirmed by official docs."
+}

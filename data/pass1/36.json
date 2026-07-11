@@ -1,0 +1,25 @@
+{
+  "id": 36,
+  "name": "Klaviyo",
+  "one_liner": "Klaviyo is a marketing automation platform for email, SMS, and customer data, with a comprehensive REST API for managing profiles, campaigns, flows, events, and catalogs.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Klaviyo offers a free account tier. Account Owners/Admins can generate private API keys instantly from Settings > API keys with no payment or human approval, giving working server-side credentials. Public keys (Site ID) are available for client-side tracking. OAuth is available for building third-party integrations/apps.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive JSON:API-based REST API covering profiles, events, segments, lists, campaigns, flows, templates, catalogs (items/variants/categories), coupons, forms, reviews, metrics, custom objects, webhooks, and more. Well over 100 operations. Versioned via date-based API revisions. Official SDKs available. New endpoints are rate limited per account.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Klaviyo ships an official MCP server (documented at developers.klaviyo.com/en/docs/klaviyo_mcp_server), available in both remote-hosted and local variants, with OAuth or private API key auth. Klaviyo is listed in Claude's Connector directory. Lets AI clients query campaigns, flows, profiles, and metrics.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Free self-serve account provides working API credentials immediately.",
+  "evidence": [
+    {"claim": "Klaviyo provides 3 authentication methods: private key, OAuth, and public key; private keys read/write account data and support scopes.", "url": "https://developers.klaviyo.com/en/docs/authenticate_"},
+    {"claim": "Klaviyo API is a JSON:API-based REST API covering profiles, events, campaigns, flows, catalogs, webhooks, metrics, and more.", "url": "https://developers.klaviyo.com/en/reference/api_overview"},
+    {"claim": "Only Owners or Admins can access the API keys tab; keys are generated from account Settings.", "url": "https://help.klaviyo.com/hc/en-us/articles/115005062267"},
+    {"claim": "Klaviyo ships an official MCP server (remote and local) with OAuth or private API key auth, listed in Claude's Connector directory.", "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether any specific high-volume endpoints or beta features (e.g., customer agents) require additional plan tiers; exact rate limits vary by endpoint and account."
+}

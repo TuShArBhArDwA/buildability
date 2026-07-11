@@ -1,0 +1,25 @@
+{
+  "id": 40,
+  "name": "SendGrid",
+  "one_liner": "Twilio SendGrid is a cloud email delivery platform for transactional and marketing email via a REST Web API v3 and SMTP relay.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key (Bearer token in Authorization header)",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Sign up gives instant, self-serve access with no human approval. As of 2025 Twilio retired the permanent free plan; new accounts get a 60-day free trial (100 emails/day) that includes REST API and SMTP access and working API keys. After the trial, paid Email API plans start at ~$19.95/month. Credentials are instant on signup, so buildable without payment during the trial window.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "SendGrid v3 REST API is extensive: Mail Send, dynamic templates, contacts/lists, marketing campaigns/single sends, stats, suppressions/bounces, subusers, sender authentication, alerts, and more (100+ endpoints). Official SMTP relay also available. Official SDKs in multiple languages (Python, Node, PHP, etc.).",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped/hosted official MCP server found. Twilio published a developer blog tutorial on building your own SendGrid MCP server, and several community servers exist (e.g. github.com/Garoth/sendgrid-mcp, Pipedream). Composio also offers a SendGrid toolkit.",
+  "buildability": "GREEN",
+  "main_blocker": "No hard gate for building: public REST API with self-serve API keys. Only caveat is the free tier is now a 60-day trial, so long-term production use requires a paid plan.",
+  "evidence": [
+    {"claim": "SendGrid v3 API uses an API key sent as 'Authorization: Bearer <API_KEY>'; keys created in Settings, limit 100 per account.", "url": "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication"},
+    {"claim": "Twilio retired the permanent free plan on May 27, 2025; new accounts get a 60-day free trial (100 emails/day) with REST API and SMTP access, then paid plans from $19.95/month.", "url": "https://www.twilio.com/en-us/products/email-api/pricing"},
+    {"claim": "Twilio blog is a tutorial to build your own SendGrid MCP server (not a vendor-hosted official server).", "url": "https://www.twilio.com/en-us/blog/developers/community/build-a-sendgrid-mcp-server-for-ai-email-workflows"},
+    {"claim": "Community SendGrid MCP server exists for AI agents managing lists, templates, single sends and stats.", "url": "https://github.com/Garoth/sendgrid-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the 60-day trial still issues fully working Mail Send keys before sender/domain authentication is completed for all send types; classification could be SELF_SERVE_FREE vs SELF_SERVE_TRIAL depending on how the retired permanent free tier is weighted."
+}

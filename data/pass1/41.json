@@ -1,0 +1,24 @@
+{
+  "id": 41,
+  "name": "Shopify",
+  "one_liner": "Leading commerce platform whose Admin API lets apps read and manage stores' products, orders, customers, inventory, and fulfillment.",
+  "auth_methods": ["OAuth2", "Personal access token", "API key"],
+  "primary_auth": "OAuth2 for public/custom apps (access token via X-Shopify-Access-Token header); admin-created custom apps use a direct Admin API access token.",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A free Shopify Partner account plus a free development store gives working API credentials with no payment or human approval. Custom apps can be created and installed to get Admin API access tokens instantly. Production merchant use ultimately requires a paid Shopify plan, but development/testing is fully self-serve and free.",
+  "api_styles": ["GraphQL", "REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Admin API is now GraphQL-first (the REST Admin API is legacy/deprecated for new development as of 2024-2025). Covers 100+ resources: products, orders, customers, inventory, fulfillment, discounts, metafields, etc. Also Storefront API (GraphQL), Partner API, Payments/Functions, plus official SDKs (Node, Ruby, React Router/Remix).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Shopify ships an official Dev MCP server (@shopify/dev-mcp, released 2025-03-31) that introspects the Admin GraphQL schema and searches shopify.dev docs; it runs locally, needs no auth. Note it is a developer/docs-assistant MCP, not a store-operations MCP for live data manipulation.",
+  "buildability": "GREEN",
+  "main_blocker": "None for building/testing: free Partner account + dev store yields instant API tokens. Only friction is that live merchant stores require a paid plan, and public app distribution requires app review for the App Store.",
+  "evidence": [
+    {"claim": "Admin API requires a valid Shopify access token; OAuth for public/custom apps and X-Shopify-Access-Token for admin custom apps; GraphQL-based.", "url": "https://shopify.dev/docs/api/admin"},
+    {"claim": "Shopify officially released the Shopify.dev MCP Server (@shopify/dev-mcp) on 2025-03-31, runs locally without authentication.", "url": "https://shopify.dev/changelog/mcp-server-for-the-shopify-dev-assistant"},
+    {"claim": "Shopify AI Toolkit / dev MCP documentation from Shopify.", "url": "https://shopify.dev/docs/apps/build/devmcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact op count varies by API version; official MCP covers docs/schema introspection rather than live store operations, so Composio would build tools directly against the Admin GraphQL API."
+}

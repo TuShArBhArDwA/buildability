@@ -1,0 +1,26 @@
+{
+  "id": 30,
+  "name": "Vonage",
+  "one_liner": "Cloud communications platform offering programmable APIs for SMS, Voice, Verify (2FA), WhatsApp/Messages, Video, and Network APIs.",
+  "auth_methods": ["API key", "Basic", "JWT"],
+  "primary_auth": "API key + secret (Basic auth) for many APIs; JWT signed with an Application private key for Voice/Messages and advanced Verify features",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free account signup requires no credit card and grants EUR 2 free credit plus immediate API key and secret. Trial accounts work against real APIs but are limited to the registered number plus up to 4 verified test numbers, and SMS bodies get a '[FREE SMS DEMO, TEST MESSAGE]' suffix until upgraded to a paid account.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive REST API surface across SMS, Messages, Voice, Verify, Number Insight, Numbers, Account, Video, and Network APIs, with official SDKs (Node, Python, PHP, Java, Ruby, Go, .NET) and a CLI. Easily 100+ operations across products.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vonage ships multiple official MCP servers: a Documentation MCP Server (hosted at documentation-mcp.vonage.dev/mcp) and a Tooling MCP Server that lets agents perform real SMS, voice, and WhatsApp operations; both announced on the official Vonage developer blog and published under the Vonage GitHub org.",
+  "buildability": "GREEN",
+  "main_blocker": "None for building; live production sending requires upgrading from the trial (trial can only reach the registered/verified test numbers), so end-to-end delivery beyond test numbers needs a paid account.",
+  "evidence": [
+    {"claim": "Vonage supports API key/secret (Basic) auth and JWT Bearer auth generated from an Application ID and private key.", "url": "https://developer.vonage.com/en/getting-started/concepts/authentication"},
+    {"claim": "Signup requires no credit card and gives EUR 2 free credit with immediate API credentials.", "url": "https://www.vonage.com/communications-apis/pricing/"},
+    {"claim": "Trial accounts are limited to the registered number plus up to 4 verified test numbers.", "url": "https://api.support.vonage.com/hc/en-us/articles/212554438-What-are-the-limitations-of-a-trial-account"},
+    {"claim": "Vonage officially ships MCP servers (Documentation and Tooling MCP servers) for AI agents.", "url": "https://developer.vonage.com/en/blog/introducing-the-vonage-mcp-tooling-server"},
+    {"claim": "Vonage exposes broad REST APIs including a public Account API reference.", "url": "https://developer.vonage.com/en/api/account"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Primary auth differs per product (Basic for some Verify/SMS flows vs JWT for Voice/Messages); Composio would need per-product handling. Network APIs use a separate OAuth-style flow not fully reviewed here."
+}

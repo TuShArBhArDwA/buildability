@@ -1,0 +1,25 @@
+{
+  "id": 18,
+  "name": "Help Scout",
+  "one_liner": "Shared inbox, help desk, and knowledge base platform for customer support teams.",
+  "auth_methods": ["OAuth2", "Personal access token"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "API credentials are self-serve: create an OAuth2 app under 'Your Profile > My apps' in any Help Scout account, no human approval. Requires a Help Scout account (paid SaaS with free trial; a limited free plan has historically existed). Both Authorization Code (for multi-customer integrations) and Client Credentials (for internal integrations) flows are supported. Access tokens valid 48 hours; 400 req/min rate limit.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Mailbox/Inbox API 2.0 (REST, HTTPS-only, JSON) covers conversations, threads, attachments, customers, inboxes, saved replies, tags, teams, users, and reporting (productivity, happiness, conversations). Separate Docs API covers knowledge-base sites/articles. 40+ endpoint categories with many sub-endpoints — well over 100 operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "A vendor-hosted MCP server exists at mcp-beta.helpscout.net (on Help Scout's own helpscout.net domain, in beta). It is not yet referenced from the main developer docs, so official status is inferred from the domain. Multiple popular community MCP servers also exist (e.g. github.com/drewburchfield/help-scout-mcp-server).",
+  "buildability": "GREEN",
+  "main_blocker": "None significant — public REST API with self-serve OAuth2/PAT credentials. Minor friction: requires a Help Scout account (trial or paid) and 48-hour token expiry requiring refresh.",
+  "evidence": [
+    {"claim": "Help Scout uses OAuth 2.0 with Authorization Code and Client Credentials flows; tokens valid 48h; credentials created via Profile > My apps.", "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/"},
+    {"claim": "Developer portal documents Inbox API (read/write inbox data), Docs API (knowledge base), and Webhooks.", "url": "https://developer.helpscout.com/"},
+    {"claim": "A Help Scout MCP server is hosted at mcp-beta.helpscout.net on Help Scout's own domain.", "url": "https://mcp-beta.helpscout.net/"},
+    {"claim": "Community Help Scout MCP server providing conversation/customer/inbox tools.", "url": "https://github.com/drewburchfield/help-scout-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether API access requires a specific paid plan tier vs the free plan is not stated in docs. Official status of the mcp-beta.helpscout.net server is inferred from the vendor domain but not confirmed in developer docs."
+}

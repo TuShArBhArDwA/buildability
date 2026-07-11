@@ -1,0 +1,24 @@
+{
+  "id": 26,
+  "name": "Discord",
+  "one_liner": "Chat/voice community platform whose developer API lets bots and apps read/send messages, manage guilds, channels, roles, and members, and stream real-time events.",
+  "auth_methods": ["OAuth2", "API key", "Personal access token"],
+  "primary_auth": "Bot token (for full bot API access) plus OAuth2 for user-authorized apps",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can register a developer application in the Discord Developer Portal for free and instantly obtain a client ID/secret and a bot token. No payment or human approval is required for normal API use. Privileged Gateway Intents (e.g. message content, presence, guild members) are self-serve toggles for bots in under ~100 servers; larger bots require verification, but that is not needed to start building.",
+  "api_styles": ["REST", "Websocket/RTM"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive REST API at https://discord.com/api/v10 covering guilds, channels, messages, members, roles, threads, interactions/slash commands, webhooks, scheduled events, and more (well over 100 operations). A real-time Gateway (WebSocket) delivers events. Official SDK/library ecosystem (discord.js, discord.py, etc.). Rate limits are per-route.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped Discord MCP server found. Multiple community MCP servers exist (e.g. v-3/discordmcp, SaseQ/discord-mcp, IQAIcom/mcp-discord) that wrap the Discord API for messaging, channel/role management, and webhooks. The 'MCP Discord server' most search hits refer to is the community's Discord chat server for the MCP project, not a Discord-provided MCP integration.",
+  "buildability": "GREEN",
+  "main_blocker": "None for building; free self-serve bot token and OAuth2 credentials. Only large/public bots (100+ servers) later hit a verification gate for privileged intents.",
+  "evidence": [
+    {"claim": "Discord OAuth2 supports authorization code grant, implicit grant, client credentials, bot authorization, and webhook authorization; bot users authenticate via a bot token found in app settings with full API access.", "url": "https://docs.discord.com/developers/topics/oauth2"},
+    {"claim": "REST base URL is https://discord.com/api/v10; OAuth2 token endpoint at https://discord.com/api/oauth2/token; webhooks supported via webhook.incoming scope.", "url": "https://docs.discord.com/developers/topics/oauth2"},
+    {"claim": "Discord MCP servers are community-built third-party projects (e.g. SaseQ/discord-mcp) rather than vendor-shipped.", "url": "https://github.com/SaseQ/discord-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact threshold/process for bot verification and privileged intent approval for large bots was not deeply verified, but does not affect initial buildability."
+}

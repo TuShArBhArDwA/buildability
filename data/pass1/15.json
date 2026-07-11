@@ -1,0 +1,24 @@
+{
+  "id": 15,
+  "name": "Pylon",
+  "one_liner": "B2B customer support and helpdesk platform with a REST API for programmatically managing issues, accounts, contacts, users, teams, and knowledge bases.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "API tokens can only be created by Admin users of an existing Pylon account. Pylon is a paid B2B SaaS platform with no documented free developer tier or public sandbox; a paid account is required to obtain working API credentials. The MCP server offers a free usage tier but still requires a Pylon account authenticated via OAuth.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API at api.usepylon.com covering Accounts, Contacts, Issues (create/fetch), Users, Teams, Knowledge Base, and more. Authentication uses Authorization: Bearer <token> (bearerAuth http bearer scheme). Rate limited to 60 requests/minute. Roughly 20-100 operations across resources.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Pylon ships an official remote MCP server at https://mcp.usepylon.com (Streamable HTTP, stateless), authenticated via OAuth 2.0 (AuthKit). Exposes read/write tools for issues, accounts, contacts, and users, scoped to the authenticated user's dashboard permissions. Documented at docs.usepylon.com/pylon-docs/integrations/pylon-mcp. Community MCP servers also exist (e.g. marcinwyszynski/pylon-mcp, JustinBeckwith/pylon-mcp).",
+  "buildability": "YELLOW",
+  "main_blocker": "API access requires a paid Pylon account and Admin privileges to mint tokens; no free/self-serve developer tier or public sandbox is documented.",
+  "evidence": [
+    {"claim": "Only Admin users can create API tokens; API used to fetch customer/issue data and create issues.", "url": "https://docs.usepylon.com/pylon-docs/developer/api"},
+    {"claim": "Accounts endpoint uses Authorization: Bearer <token> (bearerAuth http bearer security scheme).", "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/accounts"},
+    {"claim": "Official Pylon MCP server at https://mcp.usepylon.com uses OAuth 2.0 and exposes read/write access to issues, accounts, contacts, and users.", "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact webhook configuration/event coverage was not fully verified from a webhooks doc page. Whether any time-limited free trial grants instant API credentials (vs. strictly paid) is not explicitly documented."
+}

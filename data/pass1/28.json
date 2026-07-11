@@ -1,0 +1,24 @@
+{
+  "id": 28,
+  "name": "WhatsApp Business",
+  "one_liner": "Meta's WhatsApp Business Platform lets businesses send and receive WhatsApp messages (templates, media, interactive) programmatically via the Cloud API built on the Graph API REST interface.",
+  "auth_methods": ["OAuth2", "System/other token", "JWT"],
+  "primary_auth": "OAuth2 Bearer access tokens (system user access tokens) sent as 'Authorization: Bearer <token>' to the Graph API; scopes include whatsapp_business_messaging and whatsapp_business_management.",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "A Meta developer app gives an instant free test phone number and a temporary access token that can send test messages to up to a handful of verified recipient numbers with no payment. However, using the API to message real customers at scale requires a Meta Business portfolio, business verification, a registered/verified business phone number, and app publishing requirements. Messaging is billed per message/conversation once in production.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST over Meta's Graph API. Two main surfaces: the Cloud API (send text/media/template/interactive messages, manage phone numbers, upload media, receive webhooks) and the Business Management API (manage WhatsApp Business Accounts, message templates, phone numbers, analytics). Dozens of endpoints/operations across messaging, templates, media, flows, and account management.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No Meta/Facebook-vendor MCP server found. Multiple community MCP servers wrap the official Cloud API (e.g. tkhattar14/whatsapp-business-mcp, networkerman/whatsapp-cloud-api-mcp-server, marco2901/whatsapp-mcp-server), typically exposing 50+ tools, but none are shipped by Meta.",
+  "buildability": "YELLOW",
+  "main_blocker": "Test credentials are self-serve and free, but real production use requires Meta business verification, a verified business phone number, and app publishing approval, plus per-message billing.",
+  "evidence": [
+    {"claim": "Cloud API get started provides a temporary access token via 'Generate access token' and uses Bearer auth with system user tokens for ongoing dev; production has publishing requirements.", "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started/"},
+    {"claim": "Access tokens are sent in an Authorization header preceded by Bearer; user tokens are short-lived while system user tokens are long-lived.", "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/access-tokens/"},
+    {"claim": "WhatsApp Business Platform is a Graph API REST platform supporting messaging categories (marketing/utility/authentication/service), templates, media, and conversation/message-based pricing.", "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact production business-verification timeline and whether the free test tier alone is sufficient for an agent integration without any paid/verified account."
+}

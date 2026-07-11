@@ -1,0 +1,37 @@
+{
+  "id": 45,
+  "name": "Magento (Adobe Commerce)",
+  "one_liner": "Open-source and enterprise ecommerce platform (Magento Open Source / Adobe Commerce) exposing REST, GraphQL, and SOAP web APIs for managing catalog, orders, customers, carts, and inventory.",
+  "auth_methods": ["OAuth2", "Personal access token", "Session/other token", "Other"],
+  "primary_auth": "Integration access token (admin token) via Bearer Authorization header; OAuth 1.0a for registered third-party integrations",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Magento Open Source is free and self-hostable; you install it and mint working API credentials (admin integration token or OAuth) yourself with no payment or human approval. Adobe Commerce (the paid/enterprise edition and cloud service) exposes the same web APIs but requires a license. Because a fully functional, API-capable edition is free and self-serve, this is treated as SELF_SERVE_FREE for buildability; there is no vendor-hosted public sandbox with instant credentials for the SaaS edition.",
+  "api_styles": ["REST", "GraphQL", "SOAP"],
+  "api_breadth": "BROAD",
+  "api_notes": "Very large surface: hundreds of REST endpoints covering products, categories, orders, customers, carts/quotes, inventory (MSI), invoices, shipments, CMS, and configuration. GraphQL is oriented at storefront/customer-facing operations; SOAP mirrors many REST services. REST reference is auto-generated per instance (schema varies by installed modules/extensions).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Adobe ships an official MCP offering aimed at DEVELOPMENT/extensibility, not operational store-data access: the Adobe Commerce App Builder / commerce-extensibility 'coding tools' MCP (listed in Adobe's own MCP registry and installed via the commerce aio plugin's extensibility:tools-setup). It helps write/validate App Builder apps and API integrations rather than exposing live store CRUD as tools. Multiple community MCP servers exist for actual store data (e.g. rafaelstz/adobe-commerce-dev-mcp for schema search, Freento module MCP for Magento 2 store data, CData). For agent-tool store operations, the REST/GraphQL APIs are the practical integration path.",
+  "buildability": "GREEN",
+  "main_blocker": "No hard gate for the API itself: on a self-hosted Magento Open Source or any Adobe Commerce instance you create integration tokens directly. The main friction is that each integration targets a specific merchant's own instance (no central Adobe-hosted API/sandbox with instant creds), and Adobe Commerce enterprise features require a paid license.",
+  "evidence": [
+    {
+      "claim": "Adobe Commerce REST APIs support OAuth 1.0a for third-party integrations, token-based auth for admins/customers, and login credentials; tokens are passed in the Authorization request header.",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/"
+    },
+    {
+      "claim": "Adobe Commerce and Magento Open Source expose REST web APIs with a large auto-generated endpoint reference covering catalog, orders, customers, carts, and more.",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/"
+    },
+    {
+      "claim": "Adobe provides an official App Builder / commerce-extensibility MCP for AI-assisted Commerce development, listed in Adobe's MCP registry.",
+      "url": "https://developer.adobe.com/internals/mcp-registry-web-app/mcp/commerce-extensibility-tools"
+    },
+    {
+      "claim": "Getting-started docs describe creating a web services user and a new Integration in Admin (System > Extensions > Integration) to obtain API access, confirming self-serve credential creation on an instance.",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Native Webhooks module ships with Adobe Commerce (paid) and via the community/App Builder path; confirm webhook availability specifics for plain Magento Open Source. Also confirm whether Adobe offers any vendor-hosted trial instance that yields instant API credentials for the SaaS edition (none found in official docs)."
+}

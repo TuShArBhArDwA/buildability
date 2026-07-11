@@ -1,0 +1,24 @@
+{
+  "id": 46,
+  "name": "Squarespace",
+  "one_liner": "Website and ecommerce platform whose Commerce APIs let developers manage orders, products, inventory, transactions, and customer profiles on Squarespace online stores.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key (Bearer token) for custom applications; OAuth2 for commercial Extensions.",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "API keys are generated in-dashboard (Settings > Advanced > Developer API Keys) but require a paid Squarespace plan (Commerce Advanced plan for custom-app Commerce API keys). OAuth credentials for Extensions require filling out an application form with Squarespace, adding a human/approval gate. No free sandbox issuing working API credentials was found. A 14-day free trial exists but its ability to generate working API keys is unconfirmed.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "RESTful JSON Commerce APIs covering Orders, Products, Inventory, Transactions, Profiles/Contacts, plus a Webhook Subscriptions API and an Authorization API. Roughly 20-100 operations across resources. Community MCP wrappers report ~24 tools for the managed Commerce set.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor-shipped Squarespace MCP server found. Only community/third-party servers exist (e.g., BusyBee3333 squarespace-mcp on GitHub, Pipedream, viaSocket, MCPBundles). Note: Square (the payments company) ships an official MCP server, but that is a different company/product, not Squarespace.",
+  "buildability": "YELLOW",
+  "main_blocker": "API access is gated behind a paid Squarespace plan (Commerce Advanced for custom-app Commerce API keys), and OAuth for commercial Extensions requires an application form/approval; no free credential path confirmed.",
+  "evidence": [
+    {"claim": "Two auth methods: API keys (Bearer token) for custom apps and OAuth for commercial Extensions; API keys generated via Settings > Advanced > Developer API Keys.", "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions"},
+    {"claim": "Developer platform documents Commerce APIs, a Contacts/Profiles API, and a Webhooks section.", "url": "https://developers.squarespace.com/"},
+    {"claim": "Only community/third-party Squarespace MCP servers exist; no official vendor MCP found.", "url": "https://github.com/BusyBee3333/squarespace-mcp-2026-complete"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether a Squarespace free trial can generate working Commerce API keys, and the exact plan tier boundary (Commerce Advanced vs other plans) for full API access. Exact total operation count to firm up breadth."
+}

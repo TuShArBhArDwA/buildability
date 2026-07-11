@@ -1,0 +1,25 @@
+{
+  "id": 11,
+  "name": "Zendesk",
+  "one_liner": "Customer support and helpdesk platform for managing tickets, knowledge base, and omnichannel customer conversations.",
+  "auth_methods": ["OAuth2", "API key", "Basic"],
+  "primary_auth": "API token (email/token via Basic auth) for server-side scripts; OAuth2 for distributed apps",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Zendesk offers a free trial (typically 14 days) that provisions a working subdomain and full API access. API tokens and OAuth clients can be created self-serve from the admin center; no human approval needed. After trial, a paid plan is required to keep the instance. Note: API tokens are being deprecated (deactivated April 30, 2027) in favor of OAuth.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive REST API covering Ticketing (tickets, users, organizations, comments, macros, triggers, automations, views), Help Center/Guide, Talk, Chat, Sell, and admin resources. Well over 100 endpoints. Cursor-based pagination, incremental exports, and sideloading supported.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor-shipped MCP server exposing a Zendesk instance to agents. Multiple community/third-party servers exist (reminia/zendesk-mcp-server on GitHub, Swifteq, Zapier, CData). Zendesk did announce an 'MCP Client' for its own Copilot/AI Agents to consume external MCP servers, but that is the inverse direction and not a server exposing Zendesk data.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; API access is self-serve via trial or paid account. Only mild friction is the upcoming API-token deprecation pushing toward OAuth.",
+  "evidence": [
+    {"claim": "Zendesk supports API token (Basic auth email/token) and OAuth Bearer token authentication; must be a verified user.", "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/"},
+    {"claim": "OAuth access tokens used as Bearer tokens; authorization code and client credentials flows documented.", "url": "https://developer.zendesk.com/documentation/api-basics/authentication/creating-and-using-oauth-tokens-with-the-api/"},
+    {"claim": "API tokens will be deactivated on April 30, 2027, with migration to OAuth recommended.", "url": "https://developer.zendesk.com/documentation/api-basics/authentication/oauth-migration/"},
+    {"claim": "No official vendor MCP server; community and third-party MCP servers are the available options.", "url": "https://github.com/reminia/zendesk-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact current trial length and whether all API resources (e.g., Talk, Sell) are fully enabled during trial vs. gated by plan tier."
+}

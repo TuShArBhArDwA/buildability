@@ -1,0 +1,33 @@
+{
+  "id": 42,
+  "name": "WooCommerce",
+  "one_liner": "Open-source WooCommerce is a WordPress e-commerce plugin whose built-in REST API exposes store data (products, orders, customers, coupons) to external systems.",
+  "auth_methods": ["API key", "Basic", "OAuth2"],
+  "primary_auth": "API key (Consumer Key + Consumer Secret pair, sent via HTTP Basic over HTTPS or OAuth 1.0a over HTTP)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "WooCommerce is a free, open-source WordPress plugin. On any self-hosted install, an admin generates REST API keys under WooCommerce > Settings > Advanced > REST API (Read/Write) with no payment or approval. Credentials are a Consumer Key + Consumer Secret tied to a WordPress user. Requires the operator to have their own WooCommerce/WordPress instance.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API covers products, product variations, orders, refunds, customers, coupons, reports, tax rates, shipping zones/methods, payment gateways, settings, and system status - well over 100 operations. Full reference at woocommerce.github.io/woocommerce-rest-api-docs.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "WooCommerce (Automattic) ships an official MCP integration, documented at developer.woocommerce.com/docs/features/mcp/, currently in developer preview. It uses the @automattic/mcp-wordpress-remote local proxy translating MCP to HTTP and authenticates via WooCommerce REST API keys. Numerous community MCP servers also exist (techspawn, iOSDevSK, etc.).",
+  "buildability": "GREEN",
+  "main_blocker": "No API-side gate; the only prerequisite is having a WooCommerce store instance to generate keys against (no hosted/central API - each merchant's own site is the endpoint).",
+  "evidence": [
+    {
+      "claim": "API keys (Consumer Key + Consumer Secret) are created in WooCommerce > Settings > Advanced > REST API with Read/Write permissions; WooCommerce is a free open-source plugin so REST API access requires no paid extension.",
+      "url": "https://woocommerce.com/document/woocommerce-rest-api/"
+    },
+    {
+      "claim": "WooCommerce ships an official Model Context Protocol integration (developer preview) using API-key auth and the Automattic WordPress remote proxy.",
+      "url": "https://developer.woocommerce.com/docs/features/mcp/"
+    },
+    {
+      "claim": "The REST API reference documents broad coverage across products, orders, customers, coupons, reports, and webhooks.",
+      "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "OAuth 1.0a is used for non-HTTPS sites while HTTPS sites use Basic auth with the key pair; exact auth choice depends on the store's configuration. The official MCP is in developer preview and its API may change."
+}

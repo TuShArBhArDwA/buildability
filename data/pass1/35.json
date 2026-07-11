@@ -1,0 +1,24 @@
+{
+  "id": 35,
+  "name": "Mailchimp",
+  "one_liner": "Email marketing and automation platform whose Marketing API lets agents manage audiences, campaigns, automations, reports, and e-commerce data.",
+  "auth_methods": ["API key", "OAuth2", "Basic"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A Mailchimp account (including the free plan) can generate an API key from account settings and call the Marketing API immediately; no human approval. API key is used as HTTP Basic auth (anystring:TOKEN) or OAuth2 bearer. What you can do depends on plan level, but working credentials are self-serve. Transactional (Mandrill) requires a separate transactional account/add-on.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Marketing API (REST v3.0) is broad: audiences/lists, members, campaigns, automations, templates, reports, segments, tags, e-commerce stores/orders/products (100+ operations). Base URL https://<dc>.api.mailchimp.com/3.0/. Separate Transactional API (formerly Mandrill) for event-driven email/SMS, and Open Commerce (GraphQL, open source). Rate limit: 10 simultaneous connections, 120s timeout.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Mailchimp ships an official MCP server for its Transactional Messaging service at https://mandrillapp.com/mcp (bearer API key auth; send email/SMS, templates, diagnostics). No official MCP found for the core Marketing API, but multiple community MCP servers exist (e.g. damientilman/mailchimp-mcp-server ~112 tools, Zapier, Pipedream, Apify).",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; API is public with self-serve credentials. Available operations scale with account plan level, and data-center prefix must be derived from the key.",
+  "evidence": [
+    {"claim": "Marketing API supports API key (HTTP Basic) and OAuth2 bearer auth; base URL https://<dc>.api.mailchimp.com/3.0/; 10 simultaneous connection limit", "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/"},
+    {"claim": "Mailchimp offers Marketing API, Transactional (Mandrill), and Open Commerce (open-source, GraphQL) developer products", "url": "https://mailchimp.com/developer/"},
+    {"claim": "Official Mailchimp Transactional Messaging MCP server hosted at https://mandrillapp.com/mcp using bearer API key auth", "url": "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the free plan permits generating an API key is stated as plan-dependent in docs (free is generally sufficient for API access, but capabilities vary by tier)."
+}

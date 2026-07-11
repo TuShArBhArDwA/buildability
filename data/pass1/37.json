@@ -1,0 +1,25 @@
+{
+  "id": 37,
+  "name": "systeme.io",
+  "one_liner": "All-in-one marketing platform (sales funnels, email marketing, courses, affiliate programs) offering a REST public API to manage contacts, tags, funnels, newsletters, courses, and webhooks.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "API keys are self-generated from Settings > Public API keys in the dashboard (profile settings). systeme.io offers a free-forever plan, and docs do not restrict API key creation to a specific plan tier, so working credentials appear obtainable without payment. Keys can be given optional expiration; token is shown only once at creation.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "RESTful API at api.systeme.io / developer.systeme.io. ~50-55 endpoints across resources: contacts, contact custom fields, tags, funnels & steps, newsletters, subscriptions, courses & enrollments, communities & memberships, webhooks, and page editor. Uses X-API-Key header, cursor-based pagination (startingAfter/limit/order), merge-patch+json for partial updates, and rate limiting (429 with Retry-After).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "systeme.io ships an official MCP server (documented in help.systeme.io, e.g. article 9489 'How to use systeme.io's MCP') covering contacts/tags/custom fields, newsletters, and funnels via natural language. Requires generating a secure MCP key (max 90-day validity, max 2 keys at a time). Community/third-party MCP implementations also exist (Zapier, viaSocket, Activepieces, GitHub snzeeee/mcp-server-systemeio).",
+  "buildability": "GREEN",
+  "main_blocker": "None significant - public REST API with self-serve API keys available (likely including the free plan). Breadth is moderate rather than broad.",
+  "evidence": [
+    {"claim": "Official public API reference: REST API authenticated via X-API-Key header, cursor-based pagination, merge-patch updates, rate limiting", "url": "https://developer.systeme.io/reference/api"},
+    {"claim": "API endpoint index covering ~50-55 endpoints including contacts, tags, funnels, newsletters, subscriptions, courses, communities, and webhooks (create/list/update/delete)", "url": "https://developer.systeme.io/llms.txt"},
+    {"claim": "API keys are self-generated from profile Settings > Public API keys; token shown only once", "url": "https://help.systeme.io/article/2323-how-to-create-a-public-api-key-on-systeme-io"},
+    {"claim": "Official systeme.io MCP server documented, using MCP keys (90-day max validity, 2 keys max)", "url": "https://help.systeme.io/article/9489-how-to-use-systeme-ios-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether API key creation is truly available on the free plan or requires any paid tier was not explicitly stated in docs (inferred from lack of restriction). Webhook event types and full per-resource operation counts not exhaustively enumerated."
+}

@@ -1,0 +1,25 @@
+{
+  "id": 19,
+  "name": "Gorgias",
+  "one_liner": "Ecommerce-focused customer support helpdesk that centralizes tickets, chat, and automation across channels.",
+  "auth_methods": ["API key", "Basic", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Gorgias is a paid SaaS (with a free trial). Once you have a helpdesk account, REST API credentials (base URL + email + API key) are generated instantly and self-serve from Settings > Account > REST API. API-key/Basic auth is for private apps; OAuth2 is required for building public apps. No human approval needed to obtain working credentials.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Well-documented REST API (developers.gorgias.com) with predictable resource-oriented URLs, JSON bodies/responses. Covers tickets, messages, customers, tags, custom fields, macros, rules, views, teams/users, voice calls/recordings, events, surveys, integrations/widgets, and account settings — roughly 100+ endpoints.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Gorgias ships a first-party remote MCP server (open beta since May 2026) at https://mcp.gorgias.com/mcp. Included at no extra cost on every Helpdesk plan; connects to Claude, ChatGPT, Cursor, and any MCP-compatible client. Community MCP servers (e.g. mattcoatsworth on GitHub, Pipedream, Zapier) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "Requires a Gorgias account (paid SaaS, free trial available); API credentials themselves are instant and self-serve once signed in.",
+  "evidence": [
+    {"claim": "Gorgias uses HTTP Basic Auth (base API URL + email + API key) for private apps; API keys are created self-serve in Settings > Account > REST API.", "url": "https://developers.gorgias.com/docs/access-tokens-api-keys"},
+    {"claim": "Public apps must use OAuth2 authentication.", "url": "https://developers.gorgias.com/docs/oauth2-authentication-for-creating-apps-with-gorgias"},
+    {"claim": "Gorgias API is a REST API with resource-oriented URLs, JSON encoding, and standard HTTP codes.", "url": "https://developers.gorgias.com/reference/introduction"},
+    {"claim": "Gorgias MCP is a first-party server included at no extra cost on any plan, connectable via https://mcp.gorgias.com/mcp.", "url": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact minimum plan/trial constraints for API access were not individually verified; webhook/event support is confirmed via HTTP integrations and the Event object but the full webhook subscription model was not deeply inspected."
+}

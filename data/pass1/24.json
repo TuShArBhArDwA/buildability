@@ -1,0 +1,25 @@
+{
+  "id": 24,
+  "name": "Lark (Larksuite)",
+  "one_liner": "Lark (Larksuite) is ByteDance's international all-in-one collaboration suite (messaging, docs, Base, calendar, video, approvals) with a broad Open Platform API for building apps and bots.",
+  "auth_methods": ["OAuth2", "Personal access token", "Session/other token"],
+  "primary_auth": "OAuth2 (user_access_token via OAuth) plus app-credential tokens (app_access_token / tenant_access_token) minted from App ID + App Secret",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can register a developer account and create a custom app on the Open Platform for free to obtain App ID and App Secret, then mint tenant_access_token/app_access_token immediately. No payment or human approval is required to start calling APIs; publishing a store app or granting certain sensitive scopes may require admin approval, but development credentials are self-serve.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive Server API covering IM/messages, groups, contacts/HR, Docs & Wiki, Base (Bitable), Sheets, Drive, Calendar, VC, Approval, Attendance, and more (100+ endpoints). Official SDKs (Node, Python, Go, Java) and an official OpenAPI MCP tool. Auth tokens passed in HTTP Authorization header.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships an official OpenAPI MCP server: larksuite/lark-openapi-mcp on GitHub, published as npm package @larksuiteoapi/lark-mcp. Wraps Lark OpenAPI as MCP tools (messages, groups, calendar, Base, docs), supports tenant_access_token and user_access_token, configurable to open.larksuite.com for the international version.",
+  "buildability": "GREEN",
+  "main_blocker": "None for development: self-serve free app creation gives working credentials. Minor friction is that certain API scopes and app publication require workspace-admin approval.",
+  "evidence": [
+    {"claim": "Lark documents app_access_token and tenant_access_token; custom apps mint tenant_access_token from app credentials, passed in the HTTP Authorization header.", "url": "https://open.larksuite.com/document/server-docs/getting-started/api-access-token/app-access-token-development-guide"},
+    {"claim": "user_access_token is obtained via OAuth/OIDC flow for acting on behalf of a user.", "url": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/reference/authen-v1/oidc-access_token/create"},
+    {"claim": "Official Lark OpenAPI MCP tool is maintained by the larksuite GitHub org, wrapping OpenAPI endpoints (messages, groups, calendars, Base) as MCP tools.", "url": "https://github.com/larksuite/lark-openapi-mcp"},
+    {"claim": "Official MCP is published as npm package @larksuiteoapi/lark-mcp.", "url": "https://www.npmjs.com/package/@larksuiteoapi/lark-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact list of scopes that require admin approval vs. self-serve was not enumerated; store-app publication review process not deeply verified."
+}
