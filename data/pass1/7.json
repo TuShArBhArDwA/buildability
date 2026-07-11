@@ -1,0 +1,41 @@
+{
+  "id": 7,
+  "name": "Zoho CRM",
+  "one_liner": "Cloud CRM platform for managing leads, contacts, accounts, deals, and sales automation within the Zoho suite.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2 authorization-code grant with refresh tokens (access token sent as Zoho-oauthtoken header)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Register a client in the Zoho API Console for free to get Client ID/Secret; the free CRM edition (up to 3 users) includes API access with 5,000 API credits/day, and Zoho also offers a free full-featured Developer Edition, so working credentials require no payment or approval.",
+  "api_styles": ["REST", "GraphQL"],
+  "api_breadth": "BROAD",
+  "api_notes": "Versioned REST API (currently v8) spanning Metadata, Core CRUD on standard and custom modules, Composite (batch), asynchronous Bulk read/write, Notification (change events), and COQL Query APIs, plus a GraphQL option and official SDKs; well over 100 documented operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Zoho ships four official, cloud-hosted MCP servers for CRM (Data Insights, Data Operations, Module Customization, Workflow & Process Automation) using OAuth login and standard API credits, documented at zoho.com/crm/developer/docs/mcp/overview.html; multiple community servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None (free-edition cap of 5,000 API credits/day is the only constraint for heavy testing)",
+  "evidence": [
+    {
+      "claim": "Zoho CRM v8 API authenticates exclusively via OAuth 2.0, with 1-hour access tokens and long-lived refresh tokens passed as Zoho-oauthtoken",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html"
+    },
+    {
+      "claim": "The v8 API reference documents Metadata, Core CRUD, Composite, Bulk, Notification, and Query API groups, including change-notification capability",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/"
+    },
+    {
+      "claim": "The Free edition includes API access with 5,000 API credits per 24 hours; trial editions get the same limits as their paid counterparts",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+    },
+    {
+      "claim": "Zoho offers a totally free, full-featured Developer Edition of Zoho CRM for building and testing integrations",
+      "url": "https://www.zoho.com/crm/developer/developer-edition.html"
+    },
+    {
+      "claim": "Zoho provides four official pre-built, cloud-hosted MCP servers for Zoho CRM with OAuth-based access",
+      "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "GraphQL API availability by edition was not verified in detail, and the endpoint count is an estimate from the six documented API groups rather than an exact tally."
+}

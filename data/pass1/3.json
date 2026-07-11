@@ -1,0 +1,41 @@
+{
+  "id": 3,
+  "name": "Pipedrive",
+  "one_liner": "Sales-focused CRM for managing pipelines, deals, contacts, and activities.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Developers request a free Developer Sandbox account via a form at developers.pipedrive.com (a full Pipedrive company account, 5 seats, no payment); alternatively any regular account (14-day trial) gets a personal API token immediately from settings.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "RESTful JSON API with ~60 endpoint groups (deals, persons, organizations, activities, leads, products, projects, pipelines, users, webhooks, etc.), OpenAPI 3 specs for both v1 and the newer v2 API, plus official Node.js and PHP client libraries.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Pipedrive launched a native, vendor-maintained MCP server (announced June 30, 2026) using OAuth connections for ChatGPT, Claude, and other MCP clients; multiple community MCP servers also exist on GitHub/PyPI.",
+  "buildability": "GREEN",
+  "main_blocker": "None",
+  "evidence": [
+    {
+      "claim": "Pipedrive API supports API token (x-api-token header) and OAuth 2.0 (recommended for public/marketplace apps) authentication.",
+      "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication"
+    },
+    {
+      "claim": "Official REST API reference lists ~60 endpoint categories with OpenAPI 3 specs for v1 and v2.",
+      "url": "https://developers.pipedrive.com/docs/api/v1"
+    },
+    {
+      "claim": "Free Developer Sandbox account (5 seats, works like a regular company account) is available by filling a form on the developer portal.",
+      "url": "https://pipedrive.readme.io/docs/developer-sandbox-account"
+    },
+    {
+      "claim": "Outbound webhooks (v2) push create/change/delete events for 16+ object types, creatable via UI or POST /v1/webhooks.",
+      "url": "https://pipedrive.readme.io/docs/guide-for-webhooks-v2"
+    },
+    {
+      "claim": "Pipedrive ships an official native MCP server connecting CRM data to AI assistants via OAuth.",
+      "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the Developer Sandbox form is granted fully automatically or after a short human review is not explicit (docs mention accounts 'can be deleted if inactive'); if any delay exists, the 14-day product trial is a guaranteed instant fallback for an API token."
+}

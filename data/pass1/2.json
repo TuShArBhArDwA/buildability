@@ -1,0 +1,41 @@
+{
+  "id": 2,
+  "name": "HubSpot",
+  "one_liner": "HubSpot is a cloud CRM and inbound marketing/sales/service platform covering contacts, deals, tickets, marketing campaigns, and CMS content.",
+  "auth_methods": ["OAuth2", "API key", "Session/other token"],
+  "primary_auth": "OAuth 2.0 authorization-code flow (required for multi-account/public apps; private-app access tokens for single-account integrations)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A free HubSpot CRM account can create private apps with working access tokens at no cost, and a free developer account lets you create OAuth public apps plus up to 10 free 90-day developer test accounts. No payment or human approval is needed for credentials; app review only applies to Marketplace listing.",
+  "api_styles": ["REST", "GraphQL"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API at api.hubapi.com spanning CRM objects (contacts, companies, deals, tickets, custom objects, engagements, associations, properties, pipelines, lists), marketing, CMS/HubDB, automation/workflows, conversations, files, and settings - well over 100 endpoints. Moved to date-based versioning (e.g. /crm/objects/2026-03/contacts) in 2026; a GraphQL API is also offered for querying HubSpot data. Legacy portal API keys were deprecated Nov 2022 in favor of private app tokens.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "HubSpot ships an official hosted remote MCP server (mcp.hubspot.com, Streamable HTTP, OAuth 2.1 with PKCE) giving read/write access to CRM records and activities, plus a local CLI-based developer-platform MCP server. Documented at developers.hubspot.com/mcp; announced in public beta then rolled out broadly. Many community servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None",
+  "evidence": [
+    {
+      "claim": "HubSpot's public API supports two auth methods - OAuth for public/multi-account apps (required for Marketplace listings) and private app access tokens for single-account integrations; legacy API keys are deprecated",
+      "url": "https://developers.hubspot.com/docs/apps/legacy-apps/authentication/intro-to-auth"
+    },
+    {
+      "claim": "API reference shows REST endpoints at api.hubapi.com with new date-based versioning (e.g. GET /crm/objects/2026-03/contacts)",
+      "url": "https://developers.hubspot.com/docs/reference/api/overview"
+    },
+    {
+      "claim": "Free developer accounts and free developer test accounts (up to 10, 90-day renewable) provide self-serve API access; private apps and APIs work on free HubSpot accounts",
+      "url": "https://developers.hubspot.com/docs/getting-started/account-types"
+    },
+    {
+      "claim": "Webhooks API lets apps subscribe to CRM events such as contact.creation and propertyChange, managed via /webhooks/2026-3/{appId}/subscriptions",
+      "url": "https://developers.hubspot.com/docs/api-reference/latest/webhooks/guide"
+    },
+    {
+      "claim": "HubSpot publishes an official MCP server page covering its remote CRM MCP server and developer MCP server",
+      "url": "https://developers.hubspot.com/mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact current GA-vs-beta status of the remote MCP server was not verified from a fetched changelog page (search results indicated public beta in 2025 then GA in April 2026). Account-types details (10 test accounts, 90-day renewal) came from official docs surfaced in search summaries rather than a direct page fetch."
+}

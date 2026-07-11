@@ -1,0 +1,37 @@
+{
+  "id": 9,
+  "name": "Copper",
+  "one_liner": "Copper is a CRM built around Google Workspace that manages leads, contacts, companies, opportunities, pipelines, tasks, and projects for sales teams.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "OAuth2 (Authorization Code flow) - Copper explicitly calls it the preferred approach for partner integrations; API key (X-PW-AccessToken header plus the generating user's email) is the individual-user alternative.",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Any user can generate API keys self-serve in the web app (System settings > API Keys), but API access is a feature of the Professional ($59/seat/mo) and Business ($99/seat/mo) plans only. A 14-day free trial with no credit card is instant and un-gated, so a developer can get working credentials via the trial.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "RESTful JSON Developer API at https://api.copper.com/developer_api/ (v1) covering leads, people, companies, opportunities, projects, tasks, activities, custom fields/field layouts, tags, users, account, related items, file upload, and webhook subscriptions, with CRUD, search/pagination, bulk operations, and lead conversion - core objects well covered, roughly 60-90 operations.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found on copper.com or developer.copper.com. Multiple third-party MCP servers exist (Pipedream, Apideck, mcpbundles, glama/dazanza community server, n8n, viaSocket, SyncHub, ContextGate).",
+  "buildability": "GREEN",
+  "main_blocker": "None for building (instant trial credentials); ongoing API use requires a Professional-or-above paid seat after the 14-day trial.",
+  "evidence": [
+    {
+      "claim": "Copper Developer API supports API key auth (token header + generating user's email) generated self-serve in System settings > API Keys, and OAuth2.0 which is the preferred approach for partner integrations",
+      "url": "https://developer.copper.com/introduction/authentication.html"
+    },
+    {
+      "claim": "Official REST/JSON Developer API at https://api.copper.com/developer_api/ with endpoints for leads, people, companies, opportunities, projects, tasks, activities, custom fields, tags, users, webhooks, file upload, and bulk operations",
+      "url": "https://developer.copper.com/"
+    },
+    {
+      "claim": "Outbound webhook subscriptions deliver create/update/delete events for leads, people, companies, opportunities, projects, tasks, and activities (max 100 subscriptions, HTTPS-only, no retries)",
+      "url": "https://developer.copper.com/webhooks/overview.html"
+    },
+    {
+      "claim": "API access is included only in the Professional ($59/seat/mo) and Business ($99/seat/mo) plans; all plans offer a free trial with no credit card required",
+      "url": "https://www.copper.com/pricing"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "The official pricing page does not explicitly state that the free trial includes API access (third-party sources say the trial runs Business-tier features, which include the API). Overall REST API rate limits were not confirmed from the pages fetched (webhook notification limits are documented at 600/min). Note developer.copper.co in search results is a different company (Copper.co digital-asset custody), not Copper CRM."
+}

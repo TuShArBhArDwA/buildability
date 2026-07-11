@@ -1,0 +1,41 @@
+{
+  "id": 8,
+  "name": "Close",
+  "one_liner": "Close is a sales-focused CRM with built-in calling, email, and SMS that helps SMB sales teams manage leads, contacts, opportunities, and outreach workflows.",
+  "auth_methods": ["API key", "Basic", "OAuth2"],
+  "primary_auth": "OAuth2 (authorization code + refresh token) for user-facing integrations; API key over HTTP Basic (key as username, blank password) for scripts/server-side",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Close is a paid CRM with no free plan, but a 14-day free trial (no credit card) gives full product access; API keys are generated self-serve in Settings > Developer > API Keys, and OAuth apps can be created from the developer settings.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API v1 at api.close.com/api/v1 covering leads, contacts, opportunities, activities (calls/emails/SMS/meetings/notes), tasks, custom fields/objects, sequences, smart views, bulk actions, users, reporting, event log, and webhooks; the official (experimental) OpenAPI spec lists 156 paths / ~297 operations. Rate limits with 429 + backoff guidance.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships an official remote MCP server at https://mcp.close.com/mcp (HTTP Streamable) with OAuth 2.0 Dynamic Client Registration and scoped permissions (mcp.read, mcp.write_safe, mcp.write_destructive); documented at help.close.com/docs/mcp-server and listed as a Claude connector. Community servers (e.g. close-crm-cli) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None",
+  "evidence": [
+    {
+      "claim": "Close API supports API keys (HTTP Basic, key as username with blank password), created self-serve under Settings > Developer > API Keys",
+      "url": "https://developer.close.com/api/overview/api-key-authentication"
+    },
+    {
+      "claim": "OAuth 2.0 authorization-code flow with refresh tokens (offline_access scope), 1-hour access tokens, and token revocation endpoint",
+      "url": "https://developer.close.com/api/overview/oauth-authentication"
+    },
+    {
+      "claim": "REST API v1 (base https://api.close.com/api/v1) documents leads, contacts, opportunities, activities, custom fields, webhooks, event log and more; experimental OpenAPI spec at api.close.com/api/openapi.json shows 156 paths / 297 operations",
+      "url": "https://developer.close.com/api"
+    },
+    {
+      "claim": "Close is paid-only with a 14-day free trial (no credit card, full product access) — the trial is the self-serve path to working credentials",
+      "url": "https://close.com/pricing"
+    },
+    {
+      "claim": "Official Close MCP server at mcp.close.com/mcp with OAuth 2.0 DCR and read/write_safe/write_destructive scopes",
+      "url": "https://help.close.com/docs/mcp-server"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Did not explicitly confirm whether OAuth app registration requires any review/approval (appears self-serve from developer settings, but the docs excerpt did not state it outright); exact rate-limit thresholds and whether they vary by plan were not detailed."
+}

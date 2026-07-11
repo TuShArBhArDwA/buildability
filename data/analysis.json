@@ -1,0 +1,211 @@
+{
+  "total": 100,
+  "auth_methods": {
+    "API key": 67,
+    "OAuth2": 65,
+    "Basic": 13,
+    "Personal access token": 9,
+    "Session/other token": 7,
+    "JWT": 4,
+    "None/local": 2,
+    "AWS SigV4": 1
+  },
+  "primary_auth_family": {
+    "OAuth2": 52,
+    "API key": 46,
+    "None/local": 2
+  },
+  "access_model": {
+    "SELF_SERVE_FREE": 52,
+    "SELF_SERVE_TRIAL": 16,
+    "PAID_PLAN_REQUIRED": 13,
+    "PARTNER_GATED": 9,
+    "APPROVAL_REQUIRED": 7,
+    "NO_PUBLIC_API": 3
+  },
+  "buildability": {
+    "GREEN": 69,
+    "YELLOW": 22,
+    "RED": 9
+  },
+  "api_breadth": {
+    "BROAD": 52,
+    "MODERATE": 32,
+    "NARROW": 13,
+    "NONE": 3
+  },
+  "official_mcp": {
+    "YES_OFFICIAL": 42,
+    "COMMUNITY_ONLY": 30,
+    "NONE_FOUND": 28
+  },
+  "webhooks_yes": 78,
+  "self_serve": 68,
+  "gated": 32,
+  "green": 69,
+  "yellow": 22,
+  "red": 9,
+  "official_mcp_yes": 42,
+  "access_by_category": {
+    "CRM and Sales": {
+      "SELF_SERVE_FREE": 7,
+      "SELF_SERVE_TRIAL": 2,
+      "PARTNER_GATED": 1
+    },
+    "Support and Helpdesk": {
+      "SELF_SERVE_TRIAL": 5,
+      "SELF_SERVE_FREE": 3,
+      "PAID_PLAN_REQUIRED": 1,
+      "PARTNER_GATED": 1
+    },
+    "Communications and Messaging": {
+      "SELF_SERVE_FREE": 7,
+      "PAID_PLAN_REQUIRED": 1,
+      "APPROVAL_REQUIRED": 1,
+      "SELF_SERVE_TRIAL": 1
+    },
+    "Marketing, Ads, Email and Social": {
+      "APPROVAL_REQUIRED": 5,
+      "SELF_SERVE_TRIAL": 1,
+      "SELF_SERVE_FREE": 4
+    },
+    "Ecommerce": {
+      "SELF_SERVE_FREE": 5,
+      "SELF_SERVE_TRIAL": 1,
+      "PARTNER_GATED": 1,
+      "PAID_PLAN_REQUIRED": 1,
+      "APPROVAL_REQUIRED": 1,
+      "NO_PUBLIC_API": 1
+    },
+    "Data, SEO and Scraping": {
+      "SELF_SERVE_FREE": 3,
+      "PAID_PLAN_REQUIRED": 3,
+      "SELF_SERVE_TRIAL": 2,
+      "NO_PUBLIC_API": 1,
+      "PARTNER_GATED": 1
+    },
+    "Developer, Infra and Data platforms": {
+      "SELF_SERVE_FREE": 9,
+      "SELF_SERVE_TRIAL": 1
+    },
+    "Productivity and Project Management": {
+      "SELF_SERVE_FREE": 8,
+      "SELF_SERVE_TRIAL": 2
+    },
+    "Finance and Fintech": {
+      "SELF_SERVE_FREE": 5,
+      "PARTNER_GATED": 3,
+      "PAID_PLAN_REQUIRED": 2
+    },
+    "AI, Research and Media-native": {
+      "PARTNER_GATED": 2,
+      "PAID_PLAN_REQUIRED": 5,
+      "SELF_SERVE_TRIAL": 1,
+      "NO_PUBLIC_API": 1,
+      "SELF_SERVE_FREE": 1
+    }
+  },
+  "buildability_by_category": {
+    "CRM and Sales": {
+      "GREEN": 9,
+      "RED": 1
+    },
+    "Support and Helpdesk": {
+      "GREEN": 8,
+      "YELLOW": 1,
+      "RED": 1
+    },
+    "Communications and Messaging": {
+      "GREEN": 8,
+      "YELLOW": 2
+    },
+    "Marketing, Ads, Email and Social": {
+      "YELLOW": 5,
+      "GREEN": 5
+    },
+    "Ecommerce": {
+      "GREEN": 6,
+      "RED": 2,
+      "YELLOW": 2
+    },
+    "Data, SEO and Scraping": {
+      "GREEN": 5,
+      "YELLOW": 4,
+      "RED": 1
+    },
+    "Developer, Infra and Data platforms": {
+      "GREEN": 10
+    },
+    "Productivity and Project Management": {
+      "GREEN": 10
+    },
+    "Finance and Fintech": {
+      "GREEN": 5,
+      "RED": 3,
+      "YELLOW": 2
+    },
+    "AI, Research and Media-native": {
+      "RED": 1,
+      "YELLOW": 6,
+      "GREEN": 3
+    }
+  },
+  "self_serve_rate_by_category": {
+    "Developer, Infra and Data platforms": {
+      "self_serve": 10,
+      "total": 10,
+      "pct": 100
+    },
+    "Productivity and Project Management": {
+      "self_serve": 10,
+      "total": 10,
+      "pct": 100
+    },
+    "CRM and Sales": {
+      "self_serve": 9,
+      "total": 10,
+      "pct": 90
+    },
+    "Support and Helpdesk": {
+      "self_serve": 8,
+      "total": 10,
+      "pct": 80
+    },
+    "Communications and Messaging": {
+      "self_serve": 8,
+      "total": 10,
+      "pct": 80
+    },
+    "Ecommerce": {
+      "self_serve": 6,
+      "total": 10,
+      "pct": 60
+    },
+    "Marketing, Ads, Email and Social": {
+      "self_serve": 5,
+      "total": 10,
+      "pct": 50
+    },
+    "Data, SEO and Scraping": {
+      "self_serve": 5,
+      "total": 10,
+      "pct": 50
+    },
+    "Finance and Fintech": {
+      "self_serve": 5,
+      "total": 10,
+      "pct": 50
+    },
+    "AI, Research and Media-native": {
+      "self_serve": 2,
+      "total": 10,
+      "pct": 20
+    }
+  },
+  "blockers": {
+    "Paid plan required for API": 12,
+    "Contact-sales / partnership gate": 9,
+    "App review / approval gate": 7,
+    "No public/hosted API": 3
+  }
+}

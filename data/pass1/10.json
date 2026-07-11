@@ -1,0 +1,41 @@
+{
+  "id": 10,
+  "name": "DealCloud",
+  "one_liner": "Intapp DealCloud is a deal, pipeline, and relationship management (CRM) platform for capital-markets firms such as private equity, investment banking, and law firms.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "OAuth2 client-credentials flow: a user-generated API key plus client_id are exchanged at {site}/api/rest/v1/oauth/token for a scoped bearer token (expires every 900 seconds).",
+  "access_model": "PARTNER_GATED",
+  "access_notes": "API keys are self-serve from the user Profile page, but only inside a live DealCloud site: an admin must enable the API capability for the user's group, and DealCloud itself is enterprise software sold via request-a-demo (roughly $85k+/yr, no free trial or public sandbox).",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Well-documented REST API covering schema/metadata, data rows and cells (CRUD, query, merge, history, files), user management, publications (event pub/sub), site backups, relationship intelligence, and templated reports - roughly 45-60 operations, with per-site Swagger/OpenAPI plus official Python and C# SDKs.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "The official developer docs announce a vendor-shipped 'DealCloud MCP Server' in client preview starting July 2026; detailed docs (tools, auth) are not yet published. No community MCP servers found in searches.",
+  "buildability": "RED",
+  "main_blocker": "No public API access without an existing Intapp DealCloud enterprise contract - no trial, sandbox, or self-serve signup path to credentials.",
+  "evidence": [
+    {
+      "claim": "DealCloud API uses OAuth2 client-credentials flow exchanging client_id + API key for a bearer token that expires after 900 seconds",
+      "url": "https://api.docs.dealcloud.com/docs/token"
+    },
+    {
+      "claim": "API keys are enabled self-serve from the user Profile page after an admin grants the user group the API site-area capability",
+      "url": "https://api.docs.dealcloud.com/docs/apikeys"
+    },
+    {
+      "claim": "Developer docs cover REST APIs for schema, data, users, publications, backups, and relationship intelligence, plus Python/C# SDKs and an MCP Server client preview starting July 2026",
+      "url": "https://api.docs.dealcloud.com/docs"
+    },
+    {
+      "claim": "DealCloud Publications are a polling-based pub/sub event system (default-data, default-schema, default-users topics), not outbound push webhooks",
+      "url": "https://api.docs.dealcloud.com/docs/publications/getting_started"
+    },
+    {
+      "claim": "DealCloud is enterprise software with no public pricing or free trial; access is via a schedule-a-demo sales process",
+      "url": "https://www.intapp.com/dealcloud/"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact endpoint count and API versioning scheme not confirmed (token endpoint is v1; other routes may differ). MCP server details (transport, auth, exposed tools) unpublished while in client preview. Could not confirm whether Intapp offers any partner/developer sandbox outside customer contracts."
+}

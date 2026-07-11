@@ -1,0 +1,41 @@
+{
+  "id": 4,
+  "name": "Attio",
+  "one_liner": "Attio is a modern, flexible-data-model CRM for managing people, companies, deals, and pipelines.",
+  "auth_methods": ["OAuth2", "API key", "Basic"],
+  "primary_auth": "OAuth2 Authorization Code flow (Attio's recommended method for multi-workspace apps); per-workspace API keys sent as Bearer tokens also work for single-workspace integrations",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "API access is included on all plans, including the free plan (3 users, 50k records). Developers generate scoped API keys instantly from the developer settings page, or register an app for OAuth 2.0; no payment or human approval required.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Public REST API (JSON over HTTPS) with roughly 120+ documented endpoints covering records, objects, attributes, lists/entries, notes, tasks, comments, meetings, call recordings, files, workspace members, webhooks, and SCIM; a public OpenAPI spec is published. Rate limits are documented (about 100 reads/25 writes per second).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Attio ships an official hosted MCP server at https://mcp.attio.com/mcp (GA Feb 2026) with OAuth login and 40+ tools across records, lists, notes, tasks, meetings, emails, workspace, and reporting; the SQL reporting tool is plan-gated. Community servers (e.g. kesslerio/attio-mcp-server) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None",
+  "evidence": [
+    {
+      "claim": "Attio's API supports OAuth 2.0 tokens (recommended for multi-workspace apps) and single-workspace API keys generated in developer settings; both are used as Bearer tokens with scopes (Basic auth supported but not recommended).",
+      "url": "https://docs.attio.com/rest-api/guides/authentication"
+    },
+    {
+      "claim": "Attio publishes a public REST API reference (JSON over HTTPS) with guides for authentication, rate limits, and webhooks.",
+      "url": "https://docs.attio.com/rest-api/overview"
+    },
+    {
+      "claim": "Access to Attio's API and App Store apps is available on all Attio plans, including the free plan.",
+      "url": "https://attio.com/help/reference/workspace-settings-billing/attio-plans-and-features"
+    },
+    {
+      "claim": "Outbound webhooks (v2 events such as list-entry.created/updated/deleted, note.created) can be created via API or the developer dashboard and are SHA256-HMAC signed via the Attio-Signature header.",
+      "url": "https://docs.attio.com/rest-api/guides/webhooks"
+    },
+    {
+      "claim": "Attio operates an official hosted MCP server at https://mcp.attio.com/mcp with OAuth authentication and 40+ tools across eight categories.",
+      "url": "https://docs.attio.com/mcp/overview"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact endpoint count not tallied from the OpenAPI spec (docs index suggests ~120+ reference pages). One third-party blog claimed API access 'requires approval', but Attio's official help center states API access is available on all plans with self-serve key generation, so the official source was preferred."
+}

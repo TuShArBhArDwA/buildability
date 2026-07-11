@@ -1,0 +1,41 @@
+{
+  "id": 1,
+  "name": "Salesforce",
+  "one_liner": "Market-leading cloud CRM platform for sales, service, and marketing that exposes customer data and business objects through an extensive family of platform APIs.",
+  "auth_methods": ["OAuth2", "JWT", "Session/other token"],
+  "primary_auth": "OAuth2 authorization code flow via a Connected App / External Client App; server-to-server integrations typically use the OAuth2 JWT bearer or client credentials flows",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Sign up for a free, no-expiry Developer Edition org at developer.salesforce.com/signup, then create a Connected App or External Client App in the org to obtain an OAuth client ID/secret instantly. For customer production orgs, API access is included in Enterprise/Unlimited/Performance/Developer editions; Professional edition needs a paid API add-on.",
+  "api_styles": ["REST", "SOAP", "GraphQL", "gRPC"],
+  "api_breadth": "BROAD",
+  "api_notes": "Very large surface: REST API (CRUD/query on all standard and custom objects), SOAP API, Bulk API 2.0, GraphQL API, Connect REST, Metadata and Tooling APIs, Streaming API (CometD), and Pub/Sub API (gRPC). Versioned three times a year (e.g., Summer '26 = v67.0) with many versions supported concurrently.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Salesforce ships the official Salesforce DX MCP Server (github.com/salesforcecli/mcp, documented in the Salesforce DX Developer Guide), and Salesforce-hosted MCP servers went GA in April 2026, plus a Data 360 MCP server in developer preview. Numerous community servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None; only caveat is per-org OAuth Connected App setup and that Professional edition customer orgs need a paid API add-on.",
+  "evidence": [
+    {
+      "claim": "REST API authorization is done through External Client Apps or Connected Apps using OAuth 2.0 flows",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm"
+    },
+    {
+      "claim": "OAuth 2.0 JWT bearer flow is supported for server-to-server integration without user interaction",
+      "url": "https://help.salesforce.com/s/articleView?language=en_US&id=remoteaccess_oauth_jwt_flow.htm"
+    },
+    {
+      "claim": "REST API Developer Guide documents programmatic access to Salesforce data with seasonal versioning (Summer '26 = API v67.0)",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm"
+    },
+    {
+      "claim": "Official quick-start step one is signing up for a free Salesforce Developer Edition org to get API access",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_dev_org.htm"
+    },
+    {
+      "claim": "Salesforce publishes an official MCP server (Salesforce DX MCP Server) on GitHub",
+      "url": "https://github.com/salesforcecli/mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact pricing of the API add-on for Professional edition orgs was not verified; current deprecation timeline of the legacy CometD Streaming API in favor of the gRPC Pub/Sub API was not confirmed."
+}

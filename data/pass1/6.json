@@ -1,0 +1,41 @@
+{
+  "id": 6,
+  "name": "Podio",
+  "one_liner": "Progress Podio is a customizable work-management and collaboration platform (often used as a low-code CRM) where teams build 'apps' of structured items in workspaces.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "OAuth2 authorization-code (server-side) flow using a self-registered Client ID/Secret; Podio also offers client-side, username & password, and app-authentication OAuth2 flows",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Sign up for a free Podio account (free plan supports up to 5 employees, 100 items) and generate an API key (Client ID + Secret) self-serve from the account settings page; Free and Plus plans include ~1,000 API calls/hour.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "The entire Podio frontend is built on the public REST API and all of it is exposed: 41 documented areas (Items, Applications, Tasks, Files, Comments, Hooks, Organizations, Spaces, Search, etc.), roughly 150-250+ operations; official SDKs for PHP, .NET, Ruby, Java, Python, and mobile.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor-hosted MCP server at https://mcp.podio.com/mcp with 22 read/write tools (orgs, workspaces, apps, items, tasks, comments, notifications); OAuth2 login with shared test credentials (~30-40 requests) or your own API key for production.",
+  "buildability": "GREEN",
+  "main_blocker": "None",
+  "evidence": [
+    {
+      "claim": "Podio API uses OAuth2 with four flows (server-side, client-side, username & password, app authentication); access tokens valid 8 hours, refresh tokens 28 days",
+      "url": "https://developers.podio.com/authentication"
+    },
+    {
+      "claim": "API reference documents 41 resource areas covering essentially all Podio functionality; API keys are grabbed from the account settings page after accepting API terms",
+      "url": "https://developers.podio.com/doc"
+    },
+    {
+      "claim": "Podio pricing includes a $0 free plan (5 users, 100 items); Free and Plus plans include ~1,000 API calls per hour",
+      "url": "https://www.progress.com/podio/pricing"
+    },
+    {
+      "claim": "Hooks API provides outbound webhooks with app-level (item create/update/delete, comments, files, forms, tags) and space-level events, with a URL verification handshake",
+      "url": "https://developers.podio.com/doc/hooks"
+    },
+    {
+      "claim": "Official vendor-maintained Podio MCP Server at https://mcp.podio.com/mcp with 22 tools, usable from Claude Desktop, ChatGPT, and Copilot Studio",
+      "url": "https://docs.sharefile.com/en-us/podio/using-podio/general-features/podio-mcp-server.html"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total endpoint count is not published (estimated 150-250+ from 41 areas). Free plan's 100-item cap may constrain realistic integration testing, and long-term roadmap under Progress ownership was not assessed."
+}

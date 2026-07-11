@@ -1,0 +1,41 @@
+{
+  "id": 12,
+  "name": "Intercom",
+  "one_liner": "Customer communication and support platform combining live chat/messenger, help desk ticketing, help center content, and the Fin AI agent.",
+  "auth_methods": ["OAuth2", "Session/other token"],
+  "primary_auth": "OAuth2 (Authorization: Bearer token); private/internal apps use a workspace Access Token issued in the Developer Hub",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free development workspace (no existing Intercom subscription needed), create an app in the Developer Hub, and immediately receive an Access Token under Configure > Authentication. Public apps that access other workspaces' data must implement OAuth.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Versioned REST API (current v2.15, versions selectable per-app) covering admins, contacts, companies, conversations, messages, tickets, ticket types/states, articles, help center, news, segments, tags, teams, notes, data attributes, data events, data export, custom object instances, workflows, Fin AI agent, and more; official SDKs available. Well over 100 documented operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Intercom ships an official remote MCP server at https://mcp.intercom.com/mcp (docs at developers.intercom.com/docs/guides/mcp, repo github.com/intercom/intercom-mcp-server), with OAuth or Bearer-token auth; currently limited to US-hosted workspaces. Community servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None",
+  "evidence": [
+    {
+      "claim": "Intercom API authenticates with an Access Token (for private apps, issued automatically when you create an app in the Developer Hub) or OAuth for public apps; both are sent as an Authorization: Bearer header.",
+      "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication"
+    },
+    {
+      "claim": "REST API reference (current version 2.15) documents resources including admins, contacts, companies, conversations, messages, tickets, articles, help center, news, segments, tags, teams, data events, data export, custom objects, workflows, and Fin AI agent.",
+      "url": "https://developers.intercom.com/docs/references/introduction"
+    },
+    {
+      "claim": "Development workspaces are free, can be created by anyone without being an existing Intercom customer, and provide an Access Token for API development (limits: US region only, max 20 users/leads, cannot convert to production).",
+      "url": "https://www.intercom.com/help/en/articles/9086429-create-a-developer-workspace-in-intercom"
+    },
+    {
+      "claim": "Outbound webhooks let apps subscribe to real-time topics (contact created, conversation received, message receipts, etc.) configured per-app in the Developer Hub with permission-scoped topics.",
+      "url": "https://developers.intercom.com/docs/webhooks"
+    },
+    {
+      "claim": "Intercom offers an official remote MCP server (Model Context Protocol) as part of its developer platform, endpoint https://mcp.intercom.com/mcp, supporting OAuth and Bearer-token auth, currently US-hosted workspaces only.",
+      "url": "https://developers.intercom.com/docs/guides/mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact endpoint count not tallied (BROAD is an estimate from the v2.15 resource list). Free development workspaces are US-region only and capped at 20 contacts, so realistic-scale or EU/AU-region testing may require a paid/trial production workspace; rate limits not verified."
+}

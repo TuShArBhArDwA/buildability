@@ -1,0 +1,41 @@
+{
+  "id": 5,
+  "name": "Twenty",
+  "one_liner": "Open-source CRM (AGPL, self-hosted or managed cloud) for managing people, companies, opportunities, and custom objects, with built-in AI agents and workflows.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key (bearer token created in Settings -> API & Webhooks, sent as Authorization: Bearer header)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "The AGPL open-source core can be self-hosted for free with full REST/GraphQL API and webhooks included; the managed cloud offers a 30-day free trial without a credit card, then Pro at $9/user/month. API keys are self-created in Settings -> API & Webhooks with no approval step.",
+  "api_styles": ["REST", "GraphQL"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Core API (REST /rest/ and GraphQL /graphql/) gives CRUD, filtering, relation traversal, and batch ops (up to 60 records) on all workspace objects including custom objects; a separate Metadata API manages objects/fields/relations. Endpoints are schema-generated per workspace (no static API reference), and the same API is agent-callable against self-hosted instances; cloud rate limits are 50-100 requests/minute by plan.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Twenty 2.0 (April 2026) shipped MCP support built into the product: 'AI agents, chats, and MCP ... expose your workspace to any MCP-compatible client.' It is a native MCP endpoint rather than a standalone repo. Several community MCP servers (mhenry3164, jezweb, IgorWarzocha, Pipedream, Zapier) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None; the only nuance is that endpoints are generated per workspace schema, so a toolkit should use schema/metadata discovery rather than a fixed endpoint list.",
+  "evidence": [
+    {
+      "claim": "Twenty exposes REST and GraphQL Core and Metadata APIs; authentication is via API keys created in Settings -> API & Webhooks and sent as Authorization: Bearer headers; endpoints are schema-generated per workspace with batch ops up to 60 records.",
+      "url": "https://docs.twenty.com/developers/extend/api"
+    },
+    {
+      "claim": "Twenty offers outbound webhooks for record created/updated/deleted events on all objects, with HMAC SHA256 signature headers (X-Twenty-Webhook-Signature, X-Twenty-Webhook-Timestamp).",
+      "url": "https://docs.twenty.com/developers/extend/webhooks"
+    },
+    {
+      "claim": "Cloud plans are Pro $9/user/month and Organization $19/user/month, both including REST & GraphQL API (50 and 100 calls/min); a 30-day free trial requires no credit card; the open-source version can be self-hosted for free with API and webhooks.",
+      "url": "https://twenty.com/pricing"
+    },
+    {
+      "claim": "Twenty 2.0.0 (April 21, 2026) release notes: 'AI agents, chats, and MCP: Pick your model, build agents ... and expose your workspace to any MCP-compatible client' - vendor-shipped MCP support.",
+      "url": "https://twenty.com/releases"
+    },
+    {
+      "claim": "Community MCP servers for Twenty exist independently of the vendor (e.g. mhenry3164/twenty-crm-mcp-server), confirming an active third-party ecosystem.",
+      "url": "https://github.com/mhenry3164/twenty-crm-mcp-server"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "OAuth-based access for external applications/MCP clients is referenced in docs and release coverage but its exact flow (scopes, app registration) was not detailed on the pages visited; whether the native MCP endpoint authenticates via OAuth, API key, or both is unconfirmed."
+}
