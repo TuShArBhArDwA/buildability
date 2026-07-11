@@ -281,7 +281,8 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
 
   <footer class="wrap">
     Built with Composio (COMPOSIO_SEARCH) + Claude · schema + rubric shared across 100 agents ·
-    source, scripts &amp; README in the repo · data as of July 2026.
+    source, scripts &amp; README in the repo · data as of July 2026.<br>
+    <a href="https://minianonlink.vercel.app/tusharbhardwaj" target="_blank" rel="noopener">Tushar Bhardwaj &rarr;</a>
   </footer>
 </main>
 
