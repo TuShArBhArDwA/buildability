@@ -4,7 +4,7 @@ Research 100 apps for **agent-toolkit buildability**: auth method, self-serve vs
 gated access, API surface, official MCP, a GREEN/YELLOW/RED verdict, and evidence
 URLs — then cluster the results into patterns and verify accuracy against live docs.
 
-**Live case study:** _(deployed HTML link — see the Artifact published from this repo)_
+**Live case study:** https://buildability.minianon.in/
 **Deliverable page:** [`site/index.html`](site/index.html) — one self-explanatory page.
 
 ---

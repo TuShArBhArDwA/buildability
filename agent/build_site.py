@@ -182,12 +182,26 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
   .bar-row{grid-template-columns:130px 1fr 44px}
 }
 @media (prefers-reduced-motion:no-preference){.fill,.seg span{transition:width .5s ease}}
+/* proof panel */
+.proof{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin-top:16px}
+.proof .panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;box-shadow:var(--shadow)}
+.proof .phead{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.05em;text-transform:uppercase}
+pre.code{margin:0;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--ink);background:transparent;tab-size:2}
+pre.code .c{color:var(--faint)} pre.code .k{color:var(--accent)} pre.code .s{color:var(--green)}
+.repo{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:transparent;color:var(--muted);
+  border-radius:7px;padding:6px 11px;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.repo:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.hdr-links{display:flex;gap:8px;align-items:center}
+@media (max-width:820px){.proof{grid-template-columns:1fr}}
 </style>
 
 <header>
   <div class="wrap top">
     <div class="brand"><b>composio</b> · buildability study</div>
-    <button class="toggle mono" id="themeBtn">◐ theme</button>
+    <div class="hdr-links">
+      <a class="repo" href="https://github.com/TuShArBhArDwA/buildability" target="_blank" rel="noopener">&#9733; repo</a>
+      <button class="toggle mono" id="themeBtn">◐ theme</button>
+    </div>
   </div>
 </header>
 
@@ -262,6 +276,51 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
           fetch failed, the human decided whether to trust the agent, correct it, or mark it
           <span class="mono">UNVERIFIABLE</span> — instead of silently smoothing over the gaps.</li>
       </ul>
+    </div>
+
+    <div class="eyebrow" style="margin:26px 0 0">The proof &mdash; runnable</div>
+    <div class="proof">
+      <div class="panel">
+        <div class="phead"><span>agent/run_research.py &mdash; the core loop</span><span>Composio + Claude</span></div>
+<pre class="code"><span class="k">from</span> composio <span class="k">import</span> Composio
+<span class="k">from</span> composio_anthropic <span class="k">import</span> AnthropicProvider
+<span class="k">from</span> anthropic <span class="k">import</span> Anthropic
+
+composio = Composio(provider=AnthropicProvider())
+claude   = Anthropic()
+
+<span class="c"># Composio's hosted search toolkit, as Claude tools (no per-app auth)</span>
+tools = composio.tools.get(user_id=<span class="s">"research"</span>, toolkits=[<span class="s">"COMPOSIO_SEARCH"</span>])
+
+<span class="c"># 1) agent searches official docs until it stops calling tools</span>
+<span class="k">while</span> resp.stop_reason == <span class="s">"tool_use"</span>:
+    resp = claude.messages.create(model=<span class="s">"claude-opus-4-8"</span>, tools=tools, messages=msgs)
+    msgs += composio.provider.handle_tool_calls(user_id=<span class="s">"research"</span>, response=resp)
+
+<span class="c"># 2) structured outputs force one schema-valid record per app</span>
+record = claude.messages.create(model=<span class="s">"claude-opus-4-8"</span>, messages=msgs,
+    output_config={<span class="s">"format"</span>: {<span class="s">"type"</span>: <span class="s">"json_schema"</span>, <span class="s">"schema"</span>: APP_SCHEMA}})</pre>
+      </div>
+      <div class="panel">
+        <div class="phead"><span>run the pipeline</span><span>idempotent &middot; resumable</span></div>
+<pre class="code"><span class="c"># 1. install + keys (Composio free tier)</span>
+pip install -r requirements.txt
+<span class="k">export</span> COMPOSIO_API_KEY=... ANTHROPIC_API_KEY=...
+
+<span class="c"># 2. research (only fills apps missing a record)</span>
+python agent/run_research.py           <span class="c"># -> data/pass1/</span>
+
+<span class="c"># 3. adversarial verify a sample</span>
+python agent/verify.py --ids 82 96     <span class="c"># -> data/verified/</span>
+
+<span class="c"># 4. cluster + rebuild this page</span>
+python agent/analyze.py --json
+python agent/build_site.py             <span class="c"># -> site/index.html</span></pre>
+        <div style="padding:14px 16px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap">
+          <a class="repo" href="https://github.com/TuShArBhArDwA/buildability" target="_blank" rel="noopener">&#9733; source repo + README</a>
+          <a class="repo" href="https://buildability.minianon.in/" target="_blank" rel="noopener">&#8599; live page</a>
+        </div>
+      </div>
     </div>
   </section>
 
