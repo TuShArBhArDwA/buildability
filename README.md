@@ -70,8 +70,8 @@ have a `data/pass1/<id>.json`, so a rerun after a rate limit fills the gaps.
 | Path | What |
 |---|---|
 | `data/apps.json` | the 100-app research set |
-| `data/dataset.json` | final merged 100-app dataset (source-tagged: `agent` / `model` / `verified`) |
-| `data/pass1/` | raw research-agent records (11 produced live before the fleet rate-limited) |
+| `data/dataset.json` | final merged 100-app dataset (source-tagged: `agent` / `verified`) |
+| `data/pass1/` | raw research-agent records — all 100, produced live across three resumable waves |
 | `data/verification.json` | the accuracy sample: hits, misses, corrections |
 | `data/analysis.json` | computed cluster stats |
 | `agent/schema.py` | shared JSON schema + rubric + prompts (single source of truth) |
