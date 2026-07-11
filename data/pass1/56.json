@@ -1,0 +1,24 @@
+{
+  "id": 56,
+  "name": "Firecrawl",
+  "one_liner": "Web scraping and crawling API that turns websites into clean, LLM-ready markdown, HTML, or structured JSON via scrape, crawl, map, search, and extract endpoints.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free plan grants 1,000 credits/month with no card and no approval; sign up and get an fc- API key instantly. Paid plans (Hobby $16/mo through Scale $599/mo, plus Enterprise) add higher credit volume and rate limits. Firecrawl is also open-source and self-hostable.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "NARROW",
+  "api_notes": "REST API with a handful of core endpoints: scrape (single page), crawl (recursive site), map (URL discovery), search (web search with content), extract (structured/AI extraction), plus agent and browser-sandbox/interact features. Official SDKs for Python, Node, Go, Rust. Bearer token auth via Authorization header. Powerful but a small endpoint count.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships the official firecrawl-mcp-server (github.com/firecrawl/firecrawl-mcp-server), installable via `npx -y firecrawl-mcp` with FIRECRAWL_API_KEY. Exposes tools like firecrawl_scrape, firecrawl_search, firecrawl_crawl, firecrawl_map, firecrawl_extract, firecrawl_interact, firecrawl_agent.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; free self-serve API key available instantly, though free tier is credit-limited (1,000/month) and heavy use requires a paid plan.",
+  "evidence": [
+    {"claim": "Firecrawl offers scrape, search, crawl, map, extract, agent, and browser-sandbox endpoints with LLM-ready markdown/HTML/JSON output and API-key (Bearer fc-) auth plus webhooks for async delivery.", "url": "https://docs.firecrawl.dev/introduction"},
+    {"claim": "Free plan provides 1,000 credits/month with no cost and no card; paid plans range Hobby $16/mo to Scale $599/mo plus Enterprise.", "url": "https://www.firecrawl.dev/pricing"},
+    {"claim": "The official Firecrawl MCP server is shipped by the vendor, installed via `npx -y firecrawl-mcp` with FIRECRAWL_API_KEY.", "url": "https://github.com/firecrawl/firecrawl-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact rate limits per plan tier; full parameter breadth of the extract/agent endpoints."
+}

@@ -1,0 +1,26 @@
+{
+  "id": 93,
+  "name": "Fathom",
+  "one_liner": "AI meeting notetaker that records, transcribes, and summarizes calls; its public REST API exposes meeting summaries, transcripts, action items, and webhooks for agent workflows.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Users self-generate an API key from User Settings > API Access (fathom.video/customize#api-access) with no approval or app review. Keys are user-scoped and only access the owner's own or shared/team meetings. Fathom has a free account tier; API key generation is self-serve. Plan-tier gating of API access is not explicitly documented, so free-tier eligibility is somewhat uncertain (the official remote MCP server is stated to be paid-only). Rate limit is 60 calls/min across a user's keys.",
+  "api_styles": ["REST"],
+  "api_breadth": "NARROW",
+  "api_notes": "REST API under /external/v1. Documented endpoints: list meeting types, list meetings (with include_transcript/include_summary/include_action_items/include_crm_matches/include_highlights and cursor pagination), get recording summary, get recording transcript, list team members, list teams, create webhook, delete webhook. TypeScript and Python SDKs referenced. A handful of read-focused endpoints plus webhook management.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Fathom ships an official remote MCP server at https://api.fathom.ai/mcp (documented at developers.fathom.ai/mcp-docs and help.fathom.video), connecting Fathom meeting data to Claude/ChatGPT and other MCP clients. Reported to be paid-plan-only. Several community/unofficial MCP servers also exist (matthewbergvinson, trevorwelch, lukas-bekr on GitHub).",
+  "buildability": "GREEN",
+  "main_blocker": "None significant for the REST API: self-serve API key, no approval. Minor caveat is uncertainty over whether API access is limited to certain plan tiers, and the official MCP server appears paid-only.",
+  "evidence": [
+    {"claim": "Fathom offers a public REST API with user-generated API keys (X-Api-Key header), endpoints /external/v1/meetings and /recordings/{id}/transcript, cursor pagination, 60 calls/min limit.", "url": "https://developers.fathom.ai/quickstart"},
+    {"claim": "API index lists meetings, recordings (summary/transcript), teams/team members, and webhook create/delete endpoints, including a 'New meeting content ready' webhook payload.", "url": "https://developers.fathom.ai/llms.txt"},
+    {"claim": "Fathom offers an official MCP server at api.fathom.ai/mcp to connect meeting data to AI assistants.", "url": "https://developers.fathom.ai/mcp-docs"},
+    {"claim": "Public API help article: API keys are created at the user level; directs to the developer Quickstart.", "url": "https://help.fathom.video/en/articles/8368641"},
+    {"claim": "Help article on connecting Fathom MCP to Claude & ChatGPT.", "url": "https://help.fathom.video/en/articles/11497793"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the REST API requires a paid Fathom plan or is available on the free tier is not explicitly documented. The official MCP server is reported paid-only; exact plan requirement for both API and MCP is unconfirmed."
+}

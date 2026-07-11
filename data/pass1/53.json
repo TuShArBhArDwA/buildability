@@ -1,0 +1,24 @@
+{
+  "id": 53,
+  "name": "Ahrefs",
+  "one_liner": "SEO toolset whose API v3 exposes Site Explorer, Keywords Explorer, backlinks, rank tracker and site audit data for agents.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "API v3 is available only on Lite or higher paid plans; each plan includes a monthly API-unit budget (Lite 100k up to Enterprise 2M). No free tier or trial for the full API; a limited set of free test queries exists for development, but real data endpoints consume units and require an active paid subscription. API keys are created by workspace owners/admins in Account settings.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API v3 with an OpenAPI-compatible spec, organized into ~11 endpoint groups (Site Explorer, Keywords Explorer, Site Audit, SERP Overview, Rank Tracker, Batch Analysis, Brand Radar, Social Media Management, Management, Subscription Information, Public). Rate limited to 60 requests/minute (HTTP 429 on excess).",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Ahrefs ships an official remote (hosted) MCP server at https://api.ahrefs.com/mcp/mcp using OAuth, available to Lite-plan and higher users (github.com/ahrefs/ahrefs-mcp-server). A legacy local server using API v3 keys exists but is unmaintained and not recommended.",
+  "buildability": "YELLOW",
+  "main_blocker": "API requires a paid Lite+ subscription (no trial/sandbox path to working credentials); only limited free test queries are available.",
+  "evidence": [
+    {"claim": "API v3 uses API key auth (created by workspace owners/admins), is REST with OpenAPI-compatible spec, and covers 11 endpoint groups; 60 req/min rate limit.", "url": "https://docs.ahrefs.com/en/api/docs/introduction"},
+    {"claim": "API v3 is available only for Lite and higher subscription plans; plans include monthly API-unit budgets (Lite 100k to Enterprise 2M), minimum 50 units per request, no free tier.", "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3"},
+    {"claim": "Ahrefs ships an official MCP server (remote hosted at api.ahrefs.com/mcp, OAuth-based; legacy local server unmaintained).", "url": "https://github.com/ahrefs/ahrefs-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact scope/limits of the free test queries (whether they yield agent-usable data), and whether an API key can be generated on a non-paid account before activation."
+}

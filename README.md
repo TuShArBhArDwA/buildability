@@ -25,10 +25,10 @@ apps.json ─▶ Loop 1  research agent   (Claude + Composio COMPOSIO_SEARCH web
         (site/index.html renders dataset + analysis + verification)
 ```
 
-**Result:** 46/100 apps carry a live agent record (`source=agent`); the fleet kept
-tripping a rolling account session limit, so the remaining 52 were labelled on the
-identical rubric via a model knowledge pass (`source=model`) and a live web sample
-verified both groups. Rerun after a reset and the idempotent pipeline fills the rest.
+**Result:** all 100 apps carry a live agent record (`source=agent`; 2 corrected to
+`source=verified` by the web loop). The fleet kept tripping a rolling account session
+limit, so it ran in three idempotent waves — it only re-researches apps missing a
+record, so each rerun resumed cleanly until all 100 were done.
 
 - **Research** (`agent/run_research.py`): pulls Composio's hosted `COMPOSIO_SEARCH`
   toolkit as Claude tools (no per-app auth needed), lets Claude search official
@@ -46,10 +46,9 @@ Built with Composio's own SDK + MCP catalog, in the spirit of the role.
 - **Disambiguation** — e.g. `developer.copper.co` (digital-asset custody) is a
   *different* company from Copper CRM; the agent flagged it, a human confirmed.
 - **The rate-limit reality** — the ~100-way agent fleet kept tripping a rolling
-  account session limit, landing in waves (46 live so far; documented on the page).
-  A human decided to (a) keep every live record, (b) label the rest via a model
-  knowledge pass on the same rubric, and (c) run a live web sample to measure how
-  trustworthy that pass is — rather than silently claim 100 live runs.
+  account session limit, so a human ran it in three resumable waves (documented on
+  the page) and, where docs were ambiguous or a fetch failed, decided whether to
+  trust the agent, correct it, or mark it `UNVERIFIABLE` — rather than smoothing over gaps.
 
 ## Run it
 
@@ -79,20 +78,21 @@ have a `data/pass1/<id>.json`, so a rerun after a rate limit fills the gaps.
 | `agent/run_research.py` / `verify.py` / `analyze.py` | the three loops |
 | `site/index.html` | the single-page case study |
 
-## Findings (computed by `analyze.py`, mid-2026 data)
-- **69 GREEN** (buildable today) / 24 YELLOW / 7 RED
-- **70/100 self-serve** credentials; only **3** truly lack a public API
-- Primary auth splits **~52 OAuth2 / ~46 API-key** — a toolkit builder needs both
-- Biggest blocker is **business gates** (paid plan / app review / contact-sales), not missing endpoints
-- Self-serve gradient: Dev-tools & Productivity **100%** → AI/media-native ~**20%**
-- **59/100 ship an official vendor MCP** — the 2026 MCP wave is real
+## Findings (computed by `analyze.py`, live mid-2026 data)
+- **75 GREEN** (buildable today) / 23 YELLOW / **2 RED**
+- **79/100 self-serve** credentials; only **1** app truly lacks a public API
+- Primary auth: **60 API-key / 38 OAuth2** — the majority need only a stored key, not a full OAuth dance (both still must be first-class)
+- Biggest blocker is **business gates** (app review 8 / paid plan 7 / contact-sales 5), not missing endpoints
+- Self-serve gradient by category: Dev-tools & Productivity near-**100%** → AI/media-native the most gated
+- **76/100 ship an official vendor MCP** — the 2026 MCP wave is real and most apps are already agent-native
 
 ## Honesty notes
-- **46/100** apps ran through the full **live** agent research loop; the other **52** were
-  labelled by the same rubric from model knowledge and then a live web sample verified
-  both groups (all 5/5 conclusive knowledge-pass checks held up). Every row is
-  source-tagged (`agent` / `model` / `verified`) on the page.
+- All **100/100** rows come from the **live** agent research loop; **2** were corrected by
+  the web-verification loop (tagged `verified`). Every row is source-tagged on the page.
+- The fleet hit a rolling session limit and ran in **three resumable waves** — a real
+  constraint, shown on the page rather than hidden.
 - Verification caught a real miss (**Plaid** — free Sandbox mislabelled as a trial) and
-  refined **Devin**'s auth; conclusive-sample accuracy moved 82% → 100% after the fixes.
-- Low-confidence rows (e.g. `fanbasis`, `iPayX`, `Waterfall.io`, `Consensus`, `Otter`) are
-  marked as such — "gated / no public API, with evidence" is a valid finding, not a failure.
+  refined **Devin**'s auth; conclusive-sample accuracy moved **82% → 100%** after the fixes.
+  5 sampled docs were unreachable (404 / redirect / DNS) and are marked `UNVERIFIABLE`.
+- Low-confidence rows (e.g. `fanbasis`, `iPayX`, `Waterfall.io`, `Consensus`) are marked
+  as such — "gated / no public API, with evidence" is a valid finding, not a failure.

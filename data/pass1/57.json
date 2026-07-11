@@ -1,0 +1,25 @@
+{
+  "id": 57,
+  "name": "Bright Data",
+  "one_liner": "Web data platform offering proxy networks and scraping APIs (Web Unlocker, SERP, Scraping Browser, Web Scraper API, and dataset marketplace) for collecting public web data at scale.",
+  "auth_methods": ["API key", "Basic"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Self-serve signup with no credit card required. The Web MCP / API free tier grants 5,000 free requests (credits) per month, auto-renewed, giving working API credentials immediately. API keys are generated from the account control panel Account Settings. Paid usage-based billing applies beyond the free allotment.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API with Bearer-token auth (Authorization: Bearer <token>) plus a proxy 'Native Access' mode using brd-customer-...-zone-... username/password. Product surface spans Web Unlocker API, SERP API, Scraping Browser (browser automation over CDP/Playwright/Puppeteer), Web Scraper API (sync /scrape and async /trigger endpoints, snapshot polling), pre-built Scrapers library, Functions, and Dataset Marketplace. Also official MCP server. Dozens of platform-specific structured scrapers (web_data_*) plus core scraping endpoints put breadth in the moderate range.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships the official 'Web MCP' server: github.com/brightdata/brightdata-mcp (MIT license), documented at docs.brightdata.com/ai/mcp-server. Requires API_TOKEN env var. Tools include search_engine, scrape_as_markdown, crawl/discover, browser navigation; free tier of 5,000 requests/month, no credit card.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant for building an integration; self-serve API key with a free tier is available. Cost/credit consumption is the main practical consideration at scale.",
+  "evidence": [
+    {"claim": "Authentication uses Bearer API token or proxy username/password (Native Access); main products include Web Unlocker, SERP, Scraping Browser, Scrapers, Functions, Marketplace.", "url": "https://docs.brightdata.com/api-reference/authentication"},
+    {"claim": "Web Scraper API exposes async /trigger and sync /scrape REST endpoints authenticated with Bearer token.", "url": "https://docs.brightdata.com/api-reference/rest-api/scraper/asynchronous-requests"},
+    {"claim": "Official Bright Data MCP server repo (MIT license) provides all-in-one public web access via API_TOKEN.", "url": "https://github.com/brightdata/brightdata-mcp"},
+    {"claim": "Web MCP free plan: no credit card required, 5,000 free monthly requests.", "url": "https://brightdata.com/ai/mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact webhook/notification support for dataset delivery vs. polling; precise op count across all scraper endpoints for BROAD vs MODERATE classification."
+}

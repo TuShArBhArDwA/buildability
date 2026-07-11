@@ -1,0 +1,25 @@
+{
+  "id": 72,
+  "name": "Airtable",
+  "one_liner": "Cloud spreadsheet-database hybrid for building relational apps, with a REST Web API to read/write records, manage schema, and subscribe to change webhooks.",
+  "auth_methods": ["OAuth2", "Personal access token"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Airtable account (including the free plan) can create a personal access token at airtable.com/create/tokens with scoped permissions, giving working API credentials instantly with no payment or human approval. OAuth is available for third-party integrations acting on behalf of other users. Legacy API keys were deprecated Feb 1, 2024.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Web API follows REST semantics with JSON. Covers record CRUD (list/create/update/delete, batching up to 10 records), metadata operations (list bases, list/create/update tables and fields, read base schema), and a full webhooks management API. No GraphQL. Roughly a few dozen distinct operations across records, schema, and webhooks.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Airtable ships an official vendor MCP server at https://mcp.airtable.com/mcp, connected over OAuth. Documented in Airtable Support ('Using the Airtable MCP server'), it exposes ~12 tools (list/search bases, list/create/update tables, list/create/update records, read schema, create/update fields, ping). Works with Claude, ChatGPT, and any MCP client. Community servers (e.g. domdomegg/airtable-mcp-server) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Free self-serve personal access tokens plus a documented REST API and webhooks make it straightforward to build agent tools.",
+  "evidence": [
+    {"claim": "Web API follows REST semantics, uses JSON, and supports personal access tokens and OAuth (API keys deprecated Feb 1, 2024).", "url": "https://airtable.com/developers/web/api/authentication"},
+    {"claim": "Airtable provides a Webhooks API to receive real-time notifications of base changes via POST to /v0/bases/{baseId}/webhooks.", "url": "https://airtable.com/developers/web/api/create-a-webhook"},
+    {"claim": "Airtable offers an official OAuth-based MCP server at https://mcp.airtable.com/mcp exposing ~12 tools.", "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server"},
+    {"claim": "The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes.", "url": "https://airtable.com/developers/web/api/introduction"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact API rate limits per plan (commonly cited as 5 requests/sec/base) and whether metadata/webhook features are gated on higher paid tiers were not fully confirmed in this pass."
+}

@@ -1,0 +1,25 @@
+{
+  "id": 47,
+  "name": "Ecwid",
+  "one_liner": "Ecwid (by Lightspeed) is a hosted ecommerce platform that lets merchants add an online store to any website or social channel, with a REST API for managing products, orders, customers and store settings.",
+  "auth_methods": ["OAuth2", "Session/other token"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Developers create a free custom app in the Ecwid control panel and copy a public (read-only) token and secret (full-access) token from the app's Details page. For single-store use the secret token can be used directly as a Bearer token with no OAuth flow. Docs recommend setting up a separate free test store since there is no dedicated API test mode. Public multi-store apps use the OAuth 2.0 install flow. Working credentials are obtainable with no payment or human approval.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "JSON REST API over HTTPS covering products (and variations/combinations), categories, orders, customers, discounts/coupons, general store settings/profile, and more. Rate-limited to ~600 requests/minute per token (429 on exceed). Full CRUD across many resource families puts operation count near/above 100.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found from Ecwid/Lightspeed. Multiple third-party MCP options exist (Zapier, Pipedream, viaSocket, Vinkius, Apify scraper) that wrap the Ecwid API, but none are official.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; single-store secret token is trivially obtained but public multi-store distribution requires the OAuth app-registration/install flow.",
+  "evidence": [
+    {"claim": "Ecwid uses OAuth 2.0 with private (write) and public (read-only) access tokens for REST API authentication.", "url": "https://github.com/Ecwid/ecwid-api-docs/blob/master/includes/_authentication.md"},
+    {"claim": "Custom apps provide public and secret tokens copied from the app Details page; secret token can be used directly as Bearer token; docs recommend a separate free test store since there is no API test mode.", "url": "https://docs.ecwid.com/get-started/make-your-first-api-request"},
+    {"claim": "REST API covers orders, products, customers, categories, discounts and store settings with ~600 requests/minute per token rate limit.", "url": "https://docs.ecwid.com/api-reference"},
+    {"claim": "Ecwid supports webhooks (e.g. order.created, product.updated) validated via X-Ecwid-Webhook-Signature sha256 header.", "url": "https://docs.ecwid.com/webhook-automations/learn-ecwid-webhooks/list-of-webhook-events"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total operation count not enumerated; whether a paid Ecwid plan tier is required for certain API scopes (e.g. some endpoints may be gated by store subscription level)."
+}

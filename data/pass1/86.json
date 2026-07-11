@@ -1,0 +1,33 @@
+{
+  "id": 86,
+  "name": "QuickBooks",
+  "one_liner": "Intuit's QuickBooks Online exposes a REST Accounting API covering dozens of accounting entities (invoices, customers, bills, payments, reports) via OAuth 2.0, with a free sandbox and an official Intuit-published MCP server.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free Intuit Developer account, register an app, and get a Client ID/Secret plus a free QuickBooks Online sandbox company that returns working API credentials with no payment or human approval. Production use hits a real QBO company but the sandbox path is fully self-serve. OAuth 2.0 Playground lets you mint tokens without writing code.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST Accounting API with CRUD across dozens of entity types (Account, Customer, Vendor, Invoice, Bill, Payment, Estimate, Item, JournalEntry, etc.) plus a query language and financial reports; well over 100 operations total. Also separate Payments and Payroll APIs. Access tokens expire hourly and must be refreshed.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Intuit publishes an official open-source local MCP server at github.com/intuit/quickbooks-online-mcp-server (Early Preview, announced Oct 2025 on the Intuit Developer blog). ~20+ tools over core accounting entities and reports; runs locally, authenticates via your own Intuit Developer app OAuth credentials, currently sandbox-focused. Multiple community MCP servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None for building/testing: free dev account + sandbox gives working OAuth credentials. Minor friction is OAuth2 authorization-code flow with hourly token refresh, and moving to production requires connecting a real QBO company.",
+  "evidence": [
+    {
+      "claim": "QuickBooks Online API uses OAuth 2.0 authorization code flow; app registration on Intuit Developer yields Client ID/Secret, and an OAuth 2.0 Playground generates tokens.",
+      "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0"
+    },
+    {
+      "claim": "Intuit announced an official local QuickBooks Online MCP Server (Early Preview) built on the QBO Accounting APIs.",
+      "url": "https://blogs.intuit.com/2025/10/21/experiment-with-intuits-local-mcp-server-early-preview/"
+    },
+    {
+      "claim": "Intuit hosts the official quickbooks-online-mcp-server repository exposing QBO features as MCP tools.",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact production-access review requirements for publishing a public app to Intuit's app store (distinct from raw API use), and current stable-vs-preview status of the official MCP server beyond sandbox."
+}

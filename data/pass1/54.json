@@ -1,0 +1,25 @@
+{
+  "id": 54,
+  "name": "MrScraper",
+  "one_liner": "AI-powered web scraping platform with pre-built marketplace scrapers and a REST API for extracting structured data from any website.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free 'Scraper Free' plan ($0/month) gives 1,000 API tokens and working API credentials with no payment or approval required. API access is enabled per-scraper via Settings > 'AI Scraper API Access', then copying the generated request with the token. Paid tiers (Standard, Pro, Enterprise) add residential proxies and higher concurrency; pay-as-you-go at $0.01/token beyond limits.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST HTTP API. Base URL https://api.mrscraper.com; marketplace scrapers via https://sync.scraper.mrscraper.com/api/. Core endpoint reruns an AI scraper (POST with scraperId, url, plus optional maxRetry, maxPages, timeout, stream). Plus a marketplace of many ready-made site-specific scrapers (e.g. Agoda reviews) each exposing endpoints. SDKs for Python, Node.js and LangChain.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor-shipped MrScraper MCP server found. Search surfaced only third-party/Apify and generic web-scraping MCP servers, not one published by MrScraper.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; free tier provides working API credentials self-serve. Token budget on free tier is limited (1,000 tokens).",
+  "evidence": [
+    {"claim": "Scraper API uses x-api-token header auth with scraperId/url/maxPages/stream params; API access enabled per-scraper via Settings.", "url": "https://docs.mrscraper.com/docs/features/activating-api"},
+    {"claim": "Auth via token query param or x-api-token header; base URL https://api.mrscraper.com and marketplace at sync.scraper.mrscraper.com/api/.", "url": "https://docs.mrscraper.com/docs/getting-started/quickstart"},
+    {"claim": "Free plan ($0/mo, 1,000 tokens, 10 concurrent) is claimable at signup; pay-as-you-go $0.01/token beyond limit.", "url": "https://mrscraper.com/pricing"},
+    {"claim": "Platform supports webhooks, Zapier, n8n, SQL, and Python/Node.js/LangChain SDKs plus a marketplace of ready-to-run scrapers.", "url": "https://docs.mrscraper.com/docs/getting-started/overview"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact count of marketplace scraper endpoints (breadth estimated MODERATE); precise paid-plan pricing not displayed on public pricing page; whether free-tier tokens are sufficient for meaningful agent use."
+}

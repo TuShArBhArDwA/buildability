@@ -1,0 +1,26 @@
+{
+  "id": 66,
+  "name": "Neo4j",
+  "one_liner": "Neo4j is a graph database platform (self-hosted and Aura cloud) that exposes a REST management API for Aura instances, an HTTP Query API for running Cypher, and language drivers over the Bolt protocol.",
+  "auth_methods": ["OAuth2", "Basic", "API key"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Neo4j Aura offers a forever-free tier (AuraDB Free) with no credit card required, giving a working managed database whose HTTP Query API and Bolt drivers use basic auth (neo4j username + password). For the Aura management REST API, any account user can create API credentials (client ID/secret) via the console Account Details page; these never expire and are used with OAuth2 client-credentials against https://api.neo4j.io/oauth/token. Note: creating new PAID (Professional/Enterprise) instances via the API requires payment info on the account, but managing the free instance and running the database Query API is fully self-serve and free. Self-hosted/Community Edition needs no cloud account at all (local auth).",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Two main HTTP surfaces plus drivers. (1) Aura Management API (REST, base https://api.neo4j.io) covers instances (create/list/get/update/pause/resume/delete), snapshots, tenants/projects, metrics integration, and customer-managed keys - roughly a few dozen operations. (2) Neo4j Query API (HTTP) lets you execute arbitrary Cypher read/write queries against a database - endpoint-narrow but functionally powerful. (3) Official language drivers (Python, JS, Java, Go, .NET) speak the binary Bolt protocol for production access (SDK-only, not raw REST). GraphQL is offered via the separate Neo4j GraphQL Library, not a hosted endpoint.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Neo4j ships an official MCP server at github.com/neo4j/mcp with docs at neo4j.com/docs/mcp - a local server (downloadable binary) that works across all deployments (Aura, self-managed, Docker, Desktop, Sandbox). It exposes schema exploration and Cypher read/write query tools. There are also earlier neo4j-contrib/mcp-neo4j Labs servers, but the vendor-official one is neo4j/mcp.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant for building agent tools: free tier gives working credentials, the Query API runs Cypher over HTTP with basic auth, and the Aura API uses standard OAuth2 client-credentials. Minor friction: production database access is idiomatically via Bolt drivers (SDK) rather than REST, and creating paid instances via the management API needs billing info on file.",
+  "evidence": [
+    {"claim": "Aura API uses OAuth 2.0 client-credentials; token endpoint https://api.neo4j.io/oauth/token with HTTP Basic auth using client ID/secret; tokens expire after one hour; base URL https://api.neo4j.io.", "url": "https://neo4j.com/docs/aura/platform/api/authentication/"},
+    {"claim": "AuraDB Free is an always-free cloud database with no credit card required, no trials and no time limits.", "url": "https://neo4j.com/press-releases/announcing-neo4j-auradb-free/"},
+    {"claim": "Neo4j ships an official MCP server (neo4j/mcp) - a local server working across Aura, self-managed, Docker, Desktop and Sandbox - providing schema exploration and Cypher query tools.", "url": "https://github.com/neo4j/mcp"},
+    {"claim": "Official Neo4j MCP documentation describing the MCP server bridging MCP-compatible clients to a Neo4j instance.", "url": "https://neo4j.com/docs/mcp/current/"},
+    {"claim": "Aura API credentials are created in the console Account Details page, are linked to the user account, and never expire unless deleted.", "url": "https://neo4j.com/docs/aura/api/authentication/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact operation count of the Aura Management API (estimated a few dozen). Whether AuraDB Free accounts (no payment info) can create Aura API credentials and whether those credentials can perform any management actions on the free instance, or are effectively limited to paid tiers. Precise scope/limits of the HTTP Query API on the free tier."
+}

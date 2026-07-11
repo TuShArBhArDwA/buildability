@@ -1,0 +1,26 @@
+{
+  "id": 62,
+  "name": "Vercel",
+  "one_liner": "Vercel is a frontend cloud / deployment platform whose REST API lets agents manage deployments, projects, domains, DNS, environment variables, teams, and webhooks.",
+  "auth_methods": ["Bearer token", "OAuth2"],
+  "primary_auth": "Personal access token (Bearer token) created in account settings; OAuth2 used for building marketplace Integrations.",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Vercel account (including the free Hobby plan) can create an Access Token from Account Settings > Tokens and immediately call the API with 'Authorization: Bearer <TOKEN>'. No payment or human approval needed for basic API use.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Well-documented REST API over https://api.vercel.com (HTTP/1 & HTTP/2, versioned endpoints like v6/deployments). Broad coverage: deployments, projects, domains, DNS records, environment variables, teams/members, access groups, edge config, aliases, certs, logs/log drains, webhooks, integrations, and auth tokens (100+ operations). Official TypeScript/Go/Python SDKs also provided. Team-scoped resources require a teamId query param. Rate limits exposed via X-RateLimit-* headers.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vercel ships an official remote MCP server at https://mcp.vercel.com (Public Beta, announced on the Vercel blog/changelog). OAuth-based, read-only at launch, with an allowlist of approved clients (Claude, Cursor, VS Code). Tools cover searching docs and managing/inspecting teams, projects, and deployments. Add via: claude mcp add --transport http vercel https://mcp.vercel.com.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Public REST API with instant free self-serve tokens; only friction is team-scoped resources needing an explicit teamId parameter.",
+  "evidence": [
+    {"claim": "Vercel Access Tokens authenticate the API via 'Authorization: Bearer <TOKEN>'; REST over https://api.vercel.com with X-RateLimit-* headers and teamId scoping.", "url": "https://vercel.com/docs/rest-api"},
+    {"claim": "Endpoint to create an auth token exists in the REST API reference under authentication.", "url": "https://vercel.com/docs/rest-api/authentication/create-an-auth-token"},
+    {"claim": "Webhooks are a first-class REST resource (GET https://api.vercel.com/v1/webhooks/{id}) with signature verification.", "url": "https://vercel.com/docs/rest-api/webhooks/get-a-webhook"},
+    {"claim": "Vercel ships an official MCP server at mcp.vercel.com, OAuth-based and read-only in Public Beta, supporting Claude/Cursor/VS Code.", "url": "https://vercel.com/docs/agent-resources/vercel-mcp"},
+    {"claim": "Vercel announced its official MCP now in Public Beta.", "url": "https://vercel.com/changelog/vercels-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact API rate-limit ceilings per plan tier; whether the official MCP will add write operations beyond the read-only beta."
+}

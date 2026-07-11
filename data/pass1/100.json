@@ -1,0 +1,24 @@
+{
+  "id": 100,
+  "name": "Grain",
+  "one_liner": "AI meeting-notetaker that records, transcribes, and summarizes calls, with a REST API exposing recordings, transcripts, notes, action items, deals, and coaching data.",
+  "auth_methods": ["OAuth2", "Personal access token", "API key"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Users self-generate Personal Access Tokens (PAT) or Workspace Access Tokens (WAT) in-app at grain.com/app/settings/integrations?tab=api, no approval or payment needed. OAuth2 (auth code + PKCE) is available for third-party integrations but requires manual client registration. Most API/MCP data (meetings, transcripts, notes, contacts) works on all plans including free; Deals and Sales Coaching/Scorecard endpoints are restricted to Business/Enterprise plans.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST/JSON API (header Public-Api-Version: 2025-10-31, Bearer token). Resources: recordings (list, get, update title, download, upload, transcripts in JSON/TXT/VTT/SRT, tags, sharing), highlights/clips, action items, AI summaries, calendar metadata, HubSpot integration data, users, teams, meeting types, and webhook (hooks) management. Rate limit 300 req/min (429 + Retry-After). Roughly 20-40 operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Grain ships an official MCP server (announced 06-18-2025, docs at developers.grain.com/mcp). Uses OAuth; ~15-22 tools (list/fetch meetings, transcripts, notes, search meetings/companies/persons, workspace users, plus Business/Enterprise-only deals and coaching tools). Setup as native Claude Integration or via mcp-remote in Cursor/Windsurf.",
+  "buildability": "GREEN",
+  "main_blocker": "None for core meeting/transcript/notes data - self-serve tokens on any plan. Deals and sales-coaching endpoints require a Business/Enterprise plan.",
+  "evidence": [
+    {"claim": "Official developer docs: REST API with PAT, WAT, and OAuth2 (PKCE) auth; header Public-Api-Version; recordings, transcripts, hooks, etc.", "url": "https://developers.grain.com/"},
+    {"claim": "Official Grain MCP server docs listing tools and plan-tiered access (free/starter vs Business/Enterprise).", "url": "https://developers.grain.com/mcp"},
+    {"claim": "Grain release note announcing its official MCP server (06-18-2025).", "url": "https://grain.com/release-note/06-18-2025"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether a fully free Grain account (vs a paid trial) can generate a working PAT/WAT, and exactly how many distinct REST operations exist (breadth estimated as MODERATE)."
+}

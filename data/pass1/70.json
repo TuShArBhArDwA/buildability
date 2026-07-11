@@ -1,0 +1,24 @@
+{
+  "id": 70,
+  "name": "Sentry",
+  "one_liner": "Application error monitoring and performance tracing platform with a comprehensive REST API for issues, events, projects, releases, alerts, and crons.",
+  "auth_methods": ["OAuth2", "Personal access token", "API key"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free Developer plan lets you create a Sentry account and generate working User Auth Tokens (Personal Tokens) with scoped permissions immediately, no payment or approval. Org-level auth tokens and internal integration tokens are also self-serve.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Web API following REST conventions at us.sentry.io (region-aware: us2.sentry.io, de.sentry.io). Covers organizations, teams, projects, issues, events, releases, dashboards, discover, alerts, monitors/crons, replays, profiling, SCIM, and integrations - well over 100 documented endpoints. API version 0; public endpoints stable, beta endpoints may change.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Sentry (getsentry) ships an official MCP server: hosted remote server at mcp.sentry.dev with OAuth 2.0 auth, plus the getsentry/sentry-mcp repo and @sentry/mcp-server npm package. Exposes issue lookup, event search, and Seer AI root-cause analysis.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant - public REST API with self-serve free-tier credentials. Only nuance is region-specific base URLs.",
+  "evidence": [
+    {"claim": "Sentry provides a web API following REST conventions covering account, data, monitoring and integration areas; API version 0 with region-specific domains.", "url": "https://docs.sentry.io/api/"},
+    {"claim": "Sentry supports auth tokens (user personal tokens and org/internal-integration tokens), OAuth2 authorization code with PKCE, and device authorization flow.", "url": "https://docs.sentry.io/api/auth/"},
+    {"claim": "Sentry ships an official hosted MCP server at mcp.sentry.dev with OAuth 2.0 and source at getsentry/sentry-mcp.", "url": "https://github.com/getsentry/sentry-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact rate limits and whether every endpoint category (e.g. profiling, replays) is fully accessible on the free Developer plan versus requiring paid usage volume."
+}

@@ -1,0 +1,25 @@
+{
+  "id": 94,
+  "name": "Consensus",
+  "one_liner": "AI-powered academic search engine over 200M+ peer-reviewed papers, exposing a REST 'quick search' API and an official remote MCP server for grounding agents in scientific evidence.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "The consensus.app search API is 'available by application only' per its docs/pricing, with baseline pricing ~$0.10 per call plus a platform fee. There is no self-serve dev tier that instantly issues working API keys; access is gated behind an application. The official remote MCP server (mcp.consensus.app/mcp) is self-serve via OAuth sign-in and does not require the API application, but MCP usage is tied to a Consensus subscription rather than free programmatic API credentials.",
+  "api_styles": ["REST"],
+  "api_breadth": "NARROW",
+  "api_notes": "Documented public API is minimal: primarily a v1 quick_search endpoint (POST/GET api.consensus.app/v1/quick_search) returning ~top 20 relevant papers with metadata (citation count, publish date, etc.). Docs published as OpenAPI plus an llms.txt index at docs.consensus.app. A handful of endpoints, not a broad surface.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships an official hosted remote MCP server at https://mcp.consensus.app/mcp (docs.consensus.app/docs/mcp, consensus.app/home/mcp). Verified/maintained by Consensus; supports Claude Desktop, Claude Code, ChatGPT, Cursor, VS Code, Windsurf, Codex. Uses OAuth: client opens browser to sign in and authorize on first connect. Lets clients search/synthesize over the peer-reviewed corpus.",
+  "buildability": "YELLOW",
+  "main_blocker": "REST API is application-gated (approval + paid per-call pricing), so working credentials are not self-serve; however the official OAuth-based remote MCP offers a self-serve alternative path.",
+  "evidence": [
+    {"claim": "Consensus API docs show a v1 quick_search endpoint returning top ~20 papers with metadata; OpenAPI + llms.txt index published.", "url": "https://docs.consensus.app/reference"},
+    {"claim": "Official hosted remote MCP server at mcp.consensus.app/mcp, maintained by Consensus, uses OAuth browser sign-in, supports Claude/ChatGPT/Cursor etc.", "url": "https://docs.consensus.app/docs/mcp"},
+    {"claim": "Consensus API is available by application only, baseline pricing ~$0.10 per call plus a platform fee.", "url": "https://consensus.app/home/api/"},
+    {"claim": "Consensus MCP marketing page describing building agents on the peer-reviewed corpus via MCP.", "url": "https://consensus.app/home/mcp/"}
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Exact auth scheme for the REST quick_search API (API key header vs bearer token) not confirmed from a fetched page; the docs.consensus.app/reference page did not expose auth details and the pricing page returned 403. Note: goconsensus.com/support.goconsensus.com is a separate 'Consensus' company (demo-automation SaaS) and was excluded as not the consensus.app research product."
+}

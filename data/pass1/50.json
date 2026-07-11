@@ -1,0 +1,25 @@
+{
+  "id": 50,
+  "name": "fanbasis",
+  "one_liner": "FanBasis is full-stack business infrastructure for internet creators/entrepreneurs, unifying payments, checkout, subscriptions, courses/community, and CRM, with a REST API for payment and commerce operations.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "FanBasis accounts are free to open on a revenue-share model (no upfront fee), and the API exposes a sandbox at qa.dev-fan-basis.com for test credentials. API keys are provisioned from the account/dashboard and the developer docs portal (dev-docs.fanbasis.com) is login-gated. The enterprises page pushes a sales/discovery call, so whether every self-serve account can immediately generate live API keys vs. needing onboarding is not fully confirmed from public docs.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API under /public-api/ with production (www.fanbasis.com) and sandbox (qa.dev-fan-basis.com) base URLs. Documented operations cover Checkout Sessions (create/retrieve/delete/transactions), Customers & Payments (list, payment methods, charge), Subscriptions (create/track/cancel/extend + proration), Discount Codes, Transactions (fees/payouts), and Refunds & Disputes. Standard response envelope, pagination via page/per_page (max 100). Official SDKs advertised for Node, Python, PHP, Ruby plus a @fanbasis/checkout-sdk npm package; Postman collection available.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No official FanBasis-vendor MCP server found. Search surfaces a third-party Zapier 'FanBasis MCP' (Zapier-hosted, not vendor) and an unrelated 'FanBase' MCP by XBorg (a different creator/CRM product). No MCP shipped by FanBasis itself.",
+  "buildability": "YELLOW",
+  "main_blocker": "Developer docs portal is login-gated and API keys are provisioned from an account dashboard; unclear whether all self-serve accounts get instant live API access or require sales onboarding (enterprises page emphasizes a discovery call). A sandbox exists, so building/testing is feasible once an account is created.",
+  "evidence": [
+    {"claim": "FanBasis API uses API key auth via x-api-key header, has production and sandbox (qa.dev-fan-basis.com) base URLs, REST endpoints for checkout sessions, customers/payments, subscriptions, discount codes, transactions, refunds & disputes, and HMAC-SHA256 signed webhooks with 13 event types.", "url": "https://apidocs.fan/"},
+    {"claim": "FanBasis positions itself as full-stack business infrastructure unifying payments, fulfillment, course/community hosting, CRM and operations for internet entrepreneurs.", "url": "https://www.fanbasis.com/"},
+    {"claim": "Developer API docs portal requires sign-in ('Sign in to access API Docs'), indicating gated documentation access.", "url": "https://dev-docs.fanbasis.com/"},
+    {"claim": "@fanbasis/checkout-sdk is a published npm package providing server-side access to the FanBasis Checkout REST API.", "url": "https://www.npmjs.com/package/@fanbasis/checkout-sdk"}
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Can any free self-serve FanBasis account generate live API keys instantly, or is live API access gated behind sales onboarding/enterprise plans? What is the exact process to obtain sandbox vs production keys, and are there plan-tier restrictions on API usage?"
+}

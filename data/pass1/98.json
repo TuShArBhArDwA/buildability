@@ -1,0 +1,29 @@
+{
+  "id": 98,
+  "name": "Mermaid CLI",
+  "one_liner": "Open-source command-line tool (mmdc) that renders Mermaid diagram definitions into SVG/PNG/PDF; distributed as an npm package and Docker image under MIT license.",
+  "auth_methods": ["None/local"],
+  "primary_auth": "None/local",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Fully free and open source (MIT). Installed via npm (@mermaid-js/mermaid-cli), Docker (minlag/mermaid-cli), or npx. No account, key, or payment required. Runs entirely locally.",
+  "api_styles": ["CLI-only", "SDK-only"],
+  "api_breadth": "NARROW",
+  "api_notes": "No HTTP API. Exposes a CLI binary (mmdc) with input/output/theme/format flags, plus a Node.js programmatic API (importable run function). Effectively one core operation: render a Mermaid definition to an image. Agent-callable as a local CLI skill / self-hosted tool.",
+  "webhooks": false,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server. Several community MCP servers wrap mmdc: hustcc/mcp-mermaid, andrewginns/mermaid-mcp-server, ryu1maniwa/mermaid-local-mcp, codingthefuturewithai/mcp_mermaid_image_gen. None are published by the mermaid-js org.",
+  "buildability": "GREEN",
+  "main_blocker": "No HTTP API — integration is via local CLI/Node API rather than a hosted service, so a Composio tool would need to shell out to mmdc (requires Node/Chromium/Puppeteer runtime) rather than call a remote endpoint.",
+  "evidence": [
+    {
+      "claim": "mermaid-cli (mmdc) is a CLI that takes a mermaid definition file as input and generates SVG/PNG/PDF; installed via npm/Docker/npx; MIT licensed; provides a Node.js run() API; no HTTP API or auth documented.",
+      "url": "https://github.com/mermaid-js/mermaid-cli"
+    },
+    {
+      "claim": "Community MCP servers wrap the official mermaid-cli (e.g., andrewginns/mermaid-mcp-server, ryu1maniwa/mermaid-local-mcp), confirming no official vendor MCP server exists.",
+      "url": "https://github.com/andrewginns/mermaid-mcp-server"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "None significant. The mermaid.ink / mermaid.live hosted rendering services are separate from mermaid-cli; if a hosted HTTP render endpoint is desired, those would be evaluated separately."
+}

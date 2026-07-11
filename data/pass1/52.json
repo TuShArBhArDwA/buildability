@@ -1,0 +1,25 @@
+{
+  "id": 52,
+  "name": "SE Ranking",
+  "one_liner": "SE Ranking is an SEO platform whose Data and Project APIs expose keyword research, rank tracking, backlinks, domain analysis, site audits, AI search visibility, and project management data over REST.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key sent in the HTTP Authorization header using the Token scheme (Authorization: Token YOUR_API_KEY); a single key authenticates both the Data API and Project API.",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "API access is bundled with paid SaaS plans (Essential through Enterprise / Core $129/mo, Growth $279/mo), and a standalone API plan is available. A 14-day free trial grants 100K API credits across all six endpoints; the API key is issued immediately after email confirmation (or after payment). No manual approval/business verification is described, so credentials are self-serve but require starting a trial or paid plan rather than a permanent free tier.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API returning JSON, rate-limited around 10 req/s, billed via a credit system. Covers six domains: Keyword Research, Backlinks, Domain Analysis, Website Audit, AI Search, and Project Management. The companion official MCP server exposes 160+ tools mapping to these endpoints, indicating a broad operation count (100+).",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "SE Ranking ships an official, vendor-hosted remote MCP server (documented at seranking.com/api/integrations/mcp and seranking.com/mcp.html) with 160+ tools; authenticated via the remote MCP spec, available on every paid plan. Also offers pre-built Claude Skills wrapping the MCP tools.",
+  "buildability": "YELLOW",
+  "main_blocker": "No permanent free API tier: working credentials require starting a 14-day trial (instant, no approval) or a paid/standalone plan, and usage is metered by credits.",
+  "evidence": [
+    {"claim": "Authenticate by including the API key in the Authorization header using the Token scheme (Authorization: Token YOUR_API_KEY); one key covers Data and Project APIs.", "url": "https://seranking.com/api/how-to-get-api/"},
+    {"claim": "REST API with JSON responses covering keyword research, backlinks, domain analysis, website audit, AI search, and project management; ~10 requests/second.", "url": "https://seranking.com/api.html"},
+    {"claim": "14-day free trial provides 100K API credits across all six API endpoints; standalone API plan pricing and credit billing described.", "url": "https://seranking.com/api-pricing.html"},
+    {"claim": "SE Ranking ships an official, vendor-hosted remote MCP server with 160+ tools available on paid plans.", "url": "https://seranking.com/api/integrations/mcp/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the trial's 100K credits are usable across all API endpoints without a payment method on file, and whether any webhook/push mechanism exists (none documented)."
+}

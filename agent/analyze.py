@@ -69,19 +69,25 @@ analysis["self_serve_rate_by_category"] = {
     for k, v in sorted(cat_rate.items(), key=lambda kv: -kv[1][0] / kv[1][1])
 }
 
-# blocker buckets (only non-GREEN rows have a real blocker)
+# blocker buckets (only non-GREEN rows have a real blocker). A YELLOW app can
+# still be self-serve — its blocker is then a narrow API or awkward auth, not the
+# access gate, so those bucket separately instead of leaking the access_model.
 blk = collections.Counter()
+GATE_LABEL = {
+    "APPROVAL_REQUIRED": "App review / approval gate",
+    "PARTNER_GATED": "Contact-sales / partnership gate",
+    "PAID_PLAN_REQUIRED": "Paid plan required for API",
+    "NO_PUBLIC_API": "No public / hosted API",
+}
 for r in DATA:
     if r["buildability"] == "GREEN":
         continue
-    a = r["access_model"]
-    label = {
-        "APPROVAL_REQUIRED": "App review / approval gate",
-        "PARTNER_GATED": "Contact-sales / partnership gate",
-        "PAID_PLAN_REQUIRED": "Paid plan required for API",
-        "NO_PUBLIC_API": "No public/hosted API",
-    }.get(a, a)
-    blk[label] += 1
+    if r["access_model"] in GATE_LABEL:
+        blk[GATE_LABEL[r["access_model"]]] += 1
+    elif r["api_breadth"] in ("NARROW", "NONE") or r["api_styles"] == ["CLI-only"]:
+        blk["Narrow / single-purpose API"] += 1
+    else:
+        blk["Awkward auth or partial API"] += 1
 analysis["blockers"] = dict(blk.most_common())
 
 if "--json" in sys.argv:

@@ -1,0 +1,33 @@
+{
+  "id": 65,
+  "name": "Supabase",
+  "one_liner": "Open-source Firebase alternative providing a hosted Postgres database with auto-generated REST and GraphQL APIs, auth, storage, edge functions, and a project Management API.",
+  "auth_methods": ["API key", "JWT", "Personal access token", "Session/other token"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free tier gives an instantly usable project with working API credentials (anon public key, service_role secret key, and JWT-based auth) with no payment or human approval. The Management API uses a personal access token generated from the dashboard.",
+  "api_styles": ["REST", "GraphQL", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Each project auto-generates a REST API via PostgREST (full CRUD over every table/view plus stored-procedure RPC) and a GraphQL endpoint via pg_graphql. Separate services expose Auth (GoTrue), Storage, Realtime, and Edge Functions. A project/org Management API (management API at api.supabase.com) covers creating projects, branches, secrets, and config. Official client SDKs (supabase-js, Python, etc.) wrap all of these. Combined surface is well over 100 operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Supabase ships an official MCP server at github.com/supabase/mcp (documented at supabase.com/docs/guides/ai-tools/mcp) for managing tables, fetching config, and querying data via AI assistants. Many community MCP servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; free self-serve credentials and public REST/GraphQL APIs. Data-plane auth is per-project (project URL + keys) rather than a single global API, so an integration must handle per-project credentials.",
+  "evidence": [
+    {
+      "claim": "Supabase auto-generates a REST API from the database via PostgREST, designed to build without writing code.",
+      "url": "https://supabase.com/docs/guides/api"
+    },
+    {
+      "claim": "Supabase ships an official MCP server connecting AI tools directly to Supabase for managing tables, fetching config, and querying data.",
+      "url": "https://github.com/supabase/mcp"
+    },
+    {
+      "claim": "Official MCP server documentation is hosted by the vendor.",
+      "url": "https://supabase.com/docs/guides/ai-tools/mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact operation count of the Management API vs data-plane API; whether GraphQL (pg_graphql) is enabled by default on all plans."
+}

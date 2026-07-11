@@ -1,0 +1,33 @@
+{
+  "id": 49,
+  "name": "Amazon Selling Partner",
+  "one_liner": "Amazon's Selling Partner API (SP-API) lets sellers and solution providers programmatically manage orders, inventory, listings, fulfillment (FBA), finances, and reports across Amazon marketplaces.",
+  "auth_methods": ["OAuth2", "Personal access token"],
+  "primary_auth": "OAuth2",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "Requires a Professional selling account and registration in Amazon's Developer Central. Developers must submit a developer profile with security-control questionnaire, agree to the Acceptable Use / Data Protection policies, and qualify for role-based access. Public apps must be listed in the SP-API Appstore with a public website. Restricted roles handling PII require an architecture review with Amazon's Solutions Architecture team. A sandbox exists, but real API use is gated behind app review and role approval.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Large REST API surface spanning many sections: Orders, Feeds, Reports, Catalog Items, Listings Items, FBA Inbound/Inventory/Outbound, Merchant Fulfillment, Finances, Product Pricing, Notifications, Shipping, Vendor APIs, Tokens (RDT), and more — well over 100 operations. Official Java, C#, Python, PHP, TypeScript SDKs and OpenAPI models are published on GitHub (amzn/selling-partner-api-models).",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No official Amazon-shipped MCP server for SP-API found. Amazon has an official Amazon Ads MCP server (separate product, ads data only). SP-API MCP servers that exist are community/third-party (e.g. mattcoatsworth/AmazonSeller-mcp-server on GitHub, Pipedream, Seller Labs, Zapier).",
+  "buildability": "YELLOW",
+  "main_blocker": "Registration/approval gate: needs a Professional Amazon seller account, developer profile review, role qualification, and (for PII roles) an architecture review before production API access is granted.",
+  "evidence": [
+    {
+      "claim": "SP-API registration requires a Professional selling account, a developer profile with security controls, and role-based access qualification; PII roles require an architecture review.",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/sp-api-registration-overview"
+    },
+    {
+      "claim": "Since October 2, 2023 SP-API no longer requires AWS IAM or AWS Signature Version 4; authentication uses Login with Amazon (LWA) OAuth 2.0 access tokens.",
+      "url": "https://developer-docs.amazon.com/sp-api/changelog/sp-api-will-no-longer-require-aws-iam-or-aws-signature-version-4"
+    },
+    {
+      "claim": "Public developers must list their application in the Amazon Selling Partner Appstore and provide a public website describing the app's services.",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-public-developer"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact current operation count per API section; whether the sandbox alone (pre-approval) returns useful mock data sufficient for building without full role approval."
+}

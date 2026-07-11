@@ -1,0 +1,25 @@
+{
+  "id": 60,
+  "name": "Clay",
+  "one_liner": "GTM data platform that finds and enriches company/people records via 150+ data providers, now exposed through a public REST API, CLI, and agent plugin.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A Clay account (including the Free plan: ~100 credits/month) provides an API key under Settings > Account > API key, usable with the public REST API and CLI. API requests/enrichments consume Actions and Data Credits, so heavy use needs a paid plan (Launch ~$185/mo, Growth ~$495/mo). The Tables query endpoint is Enterprise-only. Bringing your own data-provider keys can skip Data Credits.",
+  "api_styles": ["REST", "CLI-only", "SDK-only"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Public REST API (OpenAPI spec at developers.clay.com/openapi.json) centered on three primitives: Searches (find companies/people with structured filters, paginated), Routines (execute Clay-managed functions, custom functions, and workflows against 1-100 items, plus batch JSONL runs and result polling), and Tables (structured queries, Enterprise only), plus a user/auth endpoint. Also ships a CLI and an agent plugin for Claude Code/Codex/Cursor.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Clay ships an official MCP/agent plugin (the 'Clay plugin') at https://api.clay.com/v3/mcp, letting agents search Clay data, run Functions, and create/edit/trigger Workflows. Note: unrelated third-party 'Clay' personal-CRM MCP servers also exist and should not be confused with clay.com's GTM product.",
+  "buildability": "GREEN",
+  "main_blocker": "Meaningful API usage consumes Actions/Data Credits; the Free plan's ~100 credits/month is enough to test but real workloads require a paid plan, and Tables queries are Enterprise-gated.",
+  "evidence": [
+    {"claim": "Clay uses API key-based authentication for all requests; provides a REST API with an OpenAPI spec, Searches/Routines/Tables endpoints, webhooks for routine completion, and an MCP plugin.", "url": "https://developers.clay.com/llms.txt"},
+    {"claim": "API key is found under Settings > Account > API key and is required for all Clay-native integrations.", "url": "https://university.clay.com/docs/guide-find-clay-api-key"},
+    {"claim": "Clay introduced a public API and CLI plus an Agent Plugin to run in Claude Code, Codex, or Cursor to search Clay data, run Functions, and create/edit/trigger Workflows.", "url": "https://developers.clay.com"},
+    {"claim": "Clay plans include a Free tier with ~100 credits/month; paid plans Launch (~$185/mo) and Growth (~$495/mo), Enterprise custom.", "url": "https://www.clay.com/pricing"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the Free plan actually exposes an API key or whether API key generation requires a paid (Starter/Launch) tier; exact rate limits and per-call Action costs for API requests."
+}

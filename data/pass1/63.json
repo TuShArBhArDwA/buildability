@@ -1,0 +1,24 @@
+{
+  "id": 63,
+  "name": "Netlify",
+  "one_liner": "Netlify is a cloud platform for building, deploying, and hosting web apps and serverless functions, with a REST API for managing sites, deploys, env vars, forms, and hooks.",
+  "auth_methods": ["Personal access token", "OAuth2"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A free Netlify account can generate Personal Access Tokens in the UI (Applications > Personal access tokens), no payment or approval required. OAuth2 apps can also be registered self-serve for third-party integrations. Free tier is production-usable.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API at https://api.netlify.com/api/v1/ documented via OpenAPI (open-api.netlify.com). Covers sites (CRUD), deploys (file digest/ZIP, status, rollback), environment variables (site + team), forms & submissions, snippets, DNS, and hooks. Official Go and JS client libraries. Rate limits: 500 req/min general, 3 deploys/min and 100 deploys/day.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Netlify ships an official MCP server (github.com/netlify/netlify-mcp), launched June 2025. Remote or local; e.g. `claude mcp add --transport http netlify https://netlify-mcp.netlify.app/mcp`. Lets agents deploy, manage env vars/domains/functions, and install extensions.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Public REST API with self-serve free credentials (PAT). Deploy rate limits (100/day) could constrain high-volume deploy automation.",
+  "evidence": [
+    {"claim": "Netlify offers a REST API at https://api.netlify.com/api/v1/ with Personal Access Tokens and OAuth2 auth; rate limit 500 req/min, deploys 3/min and 100/day.", "url": "https://docs.netlify.com/api/get-started/"},
+    {"claim": "Netlify ships an official MCP server in the netlify/netlify-mcp repository.", "url": "https://github.com/netlify/netlify-mcp"},
+    {"claim": "Netlify launched its official MCP server (June 2025) enabling AI agents to deploy and manage apps.", "url": "https://www.netlify.com/press/netlify-launches-official-mcp-server-setting-the-standard-for-agent-native-development/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total operation count (estimated MODERATE from documented resource groups); whether any endpoints are restricted to paid/enterprise plans (e.g. team-level features)."
+}

@@ -1,0 +1,26 @@
+{
+  "id": 76,
+  "name": "Monday.com",
+  "one_liner": "Work OS / project management platform whose GraphQL Platform API lets agents read and modify boards, items, columns, users, workspaces, docs, and more.",
+  "auth_methods": ["OAuth2", "Personal access token", "API key"],
+  "primary_auth": "OAuth2 for distributed apps; personal V2 API token for single-account/server-side use.",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Full GraphQL API access is included on the Free plan (2 users) and all paid plans. A personal V2 API token is available instantly from the user's Developers section (profile > Developers > API token > Show) with no payment or approval. OAuth apps can be self-registered in the developer center. Rate limits are complexity-based; extra daily API call capacity is a paid add-on but base access is free.",
+  "api_styles": ["GraphQL"],
+  "api_breadth": "BROAD",
+  "api_notes": "Single GraphQL endpoint at https://api.monday.com/v2 covering boards, items, column values, subitems, groups, users, teams, workspaces, folders, docs, updates, notifications, assets/files, webhooks, and automations. Queries and mutations across these resources put it comfortably at 100+ operations. Workforms not yet supported.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "monday.com ships official MCP servers maintained by its AI team. The platform data MCP (@mondaydotcomorg/monday-api-mcp) exposes ~20 tools over boards/items/columns/updates, and a separate 'monday apps MCP' (@mondaydotcomorg/monday-api-mcp app-tools, ~12 tools) manages apps/features/deployments. Repo: github.com/mondaycom/mcp. A community server by Jovan Sakovic also exists but the vendor ships its own.",
+  "buildability": "GREEN",
+  "main_blocker": "None material. API access is free and self-serve via personal token; only friction is complexity-based rate limits with a paid add-on for high-volume usage.",
+  "evidence": [
+    {"claim": "GraphQL API uses token-based auth (personal V2 tokens) plus OAuth; single endpoint https://api.monday.com/v2 with Authorization header.", "url": "https://developer.monday.com/api-reference/docs/authentication"},
+    {"claim": "API handles operations across boards, items, column values, users, workspaces and more via GraphQL.", "url": "https://developer.monday.com/api-reference/docs/basics"},
+    {"claim": "monday.com ships an official MCP server enabling AI agents secure access to its data and actions.", "url": "https://github.com/mondaycom/mcp"},
+    {"claim": "Official monday apps MCP package @mondaydotcomorg/monday-api-mcp is maintained by monday.com.", "url": "https://developer.monday.com/apps/docs/monday-apps-mcp"},
+    {"claim": "API access is included on the Free plan and all paid plans; extra daily API calls sold as an add-on.", "url": "https://developer.monday.com/apps/docs/plans-and-pricing"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact operation count is inferred from documented resource coverage rather than an enumerated list; Workforms and some newer product surfaces are not covered by the API."
+}

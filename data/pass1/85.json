@@ -1,0 +1,33 @@
+{
+  "id": 85,
+  "name": "iPayX",
+  "one_liner": "Rail-agnostic FX forensic audit layer for B2B payments that scores foreign-exchange transactions and detects hidden bank/card-network markups against live mid-market rates across 300+ currencies.",
+  "auth_methods": ["API key", "None/local"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "iPayX offers a free tier: some MCP tools (mid-market rate lookup, basic transaction audit) require no auth, and API keys generated from the iPayX dashboard include a free tier (e.g. 10 audits/day or 3 forensic audits/month per key/IP). Bearer tokens are issued as ipx_live_xxxxx (production) with sandbox variants. A paid tier (~$199) unlocks unlimited audits and full forensic reports. No approval or business verification gate is documented for basic/free API use.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "NARROW",
+  "api_notes": "Core capability set is small and focused on FX audit: check mid-market rate, audit a transaction (score 1-10), full forensic FX report, and multi-source FX rate comparison. Exposed primarily via an MCP server (Cloudflare Workers-hosted); vendor docs also reference a separate REST API developer portal, though its full endpoint list could not be confirmed (docs pages returned 404). A handful of operations total.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "The vendor (iPayX Protocol / 11850091 Canada Inc., FINTRAC MSB) ships an official MCP server, mcp-fx-audit, published under the iPAYX-Technologies GitHub org and documented at ipayx.ai/docs/mcp-server. Tools: audit_fx_transaction / audit_transaction, full_forensic_fx_report, check_fx_mid_market_rate / check_fx_rate, compare_fx_sources. Also listed on Glama and mcpservers.org.",
+  "buildability": "GREEN",
+  "main_blocker": "None major for basic use: free-tier API keys are self-serve from the dashboard and some tools need no auth. Full forensic reports require a paid (~$199) tier. Note the /docs and REST reference pages returned 404 at time of research, so the full REST surface is not fully verifiable.",
+  "evidence": [
+    {
+      "claim": "Official iPayX MCP server (mcp-fx-audit) exposes FX audit tools including check_fx_rate, audit_transaction, full_forensic_report, and compare_fx_sources; auth via Bearer token API key for forensic reports; free tier of 3 audits/month per IP.",
+      "url": "https://github.com/iPAYX-Technologies/mcp-fx-audit"
+    },
+    {
+      "claim": "iPayX MCP server docs describe tools audit_fx_transaction, full_forensic_fx_report, check_fx_mid_market_rate; HTTP Bearer tokens formatted ipx_live_xxxxx generated in the iPayX dashboard; free tier (10 audits/day) and paid tier (~$199).",
+      "url": "https://www.ipayx.ai/docs/mcp-server"
+    },
+    {
+      "claim": "iPayX FX Audit connector is listed on the Glama MCP directory under the iPAYX/Stellar org.",
+      "url": "https://glama.ai/mcp/connectors/io.github.Ipayx-stellar/fx-audit"
+    }
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "The ipayx.ai/docs and REST developer-portal pages returned 404 during research, so the exact REST endpoint list and full self-serve signup flow for API keys could not be directly confirmed; free-tier limits and pricing are drawn from MCP docs and may differ from the REST plan. Whether webhooks exist is unconfirmed (none documented)."
+}

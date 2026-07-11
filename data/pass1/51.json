@@ -1,0 +1,25 @@
+{
+  "id": 51,
+  "name": "DataForSEO",
+  "one_liner": "Pay-as-you-go SEO and web-scraping data provider exposing SERP, keyword, backlink, on-page, and marketplace data via a unified REST/JSON API.",
+  "auth_methods": ["Basic"],
+  "primary_auth": "Basic",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "Sign up instantly for an account and an API password is auto-generated (login = account email), no human approval. A free trial with limited free requests is offered on signup; beyond that it is prepaid pay-as-you-go with a $50 minimum payment. Credentials work immediately for API calls.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Large REST/JSON API spanning ~12 modules: SERP, Keywords Data, DataForSEO Labs, Backlinks, OnPage, Business Data, Domain Analytics, Content Analysis, Merchant (Amazon/Google Shopping), App Data, AI Optimization, and Databases. Each module has many endpoints (live and task-based/queued), easily 100+ operations total.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships an official MCP server at github.com/dataforseo/mcp-server-typescript (published Apr 2025 on GitHub, May 2025 on npm), plus a hosted endpoint at https://mcp.dataforseo.com/mcp. Covers 10 API modules. Community forks also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "No hard gate; self-serve credentials work immediately. Only friction is prepaid billing ($50 minimum) after the limited free trial, and task-based endpoints require polling or webhook callbacks.",
+  "evidence": [
+    {"claim": "API uses HTTP Basic auth with API login (account email) and an auto-generated API password, Base64-encoded in the Authorization header.", "url": "https://docs.dataforseo.com/v3/auth/"},
+    {"claim": "Pay-as-you-go pricing with a $50 minimum payment and a free trial available.", "url": "https://dataforseo.com/pricing"},
+    {"claim": "REST/JSON API organized into SERP, Keywords Data, Labs, Backlinks, OnPage, Merchant, Business Data, and more modules; supports webhooks/pingback-postback callbacks.", "url": "https://docs.dataforseo.com/v3/"},
+    {"claim": "Official DataForSEO MCP server hosted on GitHub/npm and at mcp.dataforseo.com covering 10 API modules.", "url": "https://dataforseo.com/model-context-protocol"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact free-trial allowance (number of free requests/credit) not confirmed from official docs in this pass."
+}

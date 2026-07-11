@@ -1,0 +1,25 @@
+{
+  "id": 95,
+  "name": "Reducto",
+  "one_liner": "Agentic document platform providing layout-aware OCR, parsing, extraction, splitting, and editing APIs that turn complex real-world documents into LLM-ready structured output.",
+  "auth_methods": ["API key", "JWT"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free account can be created at studio.reducto.ai; users generate an API key from the API Keys section of the dashboard. Docs confirm a free account exists though exact usage/credit limits are not stated.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "NARROW",
+  "api_notes": "REST API (OpenAPI 3.1) with a handful of core operations: Parse (sync/async), Extract, Split, and Edit. Bearer-token auth ('SkippableHTTPBearer'). Official SDKs for Python (3.8+), Node.js, and Go, plus direct cURL/HTTP.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Reducto ships an official MCP server (github.com/reductoai/mcp-server-reducto, published on PyPI as mcp-server-reducto). Install via 'claude mcp add reducto -- uvx mcp-server-reducto'. Exposes tools for uploading, parsing, extracting, splitting, and editing/classifying documents.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant — public REST API with self-serve free account and API keys. Exact free-tier limits are unspecified.",
+  "evidence": [
+    {"claim": "Free account at studio.reducto.ai; API key created from API Keys sidebar section; SDKs for Python, Node.js, Go plus cURL", "url": "https://docs.reducto.ai/quickstart"},
+    {"claim": "POST /parse endpoint with SyncParseConfig and AsyncParseConfig; SkippableHTTPBearer auth; async webhook support (Svix or direct HTTP POST) returning job_id", "url": "https://docs.reducto.ai/api-reference/parse"},
+    {"claim": "Core operations are Parse, Split, Extract, and Edit for scalable AI document workflows", "url": "https://reducto.ai/"},
+    {"claim": "Official MCP server repo mcp-server-reducto maintained by Reducto on GitHub", "url": "https://github.com/reductoai"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact free-tier usage limits/credits and whether a paid plan is required beyond a certain volume; pricing model for high-volume async processing."
+}

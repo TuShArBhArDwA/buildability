@@ -1,0 +1,26 @@
+{
+  "id": 67,
+  "name": "Snowflake",
+  "one_liner": "Snowflake is a cloud data platform (AI Data Cloud) for data warehousing, analytics, and AI, exposing SQL and resource-management REST APIs plus a managed MCP server.",
+  "auth_methods": ["Key pair", "OAuth2", "JWT", "Personal access token", "Session/other token"],
+  "primary_auth": "Key pair (RSA key-pair JWT) for programmatic REST/SQL API access; OAuth2 and PATs also supported.",
+  "access_model": "SELF_SERVE_TRIAL",
+  "access_notes": "A 30-day free trial with $400 in credits is available at signup.snowflake.com with no credit card required (email + company only). The trial provisions a real account that yields working API credentials (create a user, assign an RSA public key, generate JWT) with no human approval. It is a trial of a paid SaaS; after 30 days or credit exhaustion a credit card is needed to continue.",
+  "api_styles": ["REST", "SDK-only", "CLI-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Two main REST surfaces: the SQL API (POST /api/v2/statements to run SQL) and the Snowflake REST API covering resource management for databases, schemas, tables (incl. dynamic/Iceberg), views, stages, pipes, users, roles, grants, network/password policies, warehouses, accounts, tasks, streams, alerts, functions, procedures, notebooks, Streamlit apps, Cortex (Analyst/Search/Inference/Embed), and Snowpark Container Services. OpenAPI-spec compliant. Also official drivers/connectors (Python, Node.js, JDBC, ODBC, Go, .NET), Snowpark, SnowSQL, and Snowflake CLI. Effectively 100+ operations.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Snowflake ships a vendor MCP offering: a Snowflake-managed (hosted) MCP server documented at docs.snowflake.com (cortex-agents-mcp) exposing Cortex Analyst, Cortex Search, Cortex Agents, and SQL execution as tools, plus an open-source implementation at github.com/Snowflake-Labs/mcp. Both are first-party.",
+  "buildability": "GREEN",
+  "main_blocker": "None hard: public REST/SQL APIs with self-serve trial creds (no card). Minor friction is key-pair/JWT setup and that sustained use beyond the 30-day/$400 trial requires a paid account.",
+  "evidence": [
+    {"claim": "Snowflake REST API covers databases, warehouses, users, tasks, streams, Cortex, and more resource families, OpenAPI-spec compliant.", "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api"},
+    {"claim": "SQL API and REST APIs authenticate via key-pair JWT (Authorization: Bearer, X-Snowflake-Authorization-Token-Type: KEYPAIR_JWT) and OAuth.", "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating"},
+    {"claim": "Snowflake offers a Snowflake-managed MCP server exposing Cortex Analyst, Cortex Search, Cortex Agents, and SQL execution as tools.", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"},
+    {"claim": "Open-source first-party MCP server for Snowflake (Cortex AI, object management, SQL orchestration).", "url": "https://github.com/Snowflake-Labs/mcp"},
+    {"claim": "30-day free trial with $400 credits, no credit card required to sign up.", "url": "https://signup.snowflake.com/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the trial classification should be SELF_SERVE_FREE (no card, working creds) vs SELF_SERVE_TRIAL (paid SaaS trial) is a judgment call. Also whether Snowflake's alert/notification integrations count as outbound webhooks for agent purposes."
+}

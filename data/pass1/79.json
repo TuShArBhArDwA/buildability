@@ -1,0 +1,26 @@
+{
+  "id": 79,
+  "name": "Smartsheet",
+  "one_liner": "Enterprise work-management and project collaboration platform (spreadsheet-style sheets, reports, dashboards, and automation) with a REST API for programmatic access.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "OAuth2",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "API access requires a paid Business, Enterprise, or Advanced Work Management plan. Developer Tools registration (for OAuth app registration) is free but the email must belong to an existing licensed user on Business plan or higher. Smartsheet docs explicitly state you cannot generate API access tokens on a trial account, so there is no self-serve free/trial path to working credentials.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API at https://api.smartsheet.com/2.0 (regional Gov/EU variants). Broad coverage: Sheets, Rows, Columns, Cells, Reports (full CRUD), Folders, Workspaces, Users, Groups, Discussions, Comments, Attachments, Webhooks, Sights/Dashboards, automation, and more — well over 100 operations. Official SDKs for Python, JavaScript/Node.js, Java, and C#.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Smartsheet ships an official MCP server (smartsheet-platform/smar-mcp on GitHub), documented on developers.smartsheet.com and announced as generally available. It exposes read/write access to Sheets, Rows, Columns, Discussions, Comments, and Workspaces, hosted on smartsheet.com; connects via API token or OAuth for supported clients.",
+  "buildability": "YELLOW",
+  "main_blocker": "API access is gated behind a paid Business/Enterprise/Advanced plan; trial accounts cannot generate API tokens, so there is no free self-serve credential path. Once on a qualifying plan, the REST API is broad, well-documented, and easy to build against.",
+  "evidence": [
+    {"claim": "Smartsheet uses OAuth 2.0 (3-legged) for auth; access tokens expire after 7 days and can be refreshed; API also accepts raw access tokens via Authorization header.", "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication"},
+    {"claim": "REST API at https://api.smartsheet.com/2.0 covering Sheets, Folders, Users, full report management (CRUD), etc.; requires a Business, Enterprise, or Advanced Work Management plan; official SDKs for JS/Node, Python, Java, C#.", "url": "https://developers.smartsheet.com/api/smartsheet/introduction"},
+    {"claim": "Developer Tools email must belong to a licensed user on Business plan or higher; API access tokens cannot be generated on a trial account.", "url": "https://developers.smartsheet.com/register"},
+    {"claim": "Smartsheet provides an official MCP server exposing read/write access to Sheets, Rows, Columns, Discussions, Comments, and Workspaces.", "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server"},
+    {"claim": "Webhooks are a documented API feature; apps can create webhooks dynamically to receive change notifications.", "url": "https://developers.smartsheet.com/api/smartsheet/guides/webhooks/webhook-access"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact list of plans that qualify as 'Advanced Work Management' and whether any newer self-serve API sandbox exists; rate-limit tiers by plan."
+}

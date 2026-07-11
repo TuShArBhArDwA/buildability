@@ -1,0 +1,25 @@
+{
+  "id": 68,
+  "name": "MongoDB Atlas",
+  "one_liner": "Fully-managed cloud database (DBaaS) with a comprehensive REST Administration API for programmatically managing clusters, projects, users, backups, billing, and monitoring.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "Service Account OAuth2 client credentials (recommended); legacy programmatic API keys use HTTP Digest auth with public/private key pairs.",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free MongoDB Atlas account with a free-forever M0 cluster tier, no payment or approval. The account creator is Organization Owner, which is the role required to create service accounts or programmatic API keys for the Atlas Administration API. Working credentials are obtainable instantly self-serve.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Atlas Administration API v2 is a large RESTful API (100+ operations) covering clusters, projects, orgs, database users, network access, backups/restores, snapshots, billing/invoices, alerts, monitoring/metrics, data federation, online archive, and more. Additional REST APIs exist (Embedding/Reranking via Voyage AI, Cloud Status). A GraphQL option exists on AWS for certain use cases. Also wrapped by Atlas CLI, Go SDK, Terraform provider, Kubernetes Operator, and CloudFormation. Base endpoint: https://cloud.mongodb.com/api/atlas/v2.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "MongoDB ships an official MCP server (mongodb-js/mongodb-mcp-server on GitHub, mongodb/mongodb-mcp-server on Docker Hub, docs at mongodb.com/docs/mcp-server). It exposes tools for both database operations and Atlas administrative actions (cluster management, Performance Advisor). Announced on the official MongoDB company blog.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Creds are self-serve free. Minor friction: legacy API keys use HTTP Digest auth (less common), though the modern OAuth2 service-account flow is standard. Optional IP access lists can gate token usage if enabled.",
+  "evidence": [
+    {"claim": "Atlas offers a RESTful Administration API plus Embedding/Reranking REST API and a GraphQL option, with full v2 API resource spec, CLI, Go SDK, Terraform, and Kubernetes Operator.", "url": "https://www.mongodb.com/docs/atlas/api/"},
+    {"claim": "The Atlas Administration API supports two auth methods: Service Account access tokens (OAuth 2.0 client credentials) and programmatic API keys (HTTP Digest); creating org-level keys requires Organization Owner role.", "url": "https://www.mongodb.com/docs/atlas/configure-api-access/"},
+    {"claim": "MongoDB ships an official MongoDB MCP Server connecting AI clients to MongoDB deployments and Atlas clusters, including administrative actions.", "url": "https://www.mongodb.com/docs/mcp-server/"},
+    {"claim": "Official MCP server repository maintained by MongoDB (mongodb-js).", "url": "https://github.com/mongodb-js/mongodb-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact operation count in v2 spec (stated as 100+ from resource categories). Whether M0 free-tier accounts have any restriction on Administration API scope (creation of keys confirmed available; per-endpoint limits not verified)."
+}

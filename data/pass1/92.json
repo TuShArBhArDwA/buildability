@@ -1,0 +1,37 @@
+{
+  "id": 92,
+  "name": "Otter AI",
+  "one_liner": "AI meeting assistant that records, transcribes, summarizes, and surfaces action items from voice conversations and meetings.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2",
+  "access_model": "NO_PUBLIC_API",
+  "access_notes": "Otter.ai has long stated in its Help Center that it does not offer an open/public REST API. The only official programmatic surface is the Otter MCP Server (hosted at mcp.otter.ai), which uses OAuth with granular per-meeting permissions and connects AI assistants (Claude, ChatGPT) to a user's transcripts. It is positioned toward Enterprise but the OAuth connect flow itself is self-serve. NOTE: developer-guides.tryotter.com / helpdesk.tryotter.com belong to a DIFFERENT company (Otter restaurant-operations software), not Otter.ai.",
+  "api_styles": ["SDK-only"],
+  "api_breadth": "NARROW",
+  "api_notes": "No documented public REST/GraphQL API for the transcription product. Official access is via the MCP server, which exposes a handful of read-oriented capabilities: search meeting transcripts, retrieve summaries, surface action items, and analyze conversation history. An unofficial community Python library (gmchad/otterai-api) reverse-engineers the private web API using email/password, but it is not supported.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Otter ships an official, vendor-hosted remote MCP server at https://mcp.otter.ai/mcp, announced on the otter.ai blog and documented in its Help Center. OAuth-authenticated with granular permissions; listed in the Claude connector directory and works with ChatGPT and other remote-MCP clients. Community alternatives (e.g. DarrenZal/otter-mcp) also exist but are unofficial.",
+  "buildability": "YELLOW",
+  "main_blocker": "No public REST API to wrap; the only official programmatic path is Otter's own hosted OAuth MCP server (read-only transcript/summary/action-item access), so a Composio-style tool would ride on that MCP rather than a documented HTTP API.",
+  "evidence": [
+    {
+      "claim": "Otter ships an official MCP server (mcp.otter.ai) that connects meeting data to AI tools like Claude and ChatGPT, OAuth-authenticated with granular permissions.",
+      "url": "https://otter.ai/blog/otter-for-enterprise-connect-ai-to-ai-with-otters-mcp"
+    },
+    {
+      "claim": "Otter's Help Center hosts an 'Otter MCP Server' setup article covering connecting AI assistants to transcripts.",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server"
+    },
+    {
+      "claim": "Otter Help Center article 'Does Otter offer an open API?' addresses the (historically absent) public API.",
+      "url": "https://help.otter.ai/hc/en-us/articles/4412365535895-Does-Otter-offer-an-open-API"
+    },
+    {
+      "claim": "Unofficial reverse-engineered Otter.ai Python API exists using email/password auth against the private endpoints.",
+      "url": "https://github.com/gmchad/otterai-api"
+    }
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Whether the official MCP requires an Enterprise plan or is available to free/paid individual tiers; whether Otter has quietly released any documented public REST endpoints beyond MCP; exact tool/scope list exposed by the MCP server."
+}

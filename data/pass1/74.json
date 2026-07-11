@@ -1,0 +1,26 @@
+{
+  "id": 74,
+  "name": "Jira",
+  "one_liner": "Atlassian's issue tracking and project management platform with a broad Cloud REST API for issues, projects, workflows, and boards.",
+  "auth_methods": ["OAuth2", "API key", "Basic"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free Jira Cloud site (yourname.atlassian.net) with no payment, then generate an API token at id.atlassian.com and immediately call the REST API via Basic auth (email:token). OAuth 2.0 (3LO) apps are self-registered in the Atlassian developer console with no approval gate. The REST API is available on the free plan with no API-specific paywall.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Jira Cloud platform REST API v3 covers 100+ operations across issues, projects, workflows, fields, comments, attachments, JQL search, users, and permissions, plus a separate Jira Software Cloud REST API for boards/sprints. Also offers Forge and Connect app frameworks. Self-hosted Data Center has its own REST API.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Atlassian ships an official remote MCP server (Rovo MCP Server) hosted at https://mcp.atlassian.com/v1/mcp connecting Jira, Confluence, JSM, Bitbucket, and Compass to AI tools via OAuth 2.1 or API tokens. Repo: github.com/atlassian/atlassian-mcp-server.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; free self-serve credentials and a broad public REST API. Minor: API tokens now expire (default 1 year) so long-lived integrations should use OAuth.",
+  "evidence": [
+    {"claim": "Jira Cloud REST API v3 recommends OAuth 2.0 (3LO) for non-Forge/Connect integrations; also supports Basic auth with API token", "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"},
+    {"claim": "Basic auth uses base64-encoded email:api_token; API tokens managed at id.atlassian.com", "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"},
+    {"claim": "Jira Cloud supports webhooks registered via admin UI or POST /rest/api/3/webhook", "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/"},
+    {"claim": "Atlassian ships an official remote MCP server for Jira via OAuth 2.1 or API tokens", "url": "https://github.com/atlassian/atlassian-mcp-server"},
+    {"claim": "REST API is available to free plan users with no tier-specific restrictions", "url": "https://community.atlassian.com/forums/Jira-questions/Use-REST-API-with-Jira-instance-on-Free-Plan/qaq-p/2955396"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact API rate limits differ by plan/product; Data Center vs Cloud API differences not fully enumerated here."
+}

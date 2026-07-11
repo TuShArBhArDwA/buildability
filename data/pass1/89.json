@@ -1,0 +1,26 @@
+{
+  "id": 89,
+  "name": "Ramp",
+  "one_liner": "Corporate card and spend-management platform whose Developer API exposes cards, transactions, bills, reimbursements, users, and accounting sync for agentic finance automation.",
+  "auth_methods": ["OAuth2", "Client credentials"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Admins create a developer app in Settings > Developer to obtain client credentials; a self-serve sandbox at demo-api.ramp.com provides working test credentials with full sample data, no payment or approval needed to start. Access requires a Ramp account, and Ramp itself is a business product, but the API/sandbox path is self-serve. Certain elevated scopes (cards:read_vault for full PANs/CVVs) require PCI qualification via a support ticket, and partner/production MCP listing has extra review.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Comprehensive REST API. Accounting alone has ~40 operations (GL accounts, custom fields, tax codes, vendors, codings, sync status); plus cards, transactions, bills (~8), reimbursements, users/departments/locations, banking, spend limits/programs, receipts, memos, statements, and financing applications. Well over 100 operations across categories. Batch endpoints support up to 500 items. OpenAPI spec published at /openapi/developer-api.json and machine-readable llms-*.txt docs available.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Ramp ships an official open-source MCP server (github.com/ramp-public/ramp_mcp) and hosts a remote MCP at https://mcp.ramp.com/mcp plus a demo at https://demo-mcp.ramp.com/mcp. It provides a SQL interface over the Developer API for natural-language financial analytics; admins manage access via Company > Integrations > Ramp MCP.",
+  "buildability": "GREEN",
+  "main_blocker": "None for core build: public REST API with self-serve credentials and sandbox. Only elevated card-vault (full PAN/CVV) access requires PCI qualification via support ticket.",
+  "evidence": [
+    {"claim": "OAuth2 with authorization code and client credentials grants; access tokens last 10 days; sandbox API at demo-api.ramp.com; app created via Settings > Developer.", "url": "https://docs.ramp.com/developer-api/v1/guides/oauth"},
+    {"claim": "Scopes follow resource:permission; only Admin/Business Owner roles can grant OAuth2 permissions; broad resource coverage across accounting, bills, cards, transactions.", "url": "https://docs.ramp.com/developer-api/v1/overview/scopes"},
+    {"claim": "Ramp ships an official open-source MCP server and hosts remote MCP at mcp.ramp.com/mcp with a demo server.", "url": "https://github.com/ramp-public/ramp_mcp"},
+    {"claim": "Ramp built an MCP server providing a SQL interface over the Developer API for natural-language interaction with financial data.", "url": "https://builders.ramp.com/post/ramp-mcp"},
+    {"claim": "Webhooks supported for events such as applications.status_updated, bills.*, and transactions.* with signature verification.", "url": "https://docs.ramp.com/developer-api/v1/guides/oauth"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the free/starter Ramp tier grants developer-app access or only paid tiers; exact production go-live review requirements for third-party public apps beyond redirect-URI allowlisting."
+}

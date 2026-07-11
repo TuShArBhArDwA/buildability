@@ -1,0 +1,37 @@
+{
+  "id": 48,
+  "name": "Gumroad",
+  "one_liner": "Creator-focused ecommerce platform for selling digital products, memberships, and subscriptions, with a REST API for products, sales, subscribers, and license verification.",
+  "auth_methods": ["OAuth2", "Personal access token"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Gumroad account (free to create) can generate an application and access token from Settings > Advanced ('Generate access token'). No paid plan, review, or approval required. OAuth2 apps also self-serve via the advanced settings page (app icon, name, redirect URI).",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API at https://api.gumroad.com/v2/. Resources: products (list/get/enable/disable/delete), variant categories & variants, offer codes (CRUD), custom fields, product/subscriber files, licenses (verify/enable/disable/decrement uses), sales, subscribers, resource subscriptions (webhooks), and user (authenticated creator data). Roughly 20-40 endpoints, so MODERATE.",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found. Community servers exist: rmarescu/gumroad-mcp (products, sales, offer codes, user data) and keithah/gumroad-mcp (subscriptions, sales, products). Both use a Gumroad access token; neither is published by Gumroad.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Self-serve access tokens make integration straightforward; only minor friction is that OAuth for third-party multi-account apps requires registering an application.",
+  "evidence": [
+    {
+      "claim": "Gumroad API uses OAuth 2.0 with base URL https://api.gumroad.com/v2/; access tokens obtained via https://api.gumroad.com/oauth/token; resources include products, sales, subscribers, payouts.",
+      "url": "https://gumroad.com/help/article/280-create-application-api.html"
+    },
+    {
+      "claim": "Applications are created through the advanced settings page requiring an application icon, name, and redirect URI; access tokens generated from Settings > Advanced.",
+      "url": "https://help.gumroad.com/article/280-create-application-api"
+    },
+    {
+      "claim": "Community MCP server (rmarescu/gumroad-mcp) provides tools for products, sales, offer codes and user data using a Gumroad access token from Settings > Advanced.",
+      "url": "https://github.com/rmarescu/gumroad-mcp"
+    },
+    {
+      "claim": "Second community MCP server (keithah/gumroad-mcp) offers lookup of subscriptions, sales, and products via the Gumroad API.",
+      "url": "https://github.com/keithah/gumroad-mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total endpoint count and whether all resource-subscription (webhook) event types remain supported; the JS-rendered official API reference at gumroad.com/api could not be fully scraped for a definitive endpoint list."
+}

@@ -1,0 +1,24 @@
+{
+  "id": 84,
+  "name": "Paygent Connect",
+  "one_liner": "Paygent Connect is a white-label, NMI-powered payment gateway for merchants/ISOs to process cards and manage transactions, exposing NMI's Payment API for integration.",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key (NMI 'security_key' issued per merchant account)",
+  "access_model": "PARTNER_GATED",
+  "access_notes": "Paygent Connect is a rebranded instance of NMI's white-label gateway. There is no public self-serve signup; a merchant account must be provisioned through the ISO/reseller that operates the branded gateway. NMI itself offers an Integration Portal/Sandbox, but obtaining a working production account and per-merchant security_key requires a sales/partner relationship. No independent 'Paygent Connect' developer portal or free API tier was found.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Underlying platform is NMI (docs.nmi.com). Integration surfaces include the Payment API / Direct Post (form-encoded HTTP POST), Collect.js and Three-Step Redirect for tokenized/hosted card entry, and a Query API for reporting. Operations cover sale, auth, capture, void, refund, credit, recurring/subscriptions, and Customer Vault (stored payment methods), plus invoicing. Estimated a few dozen operations, hence MODERATE. Exact endpoint set for the Paygent Connect brand not separately documented; assumed to mirror standard NMI.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No MCP server found for 'Paygent Connect' or for NMI shipped by the vendor. Searches returned no vendor or community MCP implementation.",
+  "buildability": "YELLOW",
+  "main_blocker": "Credentials are gated: no self-serve signup for the branded gateway, and a live per-merchant NMI security_key requires a merchant account provisioned via the ISO/reseller. The API itself (NMI) is well-documented and integration-friendly once you have keys.",
+  "evidence": [
+    {"claim": "NMI offers a white-label payment gateway that ISOs/partners rebrand with their own logo, colors and URL, with access via a sales/partner relationship.", "url": "https://www.nmi.com/products/payment-gateway/"},
+    {"claim": "NMI provides Payment API/SDK developer documentation and a sandbox integration portal for building payment solutions.", "url": "https://docs.nmi.com/reference/getting-started"},
+    {"claim": "A 'Paygent Connect' gateway integration is referenced with merchant ConnectID/ConnectPassword-style credentials in a third-party library.", "url": "https://pkg.go.dev/github.com/conku/gomerchant/gateways/paygent"}
+  ],
+  "confidence": "LOW",
+  "open_questions": "Ambiguity between (a) 'Paygent Connect' as a white-label NMI gateway brand (matching the NMI-powered hint) and (b) the Japanese 'Paygent' payment service (paygent.co.jp), which is not NMI-based and uses ConnectID/ConnectPassword. Following the NMI-powered hint, this record assumes (a). The specific reseller operating the Paygent Connect brand and its exact merchant-onboarding path were not found; confirmation of a dedicated developer portal or sandbox for this brand is needed."
+}

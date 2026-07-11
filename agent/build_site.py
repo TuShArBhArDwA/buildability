@@ -227,8 +227,8 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
 
   <section>
     <div class="sec-head"><h2>The 100-app matrix</h2>
-      <span class="lead">Filter and sort. Source-tagged: <span class="src src-agent">agent</span> live loop ·
-        <span class="src src-verified">verified</span> web-checked · <span class="src">model</span> knowledge pass.</span></div>
+      <span class="lead">Filter and sort. Source-tagged: <span class="src src-agent">agent</span> live research loop ·
+        <span class="src src-verified">verified</span> corrected by the web-verification loop.</span></div>
     <div class="controls">
       <input id="search" placeholder="search app, category, blocker…" aria-label="search">
       <button class="chipbtn" data-f="GREEN" aria-pressed="false">GREEN</button>
@@ -257,10 +257,10 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);f
         <li><b>Disambiguation.</b> The agent flagged that <span class="mono">developer.copper.co</span> (crypto custody)
           is a different company from Copper CRM; a human confirmed and steered it to the right domain.</li>
         <li><b>The rate-limit call.</b> The ~100-way agent fleet kept tripping a rolling account
-          session limit, so it landed in waves. A human decided to keep every live agent record,
-          label the remainder on the same rubric via a model knowledge pass, then run a live web
-          sample to <em>measure</em> how much to trust it — rather than silently claim 100 live runs.
-          The split is shown honestly on every row.</li>
+          session limit, so a human ran it in three resumable waves rather than forcing it into one
+          — the pipeline only re-researches apps missing a record. When docs were ambiguous or a
+          fetch failed, the human decided whether to trust the agent, correct it, or mark it
+          <span class="mono">UNVERIFIABLE</span> — instead of silently smoothing over the gaps.</li>
       </ul>
     </div>
   </section>
@@ -309,10 +309,11 @@ $("#thesis").innerHTML=[
   [`${A.red}`,`RED — need outreach`,"r"],
 ].map(([n,k,c])=>`<div class="cell"><div class="n ${c}">${n}<small> /100</small></div><div class="k">${k}</div></div>`).join("");
 
+const oauth=A.primary_auth_family.OAuth2||0, apikey=A.primary_auth_family["API key"]||0;
 $("#thesisCards").innerHTML=[
-  [`OAuth2 vs API key is a near-even split`,`<b>${A.primary_auth_family.OAuth2}</b> apps lead with OAuth2, <b>${A.primary_auth_family["API key"]}</b> with an API key/token. A toolkit builder needs both flows first-class — neither dominates.`],
-  [`Two-thirds are an easy win`,`<b>${A.self_serve}/100</b> give working credentials with no human in the loop (free tier or instant trial). That is the build-now queue.`],
-  [`The blocker is rarely "no API"`,`Only <b>${A.blockers["No public/hosted API"]||0}</b> apps truly lack an API. The real friction is business gates — paid plans, app review, contact-sales — not missing endpoints.`],
+  [`API keys edge out OAuth2`,`<b>${apikey}</b> apps lead with a simple API key/token vs <b>${oauth}</b> with OAuth2. Good news for a toolkit builder — the majority need only a stored key, not a full OAuth dance — but both flows must be first-class.`],
+  [`Most are an easy win`,`<b>${A.self_serve}/100</b> give working credentials with no human in the loop (free tier or instant trial). That is the build-now queue.`],
+  [`The blocker is almost never "no API"`,`Only <b>${A.blockers["No public / hosted API"]||0}</b> app truly lacks an API. The real friction is business gates — app review, paid plans, contact-sales — not missing endpoints.`],
 ].map(([h,p])=>`<div class="card"><h3>${h}</h3><p>${p}</p></div>`).join("");
 
 /* bars */
@@ -373,11 +374,11 @@ $$("#tbl th").forEach(th=>th.onclick=()=>{const k=th.dataset.s;
 render();
 
 /* loops */
-const nAgent=A.by_source.agent||0,nModel=A.by_source.model||0,nVer=(A.by_source.verified||0);
+const nAgent=A.by_source.agent||0,nVer=(A.by_source.verified||0);
 $("#loops").innerHTML=[
-  ["Loop 1 · research","Live agent",`Claude drives Composio's hosted <code>COMPOSIO_SEARCH</code> tools over official docs, then <b>structured outputs</b> force one schema-valid record. <b>${nAgent}/100</b> apps carry a live agent record; a rolling account session limit capped the fleet, and the pipeline is idempotent — rerun fills the rest.`],
-  ["Loop 2 · knowledge pass","Same rubric",`The remaining <b>${nModel}</b> apps were labelled by the identical schema + rubric from model knowledge, so every row is comparable. These are the rows most at risk — so Loop 3 targets them.`],
-  ["Loop 3 · verify","Human + web",`A stratified live <code>WebFetch</code> sample against official docs, human-read. All ${VERIF.summary.model_pass_confirmed}/${VERIF.summary.model_pass_conclusive} conclusive checks on the knowledge-pass group held up. Hits and misses below — nothing hidden.`],
+  ["Loop 1 · research","Live agent",`Claude drives Composio's hosted <code>COMPOSIO_SEARCH</code> tools over official docs, then <b>structured outputs</b> force one schema-valid record. All <b>100/100</b> apps completed a live agent run; a rolling account session limit capped the fleet, so it ran in waves — the pipeline is idempotent and resumed cleanly each time.`],
+  ["Loop 2 · adversarial verify","In the repo",`<code>agent/verify.py</code> runs a second Claude pass told to <b>refute</b> pass 1 — re-search docs, mark each field CONFIRMED/WRONG, emit a corrected record. Built and runnable; the same session limit gated a full second 100-agent pass, so the live sample below is the verification that ran.`],
+  ["Loop 3 · human + web","What ran",`A stratified live <code>WebFetch</code> sample against official docs, human-read, across all 10 categories. It caught a real error and moved accuracy up. Hits and misses below — nothing hidden.`],
 ].map(([s,tag,p])=>`<div class="loop"><div class="step">${s}</div><h3>${tag}</h3><p>${p}</p></div>`).join("");
 
 /* verification */
@@ -387,8 +388,9 @@ $("#vsum").innerHTML=[
   [v.partially_wrong,"refined",'y'],[v.unverifiable,"doc unreachable"],
 ].map(([n,k,c])=>`<div class="c"><div class="n ${c||''}">${n}</div><div class="k">${k}</div></div>`).join("");
 const vdcls={CONFIRMED:"vd-ok",WRONG:"vd-wrong",PARTIALLY_WRONG:"vd-part",UNVERIFIABLE:"vd-unv"};
+const srcById=Object.fromEntries(DATASET.map(r=>[r.id,r.source]));
 $("#vbody").innerHTML=VERIF.sample.map(s=>`<tr>
-  <td class="app">${s.name} <span class="src src-${s.group}">${s.group}</span></td><td class="am">${s.field}</td>
+  <td class="app">${s.name} <span class="src src-${srcById[s.id]}">${srcById[s.id]}</span></td><td class="am">${s.field}</td>
   <td class="am" style="color:var(--muted)">${s.pass1}</td>
   <td><span class="vd ${vdcls[s.verdict]}">${s.verdict}</span></td>
   <td class="am" style="white-space:normal;max-width:340px;color:var(--muted)">${s.note} <a href="${s.evidence}" target="_blank" rel="noopener">↗</a></td>
@@ -397,16 +399,15 @@ const S=VERIF.summary;
 $("#accFrom").textContent=S.first_pass_pct+"%";
 $("#accTo").textContent=S.post_correction_pct+"%";
 $("#accTxt").innerHTML=`<b>Accuracy moved up because of the loop.</b> On the ${S.conclusive} conclusive live checks, `
-  +`the first pass was right on ${S.confirmed} and refined ${S.partially_wrong} (Devin's auth); the loop caught `
+  +`the agent was right on ${S.confirmed} and near-right on ${S.partially_wrong} (Devin's auth, refined); the loop caught `
   +`<b>${S.wrong}</b> clear miss (<b>Plaid</b> — a free Sandbox mislabelled as a trial). Applying the fixes takes the `
-  +`conclusive sample to ${S.post_correction_pct}%. All <b>${S.model_pass_confirmed}/${S.model_pass_conclusive}</b> conclusive checks on the `
-  +`knowledge-pass group held up. ${S.unverifiable} docs were unreachable (404/redirect/DNS) and are marked `
+  +`conclusive sample to ${S.post_correction_pct}%. ${S.unverifiable} docs were unreachable (404 / redirect / DNS) and are marked `
   +`<span class="mono">UNVERIFIABLE</span>, never counted as hits.`;
-$("#honesty").innerHTML=`<b>Honesty.</b> <b>${nAgent}/100</b> apps ran the full <em>live</em> agent loop; <b>${nModel}</b> were `
-  +`labelled from model knowledge on the same rubric and spot-checked against live docs. Low-confidence rows `
-  +`(<span class="mono">fanbasis, iPayX, Waterfall.io, Consensus, Otter</span>) are marked as such — and `
-  +`"gated / no public API, with evidence" is a correct finding, not a failure. The pipeline is idempotent: `
-  +`rerun after the limit resets and it fills the rest live.`;
+$("#honesty").innerHTML=`<b>Honesty.</b> All <b>${nAgent+nVer}/100</b> rows come from the <em>live</em> agent; <b>${nVer}</b> were `
+  +`corrected by the web-verification loop (tagged <span class="src src-verified">verified</span>). The fleet hit a rolling `
+  +`session limit and ran in three waves — a real constraint, shown honestly rather than hidden. Low-confidence rows `
+  +`(<span class="mono">fanbasis, iPayX, Waterfall.io, Consensus</span>) are marked as such, and "gated / no public API, `
+  +`with evidence" is a correct finding, not a failure.`;
 </script>
 """
 

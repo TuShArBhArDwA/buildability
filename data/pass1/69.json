@@ -1,0 +1,26 @@
+{
+  "id": 69,
+  "name": "Datadog",
+  "one_liner": "Cloud observability and monitoring platform (metrics, traces, logs, dashboards, monitors, incidents) with a comprehensive HTTP REST API.",
+  "auth_methods": ["API key", "Other"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Datadog offers both a free 14-day trial (no credit card required) and a free tier. Signing up gives immediate access to Organization Settings where you generate an API key (DD-API-KEY) and application key (DD-APPLICATION-KEY) with no human approval. Both keys are needed for most read operations; the API key alone suffices for many write/submit operations.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Documented HTTP REST API returning JSON with resource-oriented URLs and standard status codes. Covers a very large surface: metrics, logs, events, dashboards, monitors, downtimes, incidents, SLOs, synthetics, RUM, security monitoring, hosts, users/roles, key management, service accounts, and more — well over 100 operations. Official client libraries for Java, Python, Ruby, Go, JavaScript, and Rust. Auth via DD-API-KEY (+ DD-APPLICATION-KEY) headers. Site-specific base URLs (US1, EU, etc.).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Datadog ships an official, vendor-managed remote MCP server (docs.datadoghq.com/mcp_server, repo github.com/datadog-labs/mcp-server). Endpoint https://mcp.datadoghq.com/api/unstable/mcp-server/mcp (EU: mcp.datadoghq.eu). Provides access to APM, logs, metrics, monitors, dashboards, security signals, incidents; distributed as an Anthropic plugin. HIPAA-eligible (not GovCloud compatible).",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Dual-key auth (API key + application key) is slightly more involved than a single token, and application key secrets cannot be retrieved after creation, but self-serve credentials are available instantly on a free/trial account.",
+  "evidence": [
+    {"claim": "API uses DD-API-KEY header (and DD-APPLICATION-KEY for some endpoints); reads require an application key, writes require an API key.", "url": "https://docs.datadoghq.com/api/latest/authentication/"},
+    {"claim": "The Datadog API is an HTTP REST API using resource-oriented URLs, returning JSON and using standard HTTP status codes.", "url": "https://docs.datadoghq.com/api/latest/"},
+    {"claim": "Datadog offers a 14-day free trial with no credit card required.", "url": "https://www.datadoghq.com/free-datadog-trial/"},
+    {"claim": "Datadog ships an official managed remote MCP server for querying observability data from AI agents.", "url": "https://docs.datadoghq.com/mcp_server/"},
+    {"claim": "Application keys are created under Organization Settings > Application Keys and the secret cannot be retrieved after creation.", "url": "https://docs.datadoghq.com/account_management/api-app-keys/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact API rate limits and whether the free tier (vs. trial) has any endpoint restrictions were not verified in detail."
+}

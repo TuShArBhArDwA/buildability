@@ -1,0 +1,33 @@
+{
+  "id": 78,
+  "name": "Coda",
+  "one_liner": "Coda is an all-in-one doc/workspace platform (docs that combine text, tables, and apps); its REST API lets you read and write docs, tables, rows, pages, formulas, controls, and trigger automations.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Coda user (free or paid workspace) can generate an API token from Account Settings instantly, no payment or approval. OAuth2 is available for Pack/app integrations. API access respects the token owner's workspace role.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "RESTful API at base https://coda.io/apis/v1. ~50+ endpoints across Folders, Docs, Doc structure/Pages, Tables & Views, Rows (insert/upsert/update/delete), Columns, Formulas, Controls, Account, and Analytics. Mutations are asynchronous (HTTP 202 with request IDs). Tiered rate limits (reads ~100 req/6s, writes ~10 req/6s).",
+  "webhooks": true,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found. Multiple community MCP servers exist (e.g. orellazri/coda-mcp, TJC-LP/coda-mcp-server, universal-mcp/coda), plus Pipedream/Merge hosted connectors. All explicitly unaffiliated with Coda.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Self-serve token is instant and free. Minor considerations: asynchronous write model (202 + request IDs) and moderate rate limits. Note Coda was acquired and docs now redirect to docs.superhuman.com, though the API host remains coda.io/apis/v1.",
+  "evidence": [
+    {
+      "claim": "REST API at https://coda.io/apis/v1 with resources for docs, tables, rows, pages, columns, formulas, controls, and automation triggering; async mutations via HTTP 202; tiered rate limits.",
+      "url": "https://docs.superhuman.com/developers/apis/v1"
+    },
+    {
+      "claim": "API is available to all users free of charge; tokens are generated from Account Settings and can be scoped to all docs or a specific doc/table.",
+      "url": "https://coda.io/developers"
+    },
+    {
+      "claim": "OAuth2-based authentication is documented for building Packs/integrations with other services.",
+      "url": "https://coda.io/packs/build/latest/guides/basics/authentication/"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact webhook surface: Coda supports webhook-triggered automations and the API can trigger automations, but there is no first-class outbound webhook subscription API. Post-acquisition (Superhuman/Grammarly) long-term stability of the coda.io API host is uncertain."
+}

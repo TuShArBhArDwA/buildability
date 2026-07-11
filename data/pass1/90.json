@@ -1,0 +1,37 @@
+{
+  "id": 90,
+  "name": "PitchBook",
+  "one_liner": "Private capital market intelligence platform (companies, deals, investors, funds, LPs) with a RESTful Direct Data API for pulling PitchBook data on demand.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "PARTNER_GATED",
+  "access_notes": "The PitchBook API is a standalone offering requiring a separate contract agreement on top of a PitchBook license. A test 'sandbox' environment exists, but you must contact your PitchBook account manager to request a sandbox key -- there is no self-serve signup or public credential issuance. Existing enterprise clients can test endpoints via the Plugins & Apps section in My PitchBook.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Public API V2 is a RESTful, JSON, system-agnostic API providing direct real-time access to companies, deals, people, investors, funds, service providers, and limited partners. Covers several core entities with lookup/search endpoints; roughly moderate breadth. Postman documentation (Public API V2) is published but the underlying data requires a contracted key.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "PitchBook ships official vendor MCP integrations: the 'PitchBook Premium Connector' (built on MCP server technology, cloud-hosted, SSO auth) and a 'PitchBook Essential MCP' integration announced with Perplexity. Works with Anthropic's Claude for Financial Services, OpenAI ChatGPT, and Perplexity. Access limited to licensed PitchBook users (seat-based/unlimited/trial plus enterprise partner license); auth via SSO tied to user permissions.",
+  "buildability": "RED",
+  "main_blocker": "API access requires a separate paid contract and an account-manager-issued sandbox/production key; no self-serve or public credentials. MCP connector is gated behind enterprise/partner PitchBook licenses.",
+  "evidence": [
+    {
+      "claim": "PitchBook API v2 is RESTful/JSON giving direct access to companies, deals, people, investors, funds, service providers, and LPs; sandbox key obtained via account manager; standalone contract required.",
+      "url": "https://pitchbook.com/help/PitchBook-api"
+    },
+    {
+      "claim": "Public API V2 documentation is published on Postman.",
+      "url": "https://documenter.getpostman.com/view/5190535/TzCV1iRc"
+    },
+    {
+      "claim": "PitchBook Premium Connector is built on MCP server technology, cloud-hosted, SSO auth, for licensed users and enterprise partner licenses; works with Claude, ChatGPT, Perplexity.",
+      "url": "https://pitchbook.com/products/premium-connectors"
+    },
+    {
+      "claim": "PitchBook announced an official Essential MCP integration with Perplexity for AI-powered verifiable market intelligence.",
+      "url": "https://pitchbook.com/media/press-releases/pitchbook-announces-new-essential-mcp-integration-with-perplexity-expanding-access-to-ai-powered-verifiable-market-intelligence"
+    }
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Exact auth scheme of the Direct Data API (static API key vs OAuth token) is not confirmed from official docs (pitchbook.com blocked direct fetching). Total endpoint/operation count and whether any trial tier issues working API keys without an account manager are unclear."
+}

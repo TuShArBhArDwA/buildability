@@ -1,0 +1,25 @@
+{
+  "id": 82,
+  "name": "Plaid",
+  "one_liner": "Financial data network that connects apps to users' bank accounts for balances, transactions, identity, auth, payments, and KYC/underwriting data.",
+  "auth_methods": ["API key", "Session/other token"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Creating a free Plaid Dashboard account immediately provisions working Sandbox client_id/secret for full API testing with test institutions and simulated data. Sandbox requires no payment or approval. Production access (real user bank connections) requires a separate Production approval/application step and moves to paid usage, but a working self-serve credential path exists via Sandbox.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "JSON over HTTPS; all requests are POST. Broad surface across many products: Auth, Balance, Identity, Transactions, Investments, Liabilities, Transfer/Payments, Assets, Income, Statements, Identity Verification, Monitor, Signal, Consumer Report, Enrich, Layer. Uses a Link token + public_token/access_token exchange flow, then per-product endpoints. Well over 100 endpoints across products.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Plaid (the vendor) ships two official MCP servers: a remote Dashboard MCP server (https://api.dashboard.plaid.com/mcp/, Streamable HTTP, OAuth, production diagnostics/analytics) and a local 'AI Coding Toolkit' MCP server (mock data, docs search, sandbox tokens, webhook simulation). Documented at plaid.com/docs/resources/mcp/. Dashboard MCP noted as under active development with limited support.",
+  "buildability": "GREEN",
+  "main_blocker": "Sandbox is fully self-serve for building/testing; the only real gate is Production approval to access real end-user bank data, which requires an application and paid usage.",
+  "evidence": [
+    {"claim": "Plaid API is JSON over HTTP with POST requests, authenticated by client_id and secret sent in body or PLAID-CLIENT-ID/PLAID-SECRET headers; Sandbox and Production environments exist.", "url": "https://plaid.com/docs/api/"},
+    {"claim": "Signing up for a Plaid Dashboard account provides a live client_id and secret; Sandbox available on signup.", "url": "https://plaid.com/docs/api/"},
+    {"claim": "Plaid offers official MCP servers (Dashboard MCP and AI Coding Toolkit) documented on the official docs site.", "url": "https://plaid.com/docs/resources/mcp/"},
+    {"claim": "Plaid product catalog spans Auth, Balance, Identity, Transactions, Investments, Liabilities, Transfer, Identity Verification, Monitor, Signal, Consumer Report, Assets, Income, Statements, Layer.", "url": "https://plaid.com/docs/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact terms/cost thresholds for moving from free Sandbox to approved Production access; whether any products (e.g., Transfer, Identity Verification) require additional per-product enablement or contracts."
+}

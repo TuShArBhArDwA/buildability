@@ -1,0 +1,33 @@
+{
+  "id": 73,
+  "name": "Linear",
+  "one_liner": "Linear is a project and issue tracking tool for software teams, exposing a comprehensive GraphQL API plus a TypeScript SDK for programmatic access to issues, projects, comments, cycles, and more.",
+  "auth_methods": ["OAuth2", "API key"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Linear account (including the free plan) can generate a personal API key from Settings > API without payment or approval, giving immediate working credentials. OAuth2 apps can also be created self-serve for building integrations that act on behalf of other users.",
+  "api_styles": ["GraphQL", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Linear's public API is GraphQL-only (no REST). It is broad, covering issues, projects, teams, cycles, comments, labels, users, workflows, attachments, and more via queries and mutations. An official TypeScript SDK (@linear/sdk) wraps the GraphQL API with strongly typed models and operations.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Linear ships an official remote MCP server hosted at https://mcp.linear.app/mcp (announced in their May 2025 changelog and documented at linear.app/docs/mcp). It supports finding, creating, and updating issues, projects, and comments, and connects natively in Claude, Cursor, and other MCP clients. Numerous community MCP servers also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. API is public and credentials are self-serve/free. Only minor consideration is that the API is GraphQL-only, so integrations must speak GraphQL rather than REST.",
+  "evidence": [
+    {
+      "claim": "Linear offers a GraphQL API with OAuth2 and personal API key authentication, plus a TypeScript SDK and webhooks.",
+      "url": "https://linear.app/developers"
+    },
+    {
+      "claim": "Linear ships an official remote MCP server at https://mcp.linear.app/mcp with tools to find, create, and update issues, projects, and comments.",
+      "url": "https://linear.app/docs/mcp"
+    },
+    {
+      "claim": "Linear announced its official MCP server in the May 2025 changelog.",
+      "url": "https://linear.app/changelog/2025-05-01-mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact rate limits and whether any advanced API features (e.g., certain webhook resource types or OAuth actor authorization) require a paid plan were not fully verified against the pricing page."
+}

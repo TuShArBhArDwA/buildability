@@ -1,0 +1,33 @@
+{
+  "id": 83,
+  "name": "Binance",
+  "one_liner": "World's largest cryptocurrency exchange offering spot, futures, margin, options, and wallet trading via a broad public REST/WebSocket/FIX API.",
+  "auth_methods": ["API key", "Other"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create working API credentials on the Spot Testnet (testnet.binance.vision) by logging in with a GitHub account, with no payment or approval. Production credentials require a verified Binance account, but the free testnet gives immediately-usable keys for building/testing.",
+  "api_styles": ["REST", "Websocket/RTM"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive API surface: Spot, USDⓈ-M and COIN-M Futures, Options, Margin, Wallet, and Convert. Offered via REST, WebSocket API, WebSocket Streams, and FIX API. Covers market data (order books, klines, tickers, trades) plus full order lifecycle (place/cancel/amend/query, OCO order lists) and account/user-data operations — well over 100 endpoints.",
+  "webhooks": false,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server found. Multiple community/unofficial MCP servers exist (e.g. TermiX-official/binance-mcp, ethancod1ng/binance-mcp-server, snjyor/binance-mcp) wrapping the Binance REST API for LLM trading/market-data access.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant for building: public documented API with self-serve testnet keys. Request signing (HMAC/RSA/Ed25519) via X-MBX-APIKEY header adds mild complexity, and production trading requires a verified account.",
+  "evidence": [
+    {
+      "claim": "Spot Testnet API keys can be created by logging in with a GitHub account; key goes in X-MBX-APIKEY header; supports HMAC, RSA, and Ed25519 keys; base endpoint https://testnet.binance.vision/api.",
+      "url": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/general-info"
+    },
+    {
+      "claim": "API supports REST, WebSocket API, WebSocket Streams, FIX API, and SBE; covers Spot, Futures, Options, Margin, Wallet, Convert with market-data and full order-management endpoints.",
+      "url": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api/general-api-information"
+    },
+    {
+      "claim": "Official Binance Spot API documentation and streams repository maintained by Binance.",
+      "url": "https://github.com/binance/binance-spot-api-docs"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether any production-account restrictions (regional/KYC) meaningfully limit agent-driven live trading; no official vendor MCP as of research date."
+}

@@ -1,0 +1,33 @@
+{
+  "id": 58,
+  "name": "Sherlock",
+  "one_liner": "Open-source OSINT CLI tool that hunts down social media accounts by username across 400+ social networks.",
+  "auth_methods": ["None/local"],
+  "primary_auth": "None/local",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Fully open-source (MIT). Installable via pipx, Docker, Homebrew, and Linux package managers. Runs entirely locally as a CLI with no account, API key, or payment required. An official self-hosted REST API wrapper (sherlock-project/api) also exists with no auth.",
+  "api_styles": ["CLI-only", "REST"],
+  "api_breadth": "NARROW",
+  "api_notes": "Primary interface is a CLI (`sherlock <username>`) with flags for output formats (TXT/CSV/XLSX), proxy, site filtering, NSFW inclusion, and browser opening. A separate official repo (sherlock-project/api) provides a self-hosted Django REST Framework wrapper exposing username-search endpoints, but it is minimally maintained and self-host only. Effectively a handful of operations centered on username lookup.",
+  "webhooks": false,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No vendor-shipped MCP server. Multiple community MCP implementations exist (e.g., Burnsedia/sherlock-mcp using FastMCP, p1atdev/sherlock-mcp, qKitNp/sherlock_mcp, and an Apify-hosted actor MCP endpoint), but none are published by the sherlock-project organization.",
+  "buildability": "GREEN",
+  "main_blocker": "None for local use. It is a local CLI / self-hosted tool rather than a hosted SaaS API, so integration means wrapping the CLI or self-hosting the REST API; there is no vendor-hosted endpoint to call.",
+  "evidence": [
+    {
+      "claim": "Sherlock is a CLI OSINT tool that hunts social media accounts by username across 400+ networks, installed via pipx/Docker/package managers.",
+      "url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "claim": "Official sherlock-project/api repo is a self-hosted Django REST Framework API with no documented authentication, run locally at 127.0.0.1:8000.",
+      "url": "https://github.com/sherlock-project/api"
+    },
+    {
+      "claim": "Community MCP server wraps Sherlock via FastMCP for username searches across 400+ platforms (no vendor MCP).",
+      "url": "https://github.com/Burnsedia/sherlock-mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "The self-hosted REST API appears minimally maintained; unclear how well it tracks the current CLI version. No hosted/managed offering exists from the project."
+}

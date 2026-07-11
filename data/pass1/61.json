@@ -1,0 +1,29 @@
+{
+  "id": 61,
+  "name": "GitHub",
+  "one_liner": "GitHub is the leading developer platform for hosting Git repositories, code collaboration, issues, pull requests, and CI/CD, all exposed through a comprehensive public API.",
+  "auth_methods": ["OAuth2", "Personal access token", "JWT", "Basic"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free GitHub account and immediately generate a fine-grained or classic personal access token, or register an OAuth App / GitHub App, to get working API credentials. No payment or human approval required for standard REST/GraphQL API access.",
+  "api_styles": ["REST", "GraphQL"],
+  "api_breadth": "BROAD",
+  "api_notes": "Extensive REST API (docs.github.com/rest) covering repos, issues, pull requests, actions, packages, orgs, users, gists, checks, security, and more, plus a full GraphQL API (v4). Hundreds of endpoints. Tokens sent via Authorization: Bearer header; username/password auth not supported.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "GitHub ships an official MCP server (github/github-mcp-server). Available as a hosted remote server at https://api.githubcopilot.com/mcp/ (OAuth or PAT) and as a self-hostable local Docker image (ghcr.io/github/github-mcp-server) supporting GitHub Enterprise Server. Covers repos, issues, PRs, Actions, code analysis.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; free self-serve credentials and broad public API. Rate limits and GitHub App installation flows are the main operational considerations.",
+  "evidence": [
+    {
+      "claim": "GitHub REST API supports fine-grained/classic personal access tokens, GitHub Apps, OAuth Apps, and basic auth with client ID/secret; username+password not supported.",
+      "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api"
+    },
+    {
+      "claim": "GitHub maintains an official MCP server offering repo, issue, PR, and Actions capabilities, available hosted at api.githubcopilot.com/mcp/ and self-hosted via Docker.",
+      "url": "https://github.com/github/github-mcp-server"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": ""
+}

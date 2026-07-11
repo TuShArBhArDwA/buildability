@@ -1,0 +1,25 @@
+{
+  "id": 87,
+  "name": "Xero",
+  "one_liner": "Cloud accounting platform for small businesses whose API exposes invoices, contacts, bank transactions, payroll and financial reports as agent-callable operations.",
+  "auth_methods": ["OAuth2"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "A free Xero account doubles as a developer account and comes with a fully-functional Demo Company populated with sample data. In the developer portal ('My apps') you instantly self-register an app to get a client ID/secret and OAuth2 credentials, then hit the API against demo data via the API Explorer. No payment, approval, or business verification is required to get working credentials. (App certification/marketplace listing is only needed to remove connection limits at scale, not to start building.)",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "Large REST API family: Accounting API alone covers ~40+ resources (Invoices, Contacts, Accounts, BankTransactions, Payments, CreditNotes, Quotes, ManualJournals, Reports, etc.). Additional product APIs include Payroll (AU/UK/NZ), Files, Assets, Projects, Bank Feeds, and Finance API. Official SDKs (Python, .NET, Node, Java, PHP, Ruby). OAuth2 client-credentials flow also supported for custom single-tenant apps.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships an official MCP server under the XeroAPI GitHub org (@xeroapi/xero-mcp-server), part of Xero's AI Toolkit (developer.xero.com/ai). Uses OAuth2; tools for contacts, chart of accounts, invoices, credit notes, quotes, payments, bank transactions, manual journals, and payroll (NZ/UK). Runnable via npx and configurable in Claude Desktop.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant for building; production scale requires app certification to lift the uncertified-app connection limit, but development and testing are fully self-serve free.",
+  "evidence": [
+    {"claim": "Xero API uses OAuth 2.0 with standard authorization code and client credentials flows", "url": "https://developer.xero.com/documentation/guides/oauth2/overview/"},
+    {"claim": "Free Xero account serves as a developer account with a free Demo Company; register an app in 'My apps' to get a client ID/secret instantly", "url": "https://developer.xero.com/documentation/development-accounts/"},
+    {"claim": "Xero ships an official MCP server (@xeroapi/xero-mcp-server) under the XeroAPI org", "url": "https://github.com/xeroapi/xero-mcp-server"},
+    {"claim": "OAuth2 auth flow and scopes documented on the developer portal", "url": "https://developer.xero.com/documentation/guides/oauth2/scopes/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact operation count across all product APIs not tallied; certification thresholds and rate limits for production apps not fully reviewed here."
+}

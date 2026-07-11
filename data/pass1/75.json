@@ -1,0 +1,26 @@
+{
+  "id": 75,
+  "name": "Asana",
+  "one_liner": "Work management and project-tracking SaaS with a broad public REST API (the Asana Work Graph) for tasks, projects, portfolios, users, and workflows.",
+  "auth_methods": ["OAuth2", "Personal access token"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any Asana account (including free tier) can generate a Personal Access Token from the developer console at app.asana.com/0/my-apps with no payment or human approval. PATs authenticate immediately with the same access as the generating user. OAuth 2.0 and OIDC are available for multi-user apps; registering an OAuth app is also self-serve. No sandbox needed; the live API works with a free account.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Comprehensive REST API returning JSON, with a browser-based API explorer. Covers 100+ operations across tasks, projects, sections, portfolios, goals, teams, users, workspaces, custom fields, stories/comments, attachments, tags, and more. Predictable resource URLs and standard HTTP verbs.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Asana ships an official remote MCP server (V2, GA) at https://mcp.asana.com/v2/mcp, documented on developers.asana.com. Supports Streamable HTTP, OAuth-based client registration, and workspace-scoped authorization, exposing the Asana Work Graph to MCP-compatible AI clients. Community MCP servers (e.g. roychri/mcp-server-asana) also exist but the vendor ships its own.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Public REST API with self-serve free credentials (PAT or OAuth). Only minor consideration is choosing OAuth for multi-tenant apps.",
+  "evidence": [
+    {"claim": "Asana supports PAT, OAuth 2.0, and OIDC authentication; PAT is the quickest way to start.", "url": "https://developers.asana.com/docs/authentication"},
+    {"claim": "Personal access tokens are generated self-serve from the developer console at app.asana.com/0/my-apps.", "url": "https://developers.asana.com/docs/personal-access-token"},
+    {"claim": "Asana provides a REST API with predictable URLs and JSON responses plus an in-browser API explorer.", "url": "https://developers.asana.com/docs/quick-start"},
+    {"claim": "Asana supports webhooks for subscribing to events on tasks, projects, stories, etc.", "url": "https://developers.asana.com/docs/webhooks"},
+    {"claim": "Asana ships an official V2 MCP server at https://mcp.asana.com/v2/mcp.", "url": "https://developers.asana.com/docs/using-asanas-mcp-server"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact API rate limits vary by free vs paid plan tier; whether any advanced endpoints (e.g. certain enterprise/audit-log APIs) require a paid plan was not fully verified."
+}

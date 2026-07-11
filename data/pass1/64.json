@@ -1,0 +1,24 @@
+{
+  "id": 64,
+  "name": "Cloudflare",
+  "one_liner": "Cloudflare provides CDN, DNS, security, edge compute (Workers) and developer platform services, all manageable via a broad public REST API.",
+  "auth_methods": ["API key", "API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free Cloudflare account and immediately generate scoped API tokens from the dashboard (My Profile > API Tokens) with no payment or approval. Working credentials are available on the free tier; paid plans only gate certain product features, not API access itself.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Cloudflare's REST API (api.cloudflare.com/client/v4) covers 2500+ endpoints across DNS, zones, Workers, R2, KV, Pages, WAF/security, load balancing, analytics, account management, etc. Official OpenAPI spec and multiple SDKs (cloudflare-python, cloudflare-typescript, Go) plus the Wrangler CLI. Clearly BROAD.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Cloudflare (the vendor) ships official MCP servers: the cloudflare/mcp-server-cloudflare GitHub repo and a catalog of managed remote MCP servers (docs, observability, DNS analytics, Workers bindings, and a Code Mode API server covering the full API). Connect via OAuth from MCP clients.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Free account yields working scoped API tokens instantly; the only friction is choosing appropriate token scopes for the target products.",
+  "evidence": [
+    {"claim": "Cloudflare API uses API tokens (user and account/service tokens) created from the dashboard as the recommended auth method", "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/"},
+    {"claim": "Cloudflare ships official MCP servers including a catalog of managed remote servers and an API MCP server covering 2500+ endpoints", "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"},
+    {"claim": "cloudflare/mcp-server-cloudflare is Cloudflare's official MCP server repository", "url": "https://github.com/cloudflare/mcp-server-cloudflare"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact free-tier rate limits on the client API and whether legacy Global API Key auth is being deprecated in favor of tokens."
+}

@@ -1,0 +1,24 @@
+{
+  "id": 81,
+  "name": "Stripe",
+  "one_liner": "Payments platform whose REST API lets developers accept payments and manage customers, subscriptions, invoices, payouts, and more.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Free Stripe account gives immediate test-mode (sandbox) secret/publishable API keys from the dashboard with no payment or approval; live-mode keys require activating the account but the full API is usable in test mode instantly.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "Large REST API: resource-oriented URLs, form-encoded requests, JSON responses. Covers hundreds of operations across Payments, Charges, Customers, PaymentIntents, Subscriptions/Billing, Invoices, Products, Payouts, Connect, Checkout, Terminal, and more. Official SDKs in many languages. OAuth is used for Connect (platform) flows.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Stripe ships an official MCP server: a remote hosted server at https://mcp.stripe.com (OAuth) and a local server via `npx -y @stripe/mcp --tools=all --api-key=...`. Part of the Stripe Agent Toolkit, documented at docs.stripe.com/mcp.",
+  "buildability": "GREEN",
+  "main_blocker": "None for building/testing: public REST API with self-serve test keys. Going live with real payments requires account activation/business verification, but development and integration need no approval.",
+  "evidence": [
+    {"claim": "Stripe API is REST-based with API-key auth and full sandbox/test-mode support.", "url": "https://docs.stripe.com/api"},
+    {"claim": "Stripe supports webhook endpoints (up to 16 per account) for event notifications.", "url": "https://docs.stripe.com/webhooks"},
+    {"claim": "Stripe hosts an official remote MCP server at mcp.stripe.com and a local @stripe/mcp server via npx.", "url": "https://docs.stripe.com/mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact live-mode activation requirements vary by country/business type, but these do not affect API buildability in test mode."
+}

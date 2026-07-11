@@ -1,0 +1,37 @@
+{
+  "id": 55,
+  "name": "Apify",
+  "one_liner": "Cloud platform for web scraping and browser automation, running thousands of prebuilt 'Actors' (scrapers/crawlers) and storing their results, all accessible via a REST API.",
+  "auth_methods": ["API key", "OAuth2", "Other"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can create a free Apify account and immediately obtain a working API token from the Console (Settings > API & Integrations). No payment or human approval is required; the free plan includes monthly platform usage credit, so the API works out of the box. OAuth is also supported for integrations, and an x402/Skyfire agentic-payment path exists for accountless AI agents.",
+  "api_styles": ["REST", "SDK-only"],
+  "api_breadth": "BROAD",
+  "api_notes": "RESTful HTTP API (api.apify.com/v2) organized around Actors (create/build/run), Tasks, Schedules, Storage (datasets, key-value stores, request queues), Webhooks, Logs, and account/integration management. 100+ endpoints, OpenAPI schema published, plus official SDK clients for Node.js, Python, Java, Rust, .NET, PHP, and Go. Global rate limit ~250k req/min.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Apify ships and maintains an official MCP server: hosted Streamable HTTP endpoint at https://mcp.apify.com with OAuth, plus an open-source local stdio version (github.com/apify/apify-mcp-server). It exposes Apify Actors from the Store as tools and is compatible with Claude, Cursor, VS Code, etc.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant. Free self-serve API token; the main practical consideration is that heavy scraping consumes platform usage credits (pay-per-use / compute units), so production-scale usage requires a paid plan, but the API itself is fully usable on the free tier.",
+  "evidence": [
+    {
+      "claim": "The Apify API is RESTful, supports Bearer token and query-param API token auth, covers Actors/Tasks/Storage/Webhooks, and offers OpenAPI schema plus multi-language SDKs with a 250k req/min limit.",
+      "url": "https://docs.apify.com/api/v2"
+    },
+    {
+      "claim": "Apify provides an official, maintained MCP server hosted at mcp.apify.com (Streamable HTTP + OAuth) with an open-source local version.",
+      "url": "https://github.com/apify/apify-mcp-server"
+    },
+    {
+      "claim": "API token is found on the Console API & Integrations page for authenticating API requests.",
+      "url": "https://docs.apify.com/platform/integrations/api"
+    },
+    {
+      "claim": "Official MCP documentation confirms hosted and local connection methods maintained by Apify.",
+      "url": "https://docs.apify.com/platform/integrations/mcp"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact free-tier monthly usage credit amount and whether any specific API endpoints are restricted to paid plans were not re-verified against the live pricing page in this pass."
+}

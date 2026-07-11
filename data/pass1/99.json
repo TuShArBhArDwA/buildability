@@ -1,0 +1,24 @@
+{
+  "id": 99,
+  "name": "YouTube Transcript",
+  "one_liner": "TranscriptAPI (transcriptapi.com) is a hosted REST API for extracting YouTube video transcripts plus searching videos/channels and browsing channels and playlists.",
+  "auth_methods": ["API key", "OAuth2"],
+  "primary_auth": "API key",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Sign up gives 100 free credits with no card required, yielding a working API key immediately. Paid plans ($5/mo for 1,000 credits) extend usage, but the free credits are enough to make real API calls without payment or approval.",
+  "api_styles": ["REST"],
+  "api_breadth": "NARROW",
+  "api_notes": "REST API (v2) over HTTPS GET requests returning JSON, Bearer-token auth. ~10 endpoints: transcript, video info, search, channel resolve/search/videos/latest, and playlist videos. Rate limited at 300 req/min; credit-based (1 credit per successful request, channel-latest is free).",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Vendor ships an official hosted MCP server at https://transcriptapi.com/mcp, documented at transcriptapi.com/docs/mcp/ with an MCP dashboard. Supports OAuth (Claude/ChatGPT) and API key (OpenAI Agent Builder) auth.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; free tier is capped at 100 credits so sustained use requires a low-cost paid plan, but building/testing a tool is fully self-serve.",
+  "evidence": [
+    {"claim": "Bearer-token auth with API key from dashboard; example curl to /api/v2/youtube/search", "url": "https://transcriptapi.com/docs/api/"},
+    {"claim": "100 free credits to try the API, no card required; $5/mo for 1,000 credits", "url": "https://transcriptapi.com/"},
+    {"claim": "Official vendor MCP server at https://transcriptapi.com/mcp with OAuth and API key auth", "url": "https://transcriptapi.com/docs/mcp/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Whether the id-99 'YouTube Transcript' app refers specifically to transcriptapi.com vs alternatives (e.g., youtube-transcript.io or the open-source jdepoix/youtube-transcript-api Python library); the hint points to transcriptapi.com, which this record covers."
+}

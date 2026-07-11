@@ -1,0 +1,24 @@
+{
+  "id": 88,
+  "name": "Brex",
+  "one_liner": "Corporate card, banking, expense management, and bill pay platform for businesses, exposed via a REST API and an official MCP server.",
+  "auth_methods": ["API key", "OAuth2", "Personal access token"],
+  "primary_auth": "OAuth2",
+  "access_model": "APPROVAL_REQUIRED",
+  "access_notes": "API tokens are self-serve for Account/Card Admins from Settings -> Developer in the Brex Dashboard, but this requires an approved Brex business account (business verification to open a Brex account). There is no public developer sandbox or free dev tier for arbitrary developers. OAuth 2.0 (3-legged) partner credentials (Client ID/Secret) require registering as a Brex developer partner and contacting Brex developer support, which is partner-gated.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST APIs defined with OpenAPI, JSON over HTTPS, standard verbs/response codes. Ten product API areas: Accounting, Budgets & Limits, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel, and Webhooks. Collectively these span well over 100 operations (cards, users, expenses, transactions, budgets, payments, vendors, etc.).",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Brex ships an official MCP server (beta) hosted at https://api.brex.com/mcp. Supports OAuth browser-based auth (recommended) or a Brex API token as Bearer. Requires an admin to accept the Developer API agreement and enable the beta in Settings -> Beta features. Documented setup for Claude Code (claude mcp add --transport http brex https://api.brex.com/mcp), Claude Desktop, ChatGPT, and Cursor. Community MCP servers (e.g., crazyrabbitLTC/mcp-brex-server) also exist but the vendor one is authoritative.",
+  "buildability": "YELLOW",
+  "main_blocker": "Requires an approved Brex business account to obtain any real API credentials; partner OAuth apps additionally require contacting Brex developer support. No open self-serve sandbox for outside developers.",
+  "evidence": [
+    {"claim": "Brex APIs use REST architecture, OpenAPI spec, JSON over HTTPS; product APIs include Team, Expenses, Transactions, Payments, Budgets, Webhooks etc.", "url": "https://developer.brex.com/"},
+    {"claim": "Auth is API Token (Account/Card Admin) or OAuth 2.0 3-legged; partners must register and contact Brex support for Client ID/Secret.", "url": "https://developer.brex.com/guides/authentication"},
+    {"claim": "Official Brex MCP server hosted at https://api.brex.com/mcp, OAuth or API token, requires accepting Developer API agreement and enabling beta.", "url": "https://developer.brex.com/docs/mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total endpoint count is not published. Whether Brex offers any test/sandbox environment for developers without a live funded account is unclear (a staging OAuth environment is referenced by third-party connector docs)."
+}

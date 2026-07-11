@@ -1,0 +1,25 @@
+{
+  "id": 71,
+  "name": "Notion",
+  "one_liner": "Connected workspace for notes, docs, wikis, and databases; its REST API lets agents read and write pages, databases, blocks, comments, and files.",
+  "auth_methods": ["OAuth2", "Personal access token", "API key"],
+  "primary_auth": "OAuth2",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone with a free Notion account can create an integration in the developer portal and instantly get a working token (internal integration token or personal access token) with no payment or human approval. OAuth 2.0 is available for public integrations. Note: on Business and Enterprise plans, PAT creation is restricted by default and must be enabled by a workspace owner, but the free/self-serve path (internal integration secret) still yields working credentials without payment.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API (JSON, Bearer auth, versioned via Notion-Version header). Covers pages, databases (query/create/update schema), blocks (retrieve/append/update children), users, comments, search, file uploads, and data-source/view operations. Roughly 20-40 documented endpoints — solid CRUD coverage over core objects but not a sprawling surface. No GraphQL.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Notion (vendor) ships an official MCP server: open-source local version at github.com/makenotion/notion-mcp-server plus a hosted/remote 'Notion MCP' server documented at developers.notion.com/guides/mcp. Notion is prioritizing the hosted remote server and may sunset the local repo.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant for self-serve; only caveat is PAT creation being disabled by default on Business/Enterprise plans (internal integration tokens and OAuth remain available).",
+  "evidence": [
+    {"claim": "Notion offers a REST API with internal integration tokens, OAuth 2.0 public connections, and personal access tokens; capabilities span pages, databases, views, file uploads, comments, users, search, and webhooks.", "url": "https://developers.notion.com/docs/getting-started"},
+    {"claim": "PATs authenticate as yourself with no OAuth flow required; on Business and Enterprise plans PAT creation is restricted by default and must be enabled by a workspace owner.", "url": "https://developers.notion.com/docs/create-a-notion-integration"},
+    {"claim": "Notion ships an official MCP server (makenotion/notion-mcp-server) and a hosted remote Notion MCP.", "url": "https://github.com/makenotion/notion-mcp-server"},
+    {"claim": "Official Notion MCP documentation and hosted server overview.", "url": "https://developers.notion.com/guides/mcp/overview"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact count of REST endpoints could push breadth toward NARROW/MODERATE boundary; whether any API rate/feature tier depends on paid workspace plan beyond the PAT restriction."
+}

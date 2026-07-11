@@ -1,0 +1,25 @@
+{
+  "id": 91,
+  "name": "NotebookLM",
+  "one_liner": "Google's AI research-and-writing assistant that grounds summaries, Q&A, and audio overviews in your uploaded documents; the NotebookLM Enterprise edition on Google Cloud exposes a REST API for programmatic notebook and source management.",
+  "auth_methods": ["OAuth2", "Session/other token"],
+  "primary_auth": "OAuth2",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "The only official/documented API is NotebookLM Enterprise, part of Gemini Enterprise on Google Cloud. It requires a Google Cloud project with NotebookLM Enterprise licensing enabled, enterprise identity (Cloud Identity / Entra / Okta - not personal Google accounts), and the Cloud NotebookLM User/Admin IAM roles. A GCP 'Start free' trial exists but the enterprise product itself must be provisioned/licensed, so working API access is effectively gated behind a paid enterprise plan and admin setup. The consumer NotebookLM (notebooklm.google.com) has NO public API.",
+  "api_styles": ["REST"],
+  "api_breadth": "NARROW",
+  "api_notes": "REST API under the discoveryengine.googleapis.com/v1alpha surface (regional endpoints us-/eu-/global-). Documented methods are a handful: notebooks.create, notebooks.get, notebooks.listRecentlyViewed (last 500), notebooks.batchDelete, notebooks.share, and sources:batchCreate for adding data sources. Auth via bearer token (gcloud auth print-access-token / service-account OAuth). No documented chat/query or audio-overview generation endpoints in the public API yet.",
+  "webhooks": false,
+  "official_mcp": "COMMUNITY_ONLY",
+  "mcp_notes": "No Google/vendor-shipped MCP server. Several community projects exist: PleasePrompto/notebooklm-mcp (drives a real Chrome via Patchright against consumer NotebookLM) and jacob-bd/notebooklm-mcp-cli (CLI + MCP + agent skills). These are unofficial and mostly automate the consumer web UI rather than the Enterprise REST API.",
+  "buildability": "YELLOW",
+  "main_blocker": "A real public REST API exists but only in the Enterprise edition, which requires a licensed Google Cloud / Gemini Enterprise setup plus IAM roles - not self-serve. Consumer NotebookLM has no official API.",
+  "evidence": [
+    {"claim": "NotebookLM Enterprise documents REST methods notebooks.create/get/listRecentlyViewed/batchDelete/share with bearer-token (gcloud access token) auth on the discoveryengine v1alpha endpoint.", "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks"},
+    {"claim": "sources:batchCreate endpoint adds/manages data sources in a notebook via the API.", "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks-sources"},
+    {"claim": "NotebookLM Enterprise requires a Google Cloud project, enterprise identity, and Cloud NotebookLM Admin/User IAM roles; sold standalone or as part of Gemini Enterprise.", "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview"},
+    {"claim": "Community MCP server for NotebookLM (PleasePrompto/notebooklm-mcp) drives Chrome to give agents grounded citation-backed answers - not an official Google MCP.", "url": "https://github.com/PleasePrompto/notebooklm-mcp"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact licensing cost and whether the GCP free trial actually provisions a working NotebookLM Enterprise API key without sales contact; whether query/chat and audio-overview generation will be added to the public REST API."
+}

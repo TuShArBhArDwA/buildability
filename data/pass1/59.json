@@ -1,0 +1,24 @@
+{
+  "id": 59,
+  "name": "Waterfall.io",
+  "one_liner": "B2B contact/company data enrichment API that aggregates 30+ data vendors into a unified schema (prospecting, contact/phone/company enrichment, email verification).",
+  "auth_methods": ["API key"],
+  "primary_auth": "API key",
+  "access_model": "PARTNER_GATED",
+  "access_notes": "No public self-serve signup surfaced; pricing is usage-based but unpublished and gated behind 'Book a Call'/demo with sales. No free tier or sandbox with working credentials documented. API keys appear to be provisioned after a sales conversation.",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API at https://api.waterfall.io with ~13 documented endpoints: Prospector, Search Contact, Contact Enrichment, Phone Enrichment, Job Change Detection, Search Company, Company Enrichment, Company Reveal (beta), Company Titles (beta), Email Verification, Account Reporting, API Key Management, Webhook JWKS. Mix of sync and async (webhook-delivered) endpoints. Code samples in cURL, Python, JS.",
+  "webhooks": true,
+  "official_mcp": "NONE_FOUND",
+  "mcp_notes": "No vendor-shipped MCP server found. Search for 'Waterfall.io MCP server' returns only the unrelated PaperMC/Waterfall Minecraft proxy. No community MCP for the data enrichment API found either.",
+  "buildability": "YELLOW",
+  "main_blocker": "No self-serve credential path — API keys are provisioned via a sales/demo conversation and pricing is unpublished, so a build cannot obtain working credentials without vendor contact.",
+  "evidence": [
+    {"claim": "Waterfall aggregates 30+ data vendors into a unified enrichment API with endpoints for prospecting, contact/phone/company enrichment.", "url": "https://www.waterfall.io/"},
+    {"claim": "Docs list ~13 REST endpoints (Prospector, Contact/Phone/Company Enrichment, Email Verification, Webhook JWKS, API Key Management) with API key auth via x-api-key header, base URL https://api.waterfall.io.", "url": "https://docs.waterfall.io/"},
+    {"claim": "Pricing is usage-based but unpublished; access is via 'Book a Call' / demo rather than public signup.", "url": "https://www.waterfall.io/book-a-call"}
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Whether a self-serve dashboard exists to generate an API key without a sales call; exact rate limits (docs cite 100-1,000 req/min in marketing); whether any free trial credits are offered after signup."
+}

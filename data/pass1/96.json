@@ -1,0 +1,25 @@
+{
+  "id": 96,
+  "name": "Devin",
+  "one_liner": "Devin (by Cognition) is an autonomous AI software engineer that plans, writes, tests, and ships code; it exposes a REST API to create and manage agent sessions, knowledge, playbooks, and secrets.",
+  "auth_methods": ["API key", "Personal access token", "Session/other token"],
+  "primary_auth": "API key (service-user 'cog_' bearer token)",
+  "access_model": "PAID_PLAN_REQUIRED",
+  "access_notes": "Self-serve signup exists at app.devin.ai, but the Devin API (and MCP server) is limited to Team/Teams and Enterprise plans; the entry Core/Free plan lets you give Devin credentials but does NOT grant use of the Devin API. Credentials are service-user API keys (cog_ prefix) created in org settings with RBAC; Personal Access Tokens are closed beta. No free API tier or sandbox with working API creds; requires a paid plan (no documented trial-to-API path).",
+  "api_styles": ["REST"],
+  "api_breadth": "MODERATE",
+  "api_notes": "REST API at api.devin.ai (current v3: /v3/organizations/* and /v3/enterprise/*; older v1 and deprecated v2). Manages sessions (create, control, create_as_user_id attribution), knowledge, playbooks, secrets, service users, scheduled sessions, plus enterprise analytics/audit/user-management/billing. Roughly a few dozen operations across resources -> MODERATE.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Cognition ships an official Devin MCP server documented at docs.devin.ai/work-with-devin/devin-mcp, hosted at https://mcp.devin.ai/mcp. Authenticated with a Devin service-user API key (Authorization bearer + X-Org-Id header); legacy API keys unsupported. Tools cover repo documentation Q&A, creating/controlling sessions, playbooks, knowledge base, scheduled sessions, and integration/MCP management. Requires a paid (Team/Enterprise) plan like the API.",
+  "buildability": "YELLOW",
+  "main_blocker": "API access requires a paid Team/Teams or Enterprise plan; no free tier or sandbox issues working API credentials, and API usage consumes billable agent-compute credits (ACUs).",
+  "evidence": [
+    {"claim": "Devin API is REST at api.devin.ai v3, managing sessions, knowledge, playbooks, secrets", "url": "https://docs.devin.ai/api-reference/overview"},
+    {"claim": "Auth uses service-user API keys with cog_ prefix and RBAC; Personal Access Tokens in closed beta", "url": "https://docs.devin.ai/api-reference/authentication"},
+    {"claim": "Cognition ships an official MCP server at mcp.devin.ai authenticated with a Devin API key", "url": "https://docs.devin.ai/work-with-devin/devin-mcp"},
+    {"claim": "The Devin API is limited to Team and Enterprise plans; Core plan does not use the Devin API", "url": "https://devin.ai/pricing/"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total endpoint count is not enumerated in docs. Whether the new 'Pro'/'Max' self-serve tiers grant API access (docs indicate only Teams/Enterprise) needs confirmation. No webhook support was found in current docs but this could not be exhaustively verified."
+}

@@ -1,0 +1,24 @@
+{
+  "id": 80,
+  "name": "Harvest",
+  "one_liner": "Time tracking, invoicing, and project-budget SaaS for teams, with a full REST API v2 covering time entries, projects, clients, invoices, estimates, expenses, and users.",
+  "auth_methods": ["Personal access token", "OAuth2"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone with a Harvest account (including the free plan and free trials) can create a Personal Access Token in the Developers section of Harvest ID and immediately call the API with the token plus account ID. No approval, payment, or app review is required for personal tokens; OAuth2 apps are self-registered for third-party/multi-account integrations.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST/JSON API v2 with ~13 resource groups (clients, contacts, projects, tasks, task/user/project assignments, time entries, expenses, invoices, estimates, users, roles, cost/bill rates, company, reports). Standard CRUD across most resources plus reporting endpoints yields well over 100 operations. Postman collection and code samples provided. Legacy V1 API still available.",
+  "webhooks": false,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Harvest ships an official 'Harvest MCP' documented in its own Help Center, giving MCP-compatible assistants (e.g. Claude desktop/web) controlled access to a user's Harvest account to start/stop timers, log and review hours, and check budgets. Respects existing Harvest permissions. Numerous community MCP servers (southleft, taiste, adrian-dotco) also exist.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant; personal access tokens are instantly self-serve on any account. Only minor friction is that personal tokens require passing both the token and a Harvest-Account-Id header.",
+  "evidence": [
+    {"claim": "Harvest API v2 supports Personal Access Tokens (created in the Developers section of Harvest ID) and OAuth2 applications with server-side and client-side flows.", "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/"},
+    {"claim": "Harvest API v2 exposes broad REST resources including clients, projects, tasks, time entries, expenses, invoices, estimates, users, and reports.", "url": "https://help.getharvest.com/api-v2/"},
+    {"claim": "Harvest ships an official Harvest MCP that lets an MCP-compatible AI assistant access a Harvest account to track time and check budgets, respecting existing permissions.", "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP"}
+  ],
+  "confidence": "HIGH",
+  "open_questions": "The v2 docs do not surface a webhooks/push-notification API in the pages reviewed, so change events likely require polling; worth confirming whether any webhook mechanism exists. Also unconfirmed whether the free plan tier imposes any API rate or feature limits beyond standard throttling."
+}

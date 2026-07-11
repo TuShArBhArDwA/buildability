@@ -1,0 +1,26 @@
+{
+  "id": 97,
+  "name": "higgsfield",
+  "one_liner": "Higgsfield is an AI media-generation platform (image, video, 3D, audio across 100+ models) exposing a Cloud REST API, official Python/Node SDKs, a CLI, and an MCP server for agent-driven generation.",
+  "auth_methods": ["API key", "Bearer token"],
+  "primary_auth": "API key (Bearer token; Node SDK uses API key + secret, Python SDK uses HF_KEY or HF_API_KEY/HF_API_SECRET env vars)",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Anyone can self-register at cloud.higgsfield.ai (email, Google, Apple, or Microsoft) and generate an API key from the dashboard with no approval. A free tier exists for testing (capped, e.g. ~10 concurrent generations); actual media generation consumes credits, and heavy/production use requires a paid plan, but working API credentials are obtainable without payment or approval.",
+  "api_styles": ["REST", "SDK-only", "CLI-only"],
+  "api_breadth": "MODERATE",
+  "api_notes": "Cloud REST API centers on a small set of async generation endpoints (POST /v1/generations, GET /v1/generations/{id}, DELETE /v1/generations/{id}) but fans out across 100+ models and task types (text-to-image, image-to-video, image-to-3D, text-to-speech, music, character training). Official SDKs: Python (higgsfield-client), Node/TypeScript (higgsfield-js). A CLI (higgsfield-ai/cli) wraps job create/wait/get. Breadth is model-parameter-driven rather than many distinct endpoints.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "Higgsfield's own CLI/product page (higgsfield.ai/cli) advertises an official MCP server for use in Claude Code, Cursor, Cowork and other MCP-compatible agents; auth is via 'higgsfield auth login' (browser-based short-lived token, no API key needed for the MCP/CLI path). Vendor-shipped, so YES_OFFICIAL.",
+  "buildability": "GREEN",
+  "main_blocker": "None blocking for building tools: public REST API with self-serve API keys, official SDKs, webhooks, and an official MCP server. Only practical constraint is credit consumption per generation.",
+  "evidence": [
+    {"claim": "Higgsfield CLI runs in Claude Code/Cursor/any MCP-compatible agent, offers 30-40+ models, and authenticates via 'higgsfield auth login'; vendor advertises official MCP integration.", "url": "https://higgsfield.ai/cli"},
+    {"claim": "Cloud API uses async generation endpoints (POST/GET/DELETE /v1/generations), Bearer API-key auth, free tier for testing, webhook_url callbacks, over 100 models.", "url": "https://apidog.com/blog/higgsfield-api/"},
+    {"claim": "Official Python SDK 'higgsfield-client' authenticates via HF_KEY or HF_API_KEY+HF_API_SECRET environment variables.", "url": "https://github.com/higgsfield-ai/higgsfield-client"},
+    {"claim": "Official Node.js/TypeScript SDK supports API key + secret authentication with configurable base URL, polling and retry.", "url": "https://github.com/higgsfield-ai/higgsfield-js"},
+    {"claim": "Cloud API dashboard provides API key generation and account sign-up (cloud.higgsfield.ai).", "url": "https://cloud.higgsfield.ai/"}
+  ],
+  "confidence": "MEDIUM",
+  "open_questions": "Whether the free tier grants enough credits to actually exercise the API without payment, or if any generation requires a paid subscription. Exact list of REST endpoints and whether the MCP server URL is publicly documented were not confirmed from primary vendor API-reference docs (some detail came from third-party guides)."
+}

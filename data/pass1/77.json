@@ -1,0 +1,33 @@
+{
+  "id": 77,
+  "name": "ClickUp",
+  "one_liner": "Project management and productivity platform (tasks, docs, goals, time tracking) with a broad public REST API and a first-party MCP server.",
+  "auth_methods": ["Personal access token", "OAuth2"],
+  "primary_auth": "Personal access token",
+  "access_model": "SELF_SERVE_FREE",
+  "access_notes": "Any ClickUp account (including the Free Forever plan) can generate a non-expiring personal API token (pk_...) from Settings > Apps with no payment or approval. OAuth2 apps for multi-user integrations are also self-serve for workspace admins. Working credentials are immediately available on free accounts.",
+  "api_styles": ["REST"],
+  "api_breadth": "BROAD",
+  "api_notes": "REST API with v2 and v3 versions and a published OpenAPI spec. Covers tasks, lists, folders, spaces, comments, checklists, time tracking, goals, custom fields, docs, views, members, and webhooks - well over 100 operations. An llms.txt index is provided for AI agents.",
+  "webhooks": true,
+  "official_mcp": "YES_OFFICIAL",
+  "mcp_notes": "ClickUp ships a first-party, official MCP server (public beta) at https://mcp.clickup.com/mcp, documented on developer.clickup.com. Exposes ~40 tools across search, tasks, time tracking, chat, and docs. Auth is OAuth only (no personal token). Available on all plans; rate limits vary (50 calls/24h on Free, 300 on Unlimited+ without the Everything AI add-on). A popular community server (taazkareem/clickup-mcp-server) also exists.",
+  "buildability": "GREEN",
+  "main_blocker": "None significant - public REST API with self-serve free credentials. Only caveat is per-plan rate limits.",
+  "evidence": [
+    {
+      "claim": "ClickUp API supports non-expiring personal tokens (pk_) and OAuth2 authorization code grant; tokens generated free from Settings > Apps.",
+      "url": "https://developer.clickup.com/docs/authentication"
+    },
+    {
+      "claim": "ClickUp ships an official first-party MCP server at https://mcp.clickup.com/mcp exposing ~40 tools, available on all plans.",
+      "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server"
+    },
+    {
+      "claim": "ClickUp supports REST webhooks covering task, list, folder, space, and goal events with wildcard subscription.",
+      "url": "https://developer.clickup.com/docs/webhooks"
+    }
+  ],
+  "confidence": "HIGH",
+  "open_questions": "Exact total operation count across v2/v3 not enumerated; some v3 endpoints (Docs, Chat) may still be in beta."
+}
